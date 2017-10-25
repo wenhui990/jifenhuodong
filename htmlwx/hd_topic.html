@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=750, user-scalable=no">
+<link href="../css/wx-styles20161024.css?v=20161024" rel="stylesheet" />
+<link href="../css/topic.css" rel="stylesheet" />
+<title>押话题</title>
+</head>
+<body id="body">
+	<input type="hidden" value="50" id="topic_id" name="topic_id">
+	<input type="hidden" value="2" id="isReload" name="isReload">
+	<div id="id" style="display: none;">0</div>
+	<div class="common-wrapper">
+		<div class="topic">
+			<div class="floor1 m">
+				<div class="mt_new1">
+					<div class="info"></div>
+					<a class="rules" href="javascript:void(0)" onclick="intruction();">
+						<b> 游戏规则 </b> </a>
+				</div>
+				<div class="mc">
+				   	<div id="tid" style="display: none;"></div>
+					<div class="t-img">
+						<img id="topic_img" >
+						<div id="topic_title" class="t-title"></div>
+					</div>
+					<div class="t-bg" style="word-break: break-all;"></div>
+					<ul class="two-sides">
+						<li class="positive J_ping" onclick="topic_bt_show(1);">
+							<h4>支持正方</h4>
+							<p id="topic_positive"></p>
+						</li>
+						<li class="negative J_ping" onclick="topic_bt_show(2);">
+							<h4>支持反方</h4>
+							<p id="topic_negative"></p>
+						</li>
+					</ul>
+					<div class="my-bet" id="myBet">
+					</div>
+				</div>
+			</div>
+			<div class="floor2 m">
+				<div class="mt_new2" id="prev">
+				</div>
+				<div class="mt_new2" id="next">
+				</div>
+			</div>
+			<div  style="display: none;" id="supportDiv"></div>
+			<div class="occupying" style="display: none;">
+				<div class="fixed-btns J_ping q-bottom-bar1">
+					<a href="javascript:void(0)"
+						onclick="topic_bt_show(1);" id="topic_bt_sh_id"
+						class="btn-red J_ping">支持正方</a>
+					<a href="javascript:void(0)"
+						onclick="topic_bt_show(2);" id="topic_bt_sh_id"
+						class="btn-red J_ping">支持反方</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="popup page-topic-8" id="topic_bt" style="display: none;">
+		<div class="mask" id="mask"></div>
+		<div class="window tw-8">
+			<div class="w-mt">
+				<h3 class="f-red">确认押注</h3>
+			</div>
+			<div class="w-mc">
+				<div class="info">本次新增（+-可长按）</div>
+				<div class="form">
+					<div class="line number-selector-wrapper">
+						<div class="label">押注：</div>
+						<div class="cell">
+							<span class="num"> <span class="minus btn reduction" onclick="bet(false)">-</span>
+								<input type="tel" id="support" class="input" value="0"
+								readonly="true"> <span class="btn plus" onclick="bet(true)">+</span> </span>注
+						</div>
+					</div>
+					<div class="line line-compact">
+						<div class="label">需</div>
+						<div class="cell">
+							<span id="betPayNum">0</span> 积分
+						</div>
+					</div>
+					<div class="line line-compact">
+						<div class="label">我</div>
+						<div class="cell">
+							<span id="mybet">6</span> 积分
+						</div>
+					</div>
+				</div>
+				<div class="w-btn">
+					<a href="javascript:void(0)" onclick="submitBet()" class="btn-red btn-full J_ping"
+						id="btn-submit">押注</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="intruction" class="popup" style="display: none;">
+		<div class="mask"></div>
+		<div class="window tw-9">
+			<div class="w-mt">
+				<h3 class="f-red1">押话题游戏规则</h3>
+			</div>
+			<div class="w-mc">
+				<div class="rule">
+					<p>1.每个话题分为正反两方，可分别押注，每注扣减2个积分</p>
+					<p>2.用户只能在每个话题的两个答案中选择一个，不可以重复选择</p>
+					<p>3.选择想投注的积分值，每次下注最少1注，最多20注</p>
+					<p>
+						3.最终结果以下注人数多的一方为赢方
+					</p>
+					<p>4.输方积分总和 *（该用户所押积分 / 赢方用户积分总和）= 该用户赢得的积分</p>
+					<p>5.当积分算法除不尽积分数时，系统四舍五入取整</p>
+				</div>
+				<div class="w-btn">
+					<a href="javascript:void(0)" onclick="intruction_close();"
+						class="btn-red btn-full">我知道啦</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/wxweb.js?v=20161024"></script>
+	<script type="text/javascript" src="../js/wxbox.js"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+
+		initWx(window.location.href, "/htmlwx/hd_topic.html", '押话题', false);
+		loadGaScript();
+		showTopic(0);
+		
+		function submitBet(){
+			topic8TipLayerEl.close();
+			var support = $("#supportDiv").html();
+			var bet = $("#support").val();
+			var id = $("#tid").html();
+			var datas = "tid=" + id + "&bet=" + bet + "&support=" + support;
+			$.ajax({
+				type : "post",
+				url : getPath() + '/web/topic/bet.do',
+				data : datas,
+				dataType : "json",
+				contentType : "application/x-www-form-urlencoded; charset=utf-8",
+				success : function(data) {
+					if(data.s == 200){
+						alert("押注成功");
+						var id = $("#id").html();
+						showTopic(id);
+					} else {
+						showTipsPop(data.r, 3000);
+					}
+				}
+			});
+		}
+		
+		function bet(add){
+			var bet = Number($("#support").val());
+			var point = 0;
+			if(add){
+				bet += 1;
+			}else{
+				if(bet <= 0){
+					return;
+				}
+				bet -= 1;
+			}
+			point = bet * 2;
+			var myPoint = Number($("#mybet").html());
+			if(point > myPoint){
+				return;
+			}
+			$("#support").val(bet);
+			$("#betPayNum").html(point);
+		}
+
+		function topic_bt_show(support) {
+			var submitBtn = document.getElementById("btn-submit");
+			var betPayNumEl = document.querySelector("#betPayNum");
+			$("#support").val("0");
+			$("#supportDiv").html(support);
+			betPayNumEl.innerText = 0;
+			topic8TipLayerEl = tipLayer("topic_bt", true, true);
+			var mask = document.querySelector("#topic_bt .mask");
+			mask.addEventListener("click", function() {
+				topic8TipLayerEl.close();
+				if ($("#isReload").val() == "1") {
+					window.location.reload();
+				}
+			});
+		}
+		
+		function countInputsVal() {
+			var inputsVal = 0;
+			loopArray(inputs, function(item, i) {
+				inputsVal += parseInt(item.value);
+			});
+			return inputsVal;
+		}
+		function tipLayer(id, isDisableScroll, isClose) {
+			var tipEl = document.getElementById(id);
+			tipEl.style.display = "block";
+			if (isDisableScroll) {
+				var mask = tipEl.querySelector(".mask");
+				mask.addEventListener("touchmove", function(e) {
+					stopDefault(e);
+				}, false);
+			}
+			if (isClose) {
+				return {
+					node : tipEl,
+					close : function() {
+						tipEl.style.display = "none";
+					}
+				};
+			}
+		}
+		function intruction() {
+			wraningtipLayerEl_intruction = tipLayer("intruction", true, true);
+			var mask = document.querySelector("#intruction .mask");
+			mask.addEventListener("click", function() {
+				var ruleContent = document.querySelector("#intruction .rule");
+				ruleContent.scrollTop = 0;
+				wraningtipLayerEl_intruction.close();
+			})
+		}
+		function intruction_close() {
+			console.log(1);
+			var ruleContent = document.querySelector("#intruction .rule");
+			ruleContent.scrollTop = 0;
+			wraningtipLayerEl_intruction.close();
+		}
+	</script>
+</body>
+</html>

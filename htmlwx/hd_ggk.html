@@ -1,0 +1,112 @@
+<!DOCTYPE HTML> 
+<html> 
+<head> 
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
+<title>刮刮卡</title>
+<style type="text/css">
+  *{margin: 0;padding: 0;box-sizing:border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;-webkit-tap-highlight-color:rgba(0,0,0,0);tap-highlight-color:rgba(0,0,0,0);}
+  body{font-size:12px;background:#d85861 url(../images/ggk_bg.png) no-repeat center top;background-size:100% auto;}
+  a:link {text-decoration:none;} 
+  a:visited {text-decoration:none;}
+  a:hover {text-decoration:none;} 
+  a:active {text-decoration:none;}
+  li {list-style-type: none;}
+  table{border-collapse:collapse;width:100%;}
+  input,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0);tap-highlight-color:rgba(0,0,0,0);}
+  .clearf{clear:both;}
+  .tabs{width:100%;padding:15px 0 0;}
+  .tabs li{float:left;width:50%;line-height:1.5em;text-align:center;color:#b1b1b1;font-size:15px;}
+  .tabs li span{font-size:18px;font-weight:700;color:#f16f89;}
+  .jp_item{width:92%;overflow:hidden;margin-left:4%;border-radius:10px;margin-bottom:15px;}
+  .jp_item0{
+    background: -moz-linear-gradient(top, #92dcd8 0%, #5393bd 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#92dcd8), color-stop(100%,#5393bd));
+    background: -webkit-linear-gradient(top, #92dcd8 0%,#5393bd 100%);
+    background: -o-linear-gradient(top, #92dcd8 0%,#5393bd 100%);
+    background: -ms-linear-gradient(top, #92dcd8 0%,#5393bd 100%);
+    background: linear-gradient(to bottom, #92dcd8 0%,#5393bd 100%);
+  }
+  .jp_item1{
+    background: -moz-linear-gradient(top, #ffc281 0%, #f06e5e 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc281), color-stop(100%,#f06e5e));
+    background: -webkit-linear-gradient(top, #ffc281 0%,#f06e5e 100%);
+    background: -o-linear-gradient(top, #ffc281 0%,#f06e5e 100%);
+    background: -ms-linear-gradient(top, #ffc281 0%,#f06e5e 100%);
+    background: linear-gradient(to bottom, #ffc281 0%,#f06e5e 100%);
+  }
+  .jp_item ul{float:left;width:100%;margin-bottom:5px;}
+  .jp_item li{float:left;text-align:center;color:#fff;line-height:2em;}
+  .jp_item li img{height:40px;width:auto;}
+  .jp_item.jp_item0 li{width:33%;}
+  .jp_item.jp_item1 li{width:33%;}
+  .jp_item h2,.rules h3{font-size:13px;font-weight:normal;padding:8px 10px;line-height:1.2em;}
+  .rules h3{background:url(../images/gz_bg.png) no-repeat center center;font-size:15px;text-align:center;color:#fff;}
+  .rules p{line-height:1.5em;color:#fff;margin-bottom:10px;padding:2px 1em 2px 2em;text-indent:-1.1em;}
+  .rules p span{color:#ffeb7c;}
+  .jp_item.jp_item0 h2{color:#346696}
+  .jp_item.jp_item1 h2{color:#943232}
+  .card {
+        height: 100%;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 2em;
+        text-align: center;
+        background: #FAFAFA;
+        box-sizing:border-box;
+        -moz-box-sizing:border-box;
+        -webkit-box-sizing:border-box;
+        padding-top:20px;
+    }
+    .card a{
+      background:#ffba00;border-radius:3px;padding:3px 5px;color:#fff;
+    }
+    .scratch {
+        width: 290px;
+        height: 100px;
+        margin: 0 auto;
+    }
+    .scratch{ position: relative;}
+		#cover{ position: absolute; top:0; left:0;}
+		#card{ -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;}
+		header{height:34px;line-height:34px;background:#fff;font-size:15px;text-align:center;color:#484849;border-bottom:1px solid #eaeaee;}
+    .cover_bg0{background:url(../images/cover_bg0.png) no-repeat 0 0;background-size:100% 100%;width:320px;height:120px;margin:0 auto 15px;padding-top:10px;}
+    .cover_bg1{background:url(../images/cover_bg1.png) no-repeat 0 0;background-size:100% 100%;width:320px;height:120px;margin:0 auto 15px;padding-top:10px;}
+    .zj_btn{background:url(../images/dui_btn.png) no-repeat 0 0;width:121px;height:64px;font-size:12px;color:#fff;padding-top:28px;display:block;}
+</style>
+</head>
+<body>
+<header>积分终有用武之地</header>
+<div class="tabs">
+  <ul>
+    <li><span class="allgold"></span><br>剩余积分</li>
+    <li><a href="./hd_ggk_zj.html" class="zj_btn">中奖纪录</a></li>
+  </ul>
+  <div class="clearf"></div>
+</div>
+<div id="hd">
+</div>
+<div class="rules">
+  <h3>活动规则</h3>
+  <p>1. 用户在活动页面刮彩票进行抽奖，共分为一、二两个档位，一档：10000积分刮一次，每人每天参与次数不限；二档：100积分刮一次，每人每天仅限参与10次。</p>
+  <p><span>2. 当前所有积分有效期截至2017年3月14日24:00，积分有效期到期后将会进行清零，清零后所有账户积分均不能使用。</span></p>
+  <p><span>3. 获奖用户请务必按照格式准确填写个人信息，以便准时发奖。</span></p>
+  <p>4. 本活动最终解释权归中国竞彩订阅号所有。</p>
+</div>
+<script type="text/javascript" src="../js/lucky-card.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js?v=20161024"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+initWx(window.location.href,"/htmlwx/hd_guaguaka.html",'刮刮卡',false);
+loadGaScript();
+ggk();
+</script>
+</body>
+</html>
+
+
+
+

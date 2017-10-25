@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>中国竞彩</title>
+<link href="../css/wx-styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="all_head heig_02">
+ <div class="jfxq_n">
+  <span class="f_l col_green"><font class="f26">您当前排名：<b id="inteRanking"></b></font><br/>此排名截止于前一日24:00</span>
+  <a href="awardaddress.html" class="f_r"><br/>填写领奖信息</a>
+ </div>
+<div class="shan_line2"></div>
+<div class="h_10"></div>
+<div class="jfxq_n">往期查询
+第<select id="issue" onchange="changeRankIssue();historyranking(0)">
+     <option value="">1</option>
+</select>期 第
+<select id="day" onchange="historyranking(0)">
+     <option value="">1</option>
+</select>日
+  <input id="rankTime" type="text" disabled="disabled" class="f_r" style="width:100px;height:30px;font-size:18px;text-align: center;"/>
+</div>
+<table class="pai_list">
+ <tr class="add_c">
+  <td>排名</td>
+  <td>手机号码</td>
+  <td>积分</td>
+ </tr>
+  <tbody id="res" ></tbody>
+</table>
+  <br/>
+</div>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="../js/adaptor/set.js"></script>
+<script type="text/javascript">
+initRankDay();
+historyranking(0);
+initWx(window.location.href,"/htmlwx/hdbegin.html",'篮彩季，微竞猜',false);
+loadGaScript();
+</script>
+</body>
+</html>

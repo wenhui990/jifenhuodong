@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<title>超级足球季，等你来参与！</title>
+		<link rel="stylesheet" href="./css/base.css">
+		<style>
+			html{
+				font-size: 100px;
+			}
+
+			body {
+				margin: 0;
+				background: url("images/q_bg.png") no-repeat;
+				background-size: cover;
+				font-family: "Microsoft YaHei", 微软雅黑;
+			}
+
+			.head{
+				position: relative;
+			}
+
+			.q_head{
+				width: 100%;
+				z-inde: -10;
+			}
+
+			.rule_box{
+				height: auto;
+				width: 100%;
+				position: relative;
+				font-size: 0.13rem;
+				font-weight: normal;
+			}
+
+			.rule_main{
+				width: 3.06rem;
+				height: 2.3rem;
+				border: 0.03rem solid #ff9e36;
+				margin-left: 0.18rem;
+				padding: 0.1rem 0.1rem 0.05rem 0.16rem;
+				color: #ffe65a;
+				line-height: 0.24rem;
+				letter-spacing: 0.005rem;
+			}
+
+			.rule_main h5{
+				color: #fff;
+			}
+			
+			.rule_shadow{
+				width: 3.32rem;
+				height: 2.47rem;
+				border: 0.03rem solid #c33239;
+				opacity: 0.6;
+				position: absolute;
+				top: 0.07rem;
+				left: 0.25rem;
+				z-index: -1;
+			}
+			
+			.title{
+				position: absolute;
+				top: -0.25rem;
+				left: 2.38rem;
+				height: 0.45rem;
+				width: 0.9rem;
+			}
+
+			.rule_extra{
+				width: 3.04rem;
+				height: 0.79rem;
+				margin: 0.2rem 0 0.18rem 0.19rem;
+				background: #c33239;
+				border-radius: 0.05rem;
+				color: #ffb22d;
+				padding: 0.05rem 0.15rem 0 0.15rem;
+				text-align: center;
+				line-height: 0.25rem;
+				letter-spacing: 0.005rem;
+			}
+
+			.rule_extra span{
+				color:#fff;
+			}
+
+			.explain{
+				margin-left: 0.36rem;
+				letter-spacing: 0.005rem;
+				color: #750e0e;
+				margin-bottom: 0.1rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="head">
+			<img src="images/q_head.png" class="q_head">
+		</div>
+
+		<div class="rule_box">
+			<div class="rule_main">
+				<h5>一、活动时间</h5>
+				<p>9月11日-9月19日</p>
+				<h5>二、规则介绍</h5>
+				<p>1）活动期间，用户关注“中国竞彩”微信订阅号，点击下方菜单栏“知识竞猜”进入活动页面。</p>
+				<p>2）用户进入活动页面进行答题，每天6道题，全部答对即可获得3次抽奖机会，当天有效，答错任意一题则没有抽奖机会。每人每天只有一次答题机会，每天上午9点开始，24点结束。</p>
+			</div>
+			<div class="rule_shadow"></div>
+			<img src="images/title.png" class="title">
+
+			<div class="rule_extra">
+				<p>活动中遇到问题，可以拨打客服热线<span id="tel">4008695086</span>或发微信至“<span id="wx">中国竞彩</span>”订阅号，工作人员将及时为您解答处理。</p>
+			</div>
+
+			<p class="explain">本次活动最终解释权归“中国竞彩”订阅号所有。</p>
+		</div>
+	
+	</body>
+
+
+	<script src="./js/screen.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../js/wxweb.js?v=20171024"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script>
+		initWx(window.location.href,"/htmlwx/draw/share.html",'超级足彩季，等你来答题！',false, '“超级足彩季，3亿大派奖！”火热来袭，系列活动之一知识竞猜开始啦，快去参加吧！');
+	</script>
+</html>

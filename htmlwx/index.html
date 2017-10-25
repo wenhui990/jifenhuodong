@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>中国竞彩</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" href="../css/jc.css">
+<!--赛事的css-->
+<link type="text/css" rel="stylesheet" href="../css/common.css">
+<link type="text/css" rel="stylesheet" href="../css/lotCss_mn.css">
+<script type="text/javascript" src="../js/jquery.js"></script>
+<link href="../css/jquery.mmenu.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../js/calculator/jquery.bxslider.js"></script>
+<link type="text/css" rel="stylesheet" href="../css/calculator/jquery.bxslider.css" />
+<style>
+.bx-wrapper{position:relative;}
+.bx-controls{position:absolute;bottom:10px;left:46%;}
+</style>
+</head>
+<body class="bg-color1">
+	<div class="content">
+		<ul class="bxslider">
+			<li><a href="index_1.html"><img src="../images/index_1.jpg" width="100%" hight="90%"></a></li>
+			<li><a href="index_2.html"><img src="../images/index_2.jpeg" width="100%" hight="90%"></a></li>
+			<li><a href="index_3.html"><img src="../images/index_3.jpg" width="100%" hight="90%"></a></li>
+		</ul>
+<!-- 		<div class="slides"> -->
+<!-- 		  <img src="../images/slides1.png" width="100%"> -->
+<!-- 		</div> -->
+		<div class="menus panel-list">
+		  <h4 class="first">看赛事</h4>
+	      <ul class="">
+	        <li><a href="bet_mn.html"><i class="ico1"></i>受注赛程</a></li>
+	        <li><a href="matchList.html"><i class="ico2"></i>赛果比分</a></li>
+	        <li><a href="tradmatch.html"><i class="ico3"></i>传足赛程</a></li>
+	        <li><a href="betranking.html"><i class="ico4"><b class="new_ico"></b></i>联赛排名</a></li>
+	      </ul>
+	      <div class="clearf"></div>
+	      <h4 class="second">玩竞彩</h4>
+	      <ul class="">
+	        <li><a href="bet.html"><i class="ico1"><b class="hot_ico"></i></b>自由过关</a></li>
+	        <li><a href="myFollows.html"><i class=ico5></i>我的关注</a></li>
+	        <li><a href="myOdds.html"><i class="ico10"></i>我的记录</a></li>
+	        <li><a href="seniorgarden.html"><i class="ico7"></i>竞彩讲堂</a></li>
+	      </ul>
+		</div>
+	</div>
+  <!-- 引入系统js -->
+  <script type="text/javascript" src="../js/wxbox.js"></script>
+  <script type="text/javascript" src="../js/common.js"></script>
+  <script type="text/javascript" src="../js/wxweb.js"></script>
+  <script type="text/javascript"
+    src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+	initWx(window.location.href,"/htmlwx/bet.html","中国竞彩-模拟投注",false);
+	loadGaScript('UA-99976220-1');
+	 $('.bxslider').bxSlider({
+	 });
+	</script>
+</body>
+</html>

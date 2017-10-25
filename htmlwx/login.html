@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#242833;">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link href="../css/wx-styles20161024.css?v=20161024" rel="stylesheet" />
+	<title>登录</title>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?7b7dbdd27bebde98548832939845042c";
+	  var s = document.getElementsByTagName("script")[0];
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+</head>
+<body style="background:#242833;">
+<div style="text-align:center;margin-top:40px;"><img src="../images/bind_logo.png"></div>
+    <div class="container">
+  <div class="denglu">
+       <div class="xinxi"><img src="../images/user_new.png">
+         <span>
+       		<input autocomplete="off" class="" type="text" id="mobile" onkeyup="this.value=this.value.replace(/\D/g,'');$('#mobileErrMsg').html('');checkAllInput('login');"
+   				onafterpaste="this.value=this.value.replace(/\D/g,'')"
+   				maxlength="11" size="30" onblur="checkMobile();" placeholder="请输入手机号"/>
+   		  </span></div>
+       <div class="xinxi"><img src="../images/mima_new.png">
+         <span>
+       		<input class="" type="password" id="password" size="30" maxlength="18" autocomplete="off"
+    			onkeyup="this.value=this.value.replace(/[^\w!;:,._=@#$%^&*()]|_/ig,'');checkAllInput('login');"
+  				 onblur="checkUserPwd()" placeholder="请输入密码"/>
+  		  </span></div>
+       <div class="xinxi"><img src="../images/yanzm_new.png" style="margin-top:20px;">
+       	 <span>
+       	 	<input onkeyup="checkAllInput('login');" autocomplete="off" name="checkCode" id="checkCode" placeholder="请输入验证码" type="text" class="" maxlength="4" autocomplete="off"  size="10" style="width:200px;margin-top:20px;"/>&nbsp;&nbsp;
+         </span>
+         <a href="javascript:refreshCc()" style="float:right;">&nbsp;&nbsp;<img src="/ilsp-wechat/manage/captcha.do" id="checkCodeImg"/></a>&nbsp;&nbsp;
+       </div>
+     </div>
+    <a href="javascript:weblogin();" class="dl_btn">登录</a>
+<!--     <a href="javascript:weblogin();" class="dl_btn"><img src="../images/denglu.png"></a> -->
+	<p class="dl_btn" style="line-height:1.5em;"><font id="mobileErrMsg" style="color: #737a97;line-height:1.5em;"></font></p>
+    <!-- <div class="bt_bj"></div>    -->   
+	</div>  
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js?v=20161024"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="../js/weblogin.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+initWx(window.location.href,"/htmlwx/login.html",'登录',false);
+loadGaScript();
+</script>
+</body>
+</html>

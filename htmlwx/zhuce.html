@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link href="../css/wx-styles20161024.css?v=20161024" rel="stylesheet" />
+	<title>注册</title>
+</head>
+<body>
+    <input type="hidden" name="action" value="1"/>
+    <div class="container">
+<div class="content_hd02">
+         <div class="zp_bj"></div>
+            <div class="gonggao"><font class="dian">·</font> 中国竞彩订阅号注册绑定<br />
+<font class="gray">注册绑定账号后，中国竞彩不会获得您的微信用户名和密码，
+请放心使用</font></div>
+            <br/><br/>
+
+  <div class="denglu">
+       <div class="xinxi"><img src="../images/user.png">
+       	<span>
+       		<input type="text" id="mobile" onkeyup="this.value=this.value.replace(/\D/g,'');$('#mobileErrMsg').html('');"
+      			onafterpaste="this.value=this.value.replace(/\D/g,'')" onfocus="checkMobile();"
+     			maxlength="11" size="30" onblur="checkMobile();" placeholder="请输入手机号"/>
+       	</span>
+       </div>
+       <div class="xinxi"><img src="../images/yanzm.png">
+       	<span>
+       		<input type="text" id="mobileCode" onkeyup="this.value=this.value.replace(/\D/g,'');$('#mobileErrMsg').html('');"
+      			onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="6" size="30" placeholder="请输入验证码"
+      			style="width:180px;"/>
+       		<span style="display:none;">短信校验码<span id="codeAlive"></span>分钟内有效，<span id="codeWait"></span>秒内未收到校验短信，可重新获取。</span>
+       	</span>&nbsp;
+      	<a href="javascript:sendSms();" class="fx_but" id="smsSend">
+      		<img src="../images/send.png" style="width: 146px;" align="absmiddle"/>
+      	</a>
+      	<span id="counta" style="display:none;color:gray;margin-left: 0px;"><span id="time">0</span>秒后重发</span>
+       </div>
+       <div class="xinxi"><img src="../images/mima.png">
+       	<span>
+       		<input type="password" id="password" size="30" maxlength="18" autocomplete="off"
+       			onkeyup="this.value=this.value.replace(/[^\w!;:,._=@#$%^&*()]|_/ig,'');"
+   				onfocus="changeInput('password')" onblur="checkUserPwd();"
+   				placeholder="请输入密码"/>
+       	</span>
+       </div>
+       <div class="xinxi"><img src="../images/mima.png">
+       	<span>
+       		<input class="inp_02" type="password" id="rePassword" size="30" maxlength="18" autocomplete="off"
+       			onkeyup="this.value=this.value.replace(/[^\w!;:,._=@#$%^&*()]|_/ig,'');"
+      			onfocus="changeInput('rePassword')" onblur="checkCfmUserPwd();"
+   				placeholder="请确认密码"/>
+       	</span>
+       </div>
+       <div class="xinxi"><input type="radio" checked id="xieyi"> <font style="color:#999999;font-size:24px;">我已阅读并同意 <a href="hd_guize.html">活动规则</a> 和<a href="#">《相关条款》</a></font></div>
+
+     </div>
+  	<a href="javascript:register();" class="dl_btn">
+  		<img src="../images/zhuce.png">
+  	</a>   
+  	<p class="dl_btn" style="height:18px;"><font id="mobileErrMsg" style="color: red"></font></p>
+    <div class="bt_bj"></div>      
+	</div> 
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js?v=20161024"></script>
+<script type="text/javascript" src="/ilsp-wechat/js/login.js?v=20161024"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+getCodeData();
+initWx(window.location.href,"/htmlwx/hdbegin.html",'激情美洲杯，天天送大奖',false);
+loadGaScript();
+</script> 
+</body>
+</html>

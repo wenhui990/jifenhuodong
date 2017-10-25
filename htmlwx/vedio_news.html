@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<link rel="stylesheet" href="draw/css/base.css">
+		<style>
+			html,body{
+				font-size: 100px;
+				font-family: "Microsoft YaHei", 微软雅黑;
+				margin
+			}
+
+			.item_box{
+				/*height: 1.4rem;*/
+				background: #edede3;
+				padding: 0.2rem 0.14rem;
+			}
+
+			.items{
+				background: #fff;
+			}
+			
+			.items li{
+				border-bottom: 0.01rem solid #bbbcb4;
+				height: 0.34rem;
+				font-size: 0.13rem;
+				line-height: 0.34rem;
+				display: flex;
+				justify-content: space-around;
+				font-weight: bold;
+				letter-spacing: 0.005rem;
+			}
+			
+			.items li a{
+				flex:3;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				padding-left: 0.05rem;
+			}
+
+			.items li span{
+				font-size: 0.12rem;
+				flex:1;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="item_box" id="item">
+			<ul class="items">
+				<li v-for="item in vedio">
+					<a @click="Tourl(item.url)">{{item.title}}</a>
+					<span>{{item.time}}</span>
+				</li>
+			</ul>
+		</div>
+		
+		
+	</body>
+
+
+	<script src="draw/js/screen.js"></script>
+	<script type="text/javascript" src="./slogan/js/vue.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		var vvm = null;
+		$(document).ready(function() {
+			$.ajax({
+				type:'POST',
+				url:'/ilsp-wechat/web/pageLink/get.do',
+				success:function(res){
+					console.log(res)
+					vvm.vedio = res.r
+					var l = res.r.length;
+
+					// 时间戳转换为标准时间
+					Date.prototype.toLocaleString = function() {
+						if(this.getMonth() <= 8){
+							month="0"+ (this.getMonth()+1 )
+						}else{
+							month=this.getMonth()+1
+						};
+						if(this.getDate() <= 9){
+							date="0"+this.getDate()
+						}else{
+							date=this.getDate()
+						};	
+	          			return this.getFullYear() + "-" + month + "-" + date;
+	  				};
+	  				for(var i = 0 ; i < l; i ++){
+	  					var unixTimestamp = new Date(vvm.vedio[i].createTime) ;
+						var commonTime = unixTimestamp.toLocaleString();
+						vvm.vedio[i].time=commonTime;
+						console.log(vvm.vedio[i].url)
+	  				}
+
+				}
+			})
+
+			vvm_init();
+		})
+
+
+		function vvm_init(){
+			vvm = new Vue({
+				el:"#item",
+				data:{
+					vedio:[]
+					// vedio:[
+					// 	{title:'广岛三箭vs大阪樱花 “冷门”出没注意',time:'2017-09-16', href:"https://v.qq.com/x/page/f0550gjrah2.html"},
+					// 	{title:'嘉宾崔杨曝水晶宫本赛季四连败的原因',time:'2017-09-16', href:"https://v.qq.com/x/page/c05502le2dn.html"},
+					// 	{title:'国米客场轻取三分',time:'2017-09-16', href:"https://v.qq.com/x/page/i055075ba4j.html"},
+					// 	{title:'斯图加特遭遇狼堡 老冤家或迎6年来首个平局',time:'2017-09-16', href:"https://v.qq.com/x/page/w05509b2zqt.html"},
+
+					// 	{title:'迈嘉奇揭露兵工厂打法克制迪纳摩',time:'2017-09-15', href:"https://v.qq.com/x/page/w0550ap11gu.html"},
+					// 	{title:'汉堡伤病缠身 汉诺威或改写历史',time:'2017-09-15', href:"https://v.qq.com/x/page/m055098b6t1.html"},
+					// 	{title:'两队实力差距悬殊 布鲁日主场轻松取胜',time:'2017-09-15', href:"https://v.qq.com/x/page/k0550li8gjw.html"},
+					// 	{title:'埃瓦尔vs莱加内斯：老鸟遇菜鸟 菜鸟今先飞',time:'2017-09-15', href:"https://v.qq.com/x/page/a0550ue73f8.html"},
+
+					// 	{title:'董午志：痴心铁粉 米兰必胜',time:'2017-09-14', href:"https://v.qq.com/x/page/m0549oql1tl.html"},
+					// 	{title:'竞速100秒首个10题全中诞生',time:'2017-09-14', href:"https://v.qq.com/x/page/s0549no4fd9.html"},
+					// 	{title:'如何看待足球女裁判',time:'2017-09-14', href:"https://v.qq.com/x/page/w0549ghuev4.html"},
+					// 	{title:'天天竞彩小课堂：3亿奖金到底有多重？',time:'2017-09-14', href:"https://v.qq.com/x/page/y05494dhlem.html"},
+
+					// 	{title:'董午志分析利物浦软肋',time:'2017-09-13', href:"https://v.qq.com/x/page/p0549i689p0.html"},
+					// 	{title:'嘉宾分析莱比锡红牛vs摩纳哥',time:'2017-09-13', href:"https://v.qq.com/x/page/a05496tynyn.html"},
+					// 	{title:'董午志详解两队优劣 热刺主场有望取得三分',time:'2017-09-13', href:"https://v.qq.com/x/page/r0549vai90z.html"},
+					// 	{title:'董午志详解川崎前锋战术打法',time:'2017-09-13', href:"https://v.qq.com/x/page/o0549pd317o.html"},
+
+					// 	{title:'董午志前瞻广州恒大vs上海上港',time:'2017-09-12', href:"https://v.qq.com/x/page/f0549l3zj91.html"},
+					// 	{title:'胡健前瞻罗马vs马德里竞技',time:'2017-09-12', href:"https://v.qq.com/x/page/f05496gl5oj.html"},
+					// 	{title:'董午志前瞻巴萨vs尤文',time:'2017-09-12', href:"https://v.qq.com/x/page/j0549f589t6.html"},
+					// 	{title:'巴萨vs尤文整场分析',time:'2017-09-12', href:"https://v.qq.com/x/page/o05493tn96n.html"},
+						
+					// 	{title:'冷门多多 大胆竞猜',time:'2017-09-11', href:"https://v.qq.com/x/page/h0548ji6lcy.html"},
+					// 	{title:'圣保利关键球员伤病多 上赛季初期成绩也糟糕',time:'2017-09-11', href:"https://v.qq.com/x/page/t05481zfn3m.html"},
+					// 	{title:'马拉加主场取胜欲望强 再输球恐造7连败',time:'2017-09-11', href:"https://v.qq.com/x/page/q0548vpimfu.html"},
+					// 	{title:'哈德斯菲尔德，真是是英超一股清流',time:'2017-09-11', href:"https://v.qq.com/x/page/y05488060zr.html"},
+
+					// 	{title:'天天竞彩20170910-1',time:'2017-09-10', href:"https://v.qq.com/x/page/i0548mi2u72.html"},
+					// 	{title:'天天竞彩20170910-2',time:'2017-09-10', href:"https://v.qq.com/x/page/r05489edpzj.html"},
+					// 	{title:'天天竞彩20170910-3',time:'2017-09-10', href:"https://v.qq.com/x/page/y0548237rpq.html"},
+					// 	{title:'天天竞彩20170910-4',time:'2017-09-10', href:"https://v.qq.com/x/page/w0548xnf40h.html"},
+
+					// 	{title:'皇马求胜易，大胜难',time:'2017-09-09', href:"https://v.qq.com/x/page/b0548v4roqt.html"},
+					// 	{title:'弗赖堡赛季保级将会很艰难',time:'2017-09-09', href:"https://v.qq.com/x/page/k0548ofxz5v.html"},
+					// 	{title:'嘉宾袁甲解析弗赖堡vs多特蒙德',time:'2017-09-09', href:"https://v.qq.com/x/page/z0548md3ptj.html"},
+					// 	{title:'皇马vs莱万特全场解析',time:'2017-09-09', href:"https://v.qq.com/x/page/a05489wxskp.html"},
+
+					// 	{title:'聚焦中国队',time:'2017-09-05', href:"https://v.qq.com/x/page/u05464r9d0y.html"},
+					// 	{title:'迈嘉奇分析乌韩关键战',time:'2017-09-05', href:"https://v.qq.com/x/page/v0546ghrdcq.html"},
+					// 	{title:'沙日之战，嘉宾解析出线形势',time:'2017-09-05', href:"https://v.qq.com/x/page/j0546fx18vn.html"},
+					// 	{title:'天天竞彩带您玩转竞彩',time:'2017-09-05', href:"https://v.qq.com/x/page/y0546v7i4p0.html"},
+
+					// 	{title:'嘉宾谈圣马力诺与阿塞拜疆',time:'2017-09-04', href:"https://v.qq.com/x/page/v0545c01gx7.html"},
+					// 	{title:'李航博认为德国依旧无懈可击',time:'2017-09-04', href:"https://v.qq.com/x/page/q0545ol56tf.html"},
+					// 	{title:'北爱尔兰捷克一战可决定谁能参加附加赛',time:'2017-09-04', href:"https://v.qq.com/x/page/z0545c9aoxp.html"},
+					// 	{title:'嘉宾谈德国挪威一战',time:'2017-09-04', href:"https://v.qq.com/x/page/f0545f5vsm6.html"},
+
+					// 	{title:'嘉宾分析赛事匈牙利对阵葡萄牙',time:'2017-09-03', href:"http://v.qq.com/x/page/f0545q47npt.html"},
+					// 	{title:'竞彩玩法之胜平负',time:'2017-09-03', href:"https://v.qq.com/x/page/y0545p5rbqj.html"},
+					// 	{title:'竞彩小达人连闯9题',time:'2017-09-03', href:"https://v.qq.com/x/page/p05455s3y6f.html"},
+					// 	{title:'竞彩小达人谈法国轻松获胜',time:'2017-09-03', href:"https://v.qq.com/x/page/w05452vn717.html"},
+
+					// 	{title:'嘉宾全面分析芬兰vs冰岛',time:'2017-09-02', href:"https://v.qq.com/x/page/q0545r90u4n.html"},
+					// 	{title:'董午志谈西意巅峰大战',time:'2017-09-02', href:"https://v.qq.com/x/page/q0545yx9yna.html"},
+					// 	{title:'董午志自曝意大利球迷身份',time:'2017-09-02', href:"https://v.qq.com/x/page/r0545w0rnpu.html"},
+
+					// 	{title:'董午志和新人各有见解，丹麦波兰难解难分',time:'2017-09-01', href:"https://v.qq.com/x/page/g0544419d0q.html"},
+					// 	{title:'面对德国捷克并非没有机会，嘉宾全面解析东欧豪强',time:'2017-09-01', href:"https://v.qq.com/x/page/y0544za02d1.html"},
+					// 	{title:'董午志：斯洛伐克vs斯洛文尼亚价值超过3分的生死战',time:'2017-09-01', href:"https://v.qq.com/x/page/n0544wbrpyd.html"},
+					// 	{title:'欧预赛部分小组目前的出线形势',time:'2017-09-01', href:"https://v.qq.com/x/page/f05446ia0h7.html"},
+
+					// 	{title:'胡建精彩分析乌拉圭vs阿根廷',time:'2017-08-31', href:"https://v.qq.com/x/page/l054474xx4i.html"},
+					// 	{title:'董午志从战术角度解析乌阿生死战',time:'2017-08-31', href:"https://v.qq.com/x/page/p0544wu8ewp.html"},
+					// 	{title:'董午志前瞻法国vs荷兰',time:'2017-08-31', href:"https://v.qq.com/x/page/j0544pwzgsf.html"},
+					// 	{title:'张斌教大家如何准备足球资料',time:'2017-08-31', href:"https://v.qq.com/x/page/r05445y8tyz.html"},
+						
+					// 	{title:'主持嘉宾趣谈“科比与神户”',time:'2017-08-30', href:"https://v.qq.com/x/page/e05447g4g8p.html"},
+					// 	{title:'日联杯焦点战解读-大阪樱花vs浦和红钻',time:'2017-08-30',href:"https://v.qq.com/x/page/g05435x9jee.html"},
+					// 	{title:'30秒带你玩转竞彩',time:'2017-08-30',href:"https://v.qq.com/x/page/h0544f6d1to.html"},
+					// 	{title:'日联杯介绍短片',time:'2017-08-30',href:"https://v.qq.com/x/page/z0544l62c2y.html"}
+					// ]
+				},
+				methods:{
+					Tourl:function(url){
+						// window.location.href = "http://"+url
+						window.location.href = url
+					}
+				}
+			});
+		}
+		
+	</script>
+
+</html>

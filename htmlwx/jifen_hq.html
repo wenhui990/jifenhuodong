@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>中国竞彩</title>
+<link href="../css/old-styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="main_w sig_but">
+	<a href="JavaScript:void(0);" class="a_left mid on" id="con_1" onclick="JavaScript:Change('1')">近7天</a>
+    <a href="JavaScript:void(0);" class="mid " id="con_2" onclick="JavaScript:Change('2')">近30天</a>
+    <a href="JavaScript:void(0);" class="a_right mid" id="con_3" onclick="JavaScript:Change('3')">近180天</a>
+</div>
+<div class="main_w" id="res">
+</div>
+<input type="hidden" id="type" value="1"/>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="../js/box.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+integralDetail();
+initWx(window.location.href,"/htmlwx/hdbegin.html",'篮彩季，微竞猜',false);
+loadGaScript();
+</script>
+</body>
+</html>

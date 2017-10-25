@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>完善信息</title>
+<link href="../css/old-styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="main_w mar_tit" style="display:none">
+     <img src="../images/icon_tanh.png"/> <span id="sign"></span>
+</div>
+<div class="main_w grxx">
+    <div class=" jf_w">
+      &nbsp;&nbsp;完善信息
+    </div>
+</div>
+<div class="main_w" style="background:#fff;">
+<table class="main_w">
+  <tr>
+		<td width="40%">
+			个人信息：
+		</td>
+    <td width="20%">
+    <span id="realName"></span>
+    </td>
+    <td width="50%">
+      <span id="address" style="display:none;"> <a class="blue" href="javascript:void(0);" onclick="perfectInfoWin();">完善信息&gt;&gt;</a></span>
+    </td>
+	</tr>
+  <tr>
+		<td colspan="3">
+		<span id="address2" style="display:none;"><font id="address3" class="gray"></font>&nbsp;<a class="blue" href="javascript:void(0);" onclick="perfectInfoWin();">修改信息&gt;&gt;</a></span>
+		<span id="hint"><font class="red">请填写真实信息，用于邮寄奖品！</font></span>
+		</td>
+  </tr>
+   <tr id="phoneTxt">
+		<td width="40%">
+			联系电话:
+		</td>
+        <td width="20%">
+          <span id="mobile"></span>
+        </td>
+        <td>&nbsp;</td>
+	</tr>
+	<tr id="idCardTxt">
+    <td width="40%" rowspan="2" valign="top" style="vertical-align:top;">
+              身份证:
+    </td>
+    <td width="20%" id="idnum">
+    </td>
+    <td></td>
+  </tr>
+  <tr id="idCardImage" style="display:none;">
+        <td width="20%">
+            <br><input id="id1" type="file" name="id1" />只支持jpg文件最大1M
+            <!-- 图片展示位 -->
+            <div id="idCard1"></div>
+        </td>
+        <td><br><input id="id2" type="file" name="id2" >
+        <!-- 图片展示位 -->
+            <div id="idCard2"></div>
+        
+        </td>
+  </tr>
+</table>
+<div id="tip-queue"></div>
+<br/>
+</div>
+
+<input type="hidden" id="mz"/>
+<input type="hidden" id="xxdz"/>
+<input type="hidden" id="yb"/>
+<input type="hidden" id="sjh"/>
+<input type="hidden" id="sf"/>
+<input type="hidden" id="cc"/>
+<input type="hidden" id="qx"/>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="../js/box.js"></script>
+<script type="text/javascript" src="../js/uploadifive/jquery.uploadifive.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../js/uploadifive/uploadifive.css">
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+userInfo();
+initWx(window.location.href,"/htmlwx/perfectInfo.html",'完善信息',false);
+loadGaScript();
+$(function(){
+	 $('#id1').uploadifive({
+// 		 'auto' : false,   //取消自动上传 
+        'uploadScript' : getPath() +'/web/upload/image.do?name=id1',  //处理上传文件Action路径 
+        'fileObjName' : 'file',        //文件对象
+        'fileSizeLimit' : '1MB',
+  	    'buttonText'   : '请上传身份证正面',   //按钮显示文字 
+  	    'fileType'     : 'image/jpeg,image/jpg,image/png,image/gif',   //允许上传文件类型 
+  	  	'queueID'      : 'tip-queue', //提示信息放置目标 
+  	    'removeCompleted' : true,
+  	    'onUploadComplete' : function(file, data) { //文件上传成功后执行 
+  	    	$("id1").removeAttr("disabled");
+  	        var dt = eval('(' + data + ')');
+			if(dt.s){
+				if(dt.s == 404){
+					window.location.href = getPath() + "/htmlwx/denglu.html?type=ggklj";
+					return;
+				} else {
+					alert(dt.r);
+				}
+			} else {
+				if(dt.url){
+					$("#idCard1").html("<img width='50px' src="+dt.url+">");
+				}else{
+					alert(dt.state);
+				}
+			}
+         },
+         onFallback : function() {
+           alert("该浏览器无法使用!");
+         },onUpload : function(file) {
+        	 $("id1").attr("disabled", "disabled");
+         }
+    });
+	 
+	 $('#id2').uploadifive({
+// 		 'auto' : false,   //取消自动上传 
+        'uploadScript' : getPath() + '/web/upload/image.do?name=id2',  //处理上传文件Action路径 
+        'fileObjName' : 'file',        //文件对象
+        'fileSizeLimit' : '1MB',
+  	    'buttonText'   : '请上传身份证反面',   //按钮显示文字 
+  	    'fileType'     : 'image/jpeg,image/jpg,image/png,image/gif',   //允许上传文件类型 
+  	  	'queueID'      : 'tip-queue', //提示信息放置目标 
+  	    'removeCompleted' : true,
+  	    'onUploadComplete' : function(file, data) { //文件上传成功后执行 
+  	    	$("id2").removeAttr("disabled");
+  	        var dt = eval('(' + data + ')');
+			if(dt.s){
+				if(dt.s == 404){
+					window.location.href = getPath() + "/htmlwx/denglu.html?type=ggklj";
+					return;
+				} else {
+					alert(dt.r);
+				}
+			} else {
+				if(dt.url){
+					$("#idCard2").html("<img width='50px' src="+dt.url+">");
+				}else{
+					alert(dt.state);
+				}
+			}
+         },
+         onFallback : function() {
+           alert("该浏览器无法使用!");
+         },onUpload : function(file) {
+        	 $("id2").attr("disabled", "disabled");
+         }
+    });
+})
+</script>
+</body>
+</html>

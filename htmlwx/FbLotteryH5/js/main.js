@@ -1,0 +1,1 @@
+window.onload=function(){var a=setInterval(function(){if(!Pace.running){clearInterval(a);var b=new Swiper(".swiper-container",{onInit:function(c){swiperAnimateCache(c);swiperAnimate(c)},onSlideChangeEnd:function(c){swiperAnimate(c)},pagination:".swiper-pagination",paginationClickable:true,direction:"vertical",loop:true,roundLengths:true})}},100)};

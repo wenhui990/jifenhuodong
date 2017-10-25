@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>中国竞彩</title>
+<link href="../css/old-styles.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<div class="main_w mar_b align_c">
+   <p>由于涉及账户安全，请先登录。<p><br/>
+</div>
+<div class="main_w align_c">
+<input class="jfput" type="text" id="mobile" onkeyup="this.value=this.value.replace(/\D/g,'');$('#mobileErrMsg').html('');"
+	onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11" size="30" onblur="checkMobile()" placeholder="请输入手机号"/>
+<input class="jfput" type="password" id="password" size="30" maxlength="18" autocomplete="off"
+ onkeyup="this.value=this.value.replace(/[^\w!;:,._=@#$%^&*()]|_/ig,'');"
+onfocus="changeInput('password')" onblur="checkUserPwd()" placeholder="请输入密码"/>
+<input type="text" name="checkCode" id="checkCode" onkeyup="this.value=this.value.replace(/[^\w\.\/]/ig,'');$('#mobileErrMsg').html('');"
+   onfocus="changeInput('checkCode')" maxlength="4" autocomplete="off"  size="10" placeholder="请输入验证码" class="jfput" >
+  &nbsp;<a href="javascript:refreshCc()"><img src="/ilsp-wechat/manage/captcha.do" class="yzm" id="checkCodeImg"></a>
+
+<br/>
+<p style="height:18px"><font id="mobileErrMsg" style="color:red"></font></p>
+<a href="javascript:void(0)" class="pop_but2" onclick="loginChallenge('login')">登录</a>
+</div>
+<div class="main_w">
+<p>注：若尚未绑定手机号，则请进行注册并绑定。</p>
+</div>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+initWx(window.location.href,"/htmlwx/hdbegin.html",'篮彩季，微竞猜',false);
+loadGaScript();
+</script>
+</body>
+</html>

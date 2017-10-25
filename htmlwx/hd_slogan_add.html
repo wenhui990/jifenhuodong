@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>中国竞彩</title>
+<link type="text/css" rel="stylesheet" href="../css/common.css">
+<script type="text/javascript" src="../js/jquery.js"></script>
+</head>
+<body>
+	<div class="content">
+		<input type="text" id="slogan1" placeholder="此区域填写内容">
+		<input type="text" id="slogan2" placeholder="此区域填写内容">
+		<input type="text" id="slogan3" placeholder="此区域填写内容">
+		<input type="text" id="phone" placeholder="此区域填写手机号">
+		<input type="button" id="submitButton" onclick="addSlogan()" value="确认提交">
+	</div>
+  <!-- 引入系统js -->
+  <script type="text/javascript" src="../js/wxbox.js"></script>
+  <script type="text/javascript" src="../js/common.js"></script>
+  <script type="text/javascript" src="../js/wxweb.js"></script>
+  <script type="text/javascript" src="../js/hd_slogan.js"></script>
+  <script type="text/javascript"
+    src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+	initWx(window.location.href,"/htmlwx/hd_slogan_add.html","中国竞彩-口号征集",false);
+	loadGaScript();
+	getSlogan(getQueryString("aid"));
+	</script>
+</body>
+</html>

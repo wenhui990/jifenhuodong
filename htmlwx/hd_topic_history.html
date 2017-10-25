@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html style="background:#252834;">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>中国竞彩</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" href="../css/jc.css">
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script src="../js/jquery.mmenu.min.js" type="text/javascript"></script>
+<link href="../css/jquery.mmenu.css" type="text/css" rel="stylesheet" />
+<link href="../css/jquery.mmenu.positioning.css" type="text/css"
+  rel="stylesheet" />
+</head>
+<body style="background:#252834;">
+  <div class="content">
+    <header class="bar bar-nav">
+      <div class="row content">
+        <div class="col-15">
+          <div onclick="javascript:history.go(-1)" class="backBtn"></div>
+        </div>
+        <div class="col-70 text-center">我的押话题</div>
+        <div class="clearf"></div>
+      </div>
+    </header>
+    <div class="Calculator_begin">
+      <div id="container">
+        <div class="g-con">
+          <!-- 投注列表 -->
+          <div class="m-list2">
+          
+          </div>
+          <!-- 投注列表 -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 引入系统js -->
+  <script type="text/javascript" src="../js/wxbox.js"></script>
+  <script type="text/javascript" src="../js/common.js"></script>
+  <script type="text/javascript" src="../js/wxweb.js"></script>
+  <script type="text/javascript"
+    src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script type="text/javascript">
+  initWx(window.location.href,"/htmlwx/hd_topic_history.html","中国竞彩-我的历史押话题",false);
+  loadGaScript();
+  </script>
+  <script type="text/javascript">
+      var datas = "";
+      var content = "";
+      $.ajax({
+        type : "post",
+        url : getPath() + '/web/topic/his.do',
+        data : datas,
+        dataType : "json",
+        contentType : "application/x-www-form-urlencoded; charset=utf-8",
+        success : function(data) {
+        	console.info(data);
+          if(data.s == 200){
+        	  var topicData = data.r;
+            for(var i in topicData){
+            	content += "<div class='mItem'>";
+            	content += "<div class='m-list1 m-list3'>";
+            	content += "<div class='m-mon'>";
+            	content += "<b class='matchType'>"+topicData[i].title+"</b>";
+            	content += "</div>";
+            	content += "<div class='m-mon'>";
+            	content += "<b class='oddsTime'>"+topicData[i].supportTime+"</b>";
+            	console.info(topicData[i].support);
+            	if(topicData[i].support == 1){
+            		var topicSupport = "支持正方";
+            	}else{
+            		var topicSupport = "支持反方";
+            	}
+            	content += "<span><i class='brown'>"+topicSupport+"</i></span>";
+            	content += "</div>";
+            	content += "</div>";
+            	content += "<div class='m-tab'>";
+            	content += "<table cellspacing='0' cellpadding='0' border='0'>";
+            	content += "<tbody>";
+            	content += "<tr>";
+            	content += "<th>注数</th>";
+            	content += "<th>正方总注数</th>";
+            	content += "<th>反方总注数</th>";
+            	content += "<th>结果</th>";
+            	content += "</tr>";
+            	content += "<tr>";
+            	content += "<td>"+topicData[i].bet+"</td>";
+            	console.info(!topicData[i].positive)
+            	var positive = "";
+            	var negative = "";
+            	var topicBonus ="";
+            	if(!topicData[i].positive){
+            		positive = 0;
+            	}else{
+            		positive = topicData[i].positive;
+            	}
+            	if(!topicData[i].negative){
+            		negative = 0;
+              }else{
+            	  negative = topicData[i].negative;
+              }
+            	content += "<td>"+positive+"</td>";
+            	content += "<td>"+negative+"</td>";
+            	if(topicData[i].bonus == -1){
+            		topicBonus = "无结果";
+            	}else if(topicData[i].bonus == 0){
+            		topicBonus = "未押中";
+            	}else if(topicData[i].bonus > 0){
+                topicBonus = "中："+topicData[i].bonus;
+              }
+            	
+            	content += "<td>"+topicBonus+"</td>";
+            	content += "</tr>";
+            	content += "</tbody>";
+            	content += "</table>";
+            	content += "</div>";
+            	content += "</div>";
+            }
+            $(".m-list2").append(content)
+          } else {
+            showTipsPop(data.r, 3000);
+          }
+        }
+    })
+    
+    
+  </script>
+</body>
+</html>

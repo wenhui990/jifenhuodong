@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>中国竞彩</title>
+<link type="text/css" rel="stylesheet" href="../css/common.css">
+<script type="text/javascript" src="../js/jquery.js"></script>
+</head>
+<body>
+   	<div>活动名称：<span id="activityName"></span></div>
+	<div>参与口号：<span id="sloganCount"></span></div>
+	<div>累积投票：<span id="voteCount"></span></div>
+	<div>访问次数：<span id="accessCount"></span></div>
+	<div>开始时间：<span id="startDiv"></span></div>
+	<div>截止时间：<span id="endDiv"></span></div>
+	<div>投票规则：每名用户每天能投10票，每天可为同一选手投1票。</div>
+	<div>活动介绍</div>
+	
+	<div><a id="rankPage" href="hd_slogan_rank.html">查看排名</a></div>
+	
+	<div id="voteDiv">
+	</div>
+  <!-- 引入系统js -->
+  <script type="text/javascript" src="../js/wxbox.js"></script>
+  <script type="text/javascript" src="../js/common.js"></script>
+  <script type="text/javascript" src="../js/wxweb.js"></script>
+  <script type="text/javascript" src="../js/hd_slogan.js"></script>
+  <script type="text/javascript"
+    src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+	initWx(window.location.href,"/htmlwx/hd_slogan_add.html","中国竞彩-我的口号",false);
+	loadGaScript();
+	getVotePage();
+	</script>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<title>超级足球季，等你来参与！</title>
+		<link rel="stylesheet" href="./css/base.css">
+		<style>
+			html{
+				font-size: 100px;
+			}
+
+			body {
+				margin: 0;
+				background: url("images/d_bg.png") no-repeat;
+				background-size: cover;
+				font-family: "Microsoft YaHei", 微软雅黑;
+			}
+			
+
+			.head{
+				position: relative;
+				z-index: -10;
+			}
+
+			.d_head{
+				width: 100%;
+			}
+			
+			.draw_box{
+				position: relative;
+				top: -0.56rem;
+			}
+
+			.times{
+				margin-left: 1.15rem;
+				margin-bottom: 0.15rem;
+				width: 1.47rem;
+				height: 0.25rem;
+				line-height: 0.23rem;
+				background: #ffb22d;
+				border-radius: 0.3rem;
+				font-size: 0.13rem; 
+				letter-spacing: 0.01rem;
+				text-align: center;
+				color: #c33239;
+			}
+
+			.times span{
+				color: #fff;
+				font-size: 0.15rem;
+				letter-spacing: 0.04rem;
+			}
+			
+			.times_shadow{
+				position: absolute;
+				top: 0.01rem;
+				left: 1.16rem;
+				width: 1.47rem;
+				height: 0.25rem;
+				background: #c21a29;
+				border-radius: 0.3rem;
+				z-index: -1;
+			}
+
+			/*抽奖转盘和按钮*/
+			.draw{
+				margin-left: 0.24rem;
+				margin-bottom: 0.22rem; 
+				height: 3.24rem;
+				width: 3.24rem;
+				position: relative;	
+			}
+
+			#start{
+				position: absolute;
+				top: 1.08rem;
+				left: 1.14rem;
+				width: 0.97rem;
+				height: 1.03rem;
+				border-radius: 50%;
+				border: none;
+				background: none;
+				outline: none;
+				-webkit-tap-highlight-color:rgba(0,0,0,0);
+			}	
+
+			#start img{
+				border-radius: 50%;	
+			}
+			
+			#zhuanpan{
+				transition: all 4s;
+			}
+
+			#zhuanpan.close{
+				transition: all 0.01s;
+			}
+
+			.record{
+				width: 0.9rem;
+				height: 0.2rem;
+				margin-left: 1.43rem;
+			}
+			
+			/*播报中奖信息*/
+			.broadcast{
+				margin: 0 auto;
+				padding: 0.17rem 0 0.1rem 0.9rem;
+				display: flex;
+			}
+			
+			.broadcast img{
+				width: 0.15rem;
+				height: 0.15rem;
+				margin-top: 0.02rem;
+				margin-right: 0.08rem;
+			}
+
+			.cansee{
+				position: relative;
+				height: 0.16rem;
+				overflow: hidden;
+			}
+
+			ul{
+				position: relative;
+				top: 0;
+			}
+		
+			ul li{
+				color: #ffb22d;
+				font-size: 0.12rem;
+			}
+			
+			/*弹框样式*/
+			.box_shadow{
+				position: absolute;
+				top: -2.65rem;
+				background: #000;
+				width: 3.75rem;
+				height: 7.23rem;
+				opacity: 0.6;
+			}
+
+			.box{
+				position: absolute;
+				top: -0.2rem;
+				width: 3.75rem;
+			}
+			
+			.addinfo,.toans{
+				width: 1.32rem;
+				height: 0.53rem;
+				position: absolute;
+				top: 1.46rem;
+				left: 1.23rem;
+			}
+			
+			.cha1{
+				width: 0.33rem;
+				height: 0.33rem;
+				position: absolute;
+				top: 2.29rem;
+				left: 1.72rem;
+			}
+
+			.cha2{
+				width: 0.33rem;
+				height: 0.33rem;
+				position: absolute;
+				top: 1.66rem;
+				left: 1.72rem;
+			}
+
+			[v-cloak]{
+			  display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="head">
+			<img src="images/d_head.png" class="q_head">
+		</div>
+		
+		<div class="draw_box" id="draw" v-cloak>
+			<div class="times">您的抽奖次数：<span>{{times}}</span>次</div>
+			<div class="times_shadow"></div>
+			
+			<div class="draw">
+				<img src="images/zhuanpan.png" id="zhuanpan">
+				<button  id="start"><img src="images/start.png"></button>
+				
+			</div>
+
+			<img src="images/record.png" class="record" @click="toRecord">
+
+			<div class="broadcast">
+				<img src="images/laba.png" class="laba">
+				<div class="cansee">
+					<ul class="active" id="active">
+						<li v-for="item in record">恭喜<span>{{item.username}}</span>获得<span>{{item.name}}</span>一个！</li>
+					</ul>
+				</div>	
+			</div>
+			
+			<!-- 去答题弹框 -->
+			<!-- <div class="box_shadow" v-if="canans"></div>
+			<div  class="box" v-if="canans">
+				<img src="images/canans.png" >
+				<img src="images/toans.png" class="toans" @click="toAns">
+				<img src="images/cha1.png" class="cha1" @click="close1">
+			</div> -->
+			<!-- 抽奖次数已用完弹框 -->
+			<div class="box_shadow" v-if="drawall"></div>
+			<div  class="box" v-if="drawall">
+				<img src="images/drawall.png" >
+				<img src="images/cha2.png" class="cha2" @click="close1">
+			</div>
+			<!-- 不在抽奖时间弹框-->
+			<div class="box_shadow" v-if="intime"></div>
+			<div  class="box" v-if="intime">
+				<img src="images/onlytime.png" >
+				<img src="images/cha2.png" class="cha2" @click="close1">
+			</div>
+			<!-- 中奖提示弹框 -->
+			<div class="box_shadow" v-if="yes"></div>
+			<div  class="box" v-if="yes">
+				<img src="images/box1.png" >
+				<img src="images/addinfo.png" class="addinfo" @click="addInfo">
+				<img src="images/cha1.png" class="cha1" @click="close4">
+			</div>
+			<!-- 未中奖提示弹框 -->
+			<div class="box_shadow" v-if="no"></div>
+			<div  class="box" v-if="no">
+				<img src="images/box2.png" >
+				<img src="images/cha2.png" class="cha2" @click="close5">
+			</div>
+			
+		</div>
+	</body>
+
+
+	<script src="./js/screen.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../slogan/js/vue.js"></script>
+	<script src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../js/wxweb.js?v=20171024"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script>
+		initWx(window.location.href,"/htmlwx/draw/share.html",'超级足彩季，等你来答题！',false, '“超级足彩季，3亿大派奖！”火热来袭，系列活动之一知识竞猜开始啦，快去参加吧！');
+		var vvm = null;
+		
+		$(document).ready(function() {
+			vvm_init();
+			
+			$.ajax({
+				type:'POST',
+				url:'/ilsp-wechat/web/quiz/prize.do?aid='+getQueryString('aid'),
+				data:{},
+				success:function(res){
+					console.log(res)
+					vvm.record = res.r.slice(0,20);
+					vvm.times = res.u.availableRaffleCount;
+					// 如果未答题=》去答题：vvm.canans="true"????
+					// 如果已答题=》答题失败 也提示抽奖次数已用完：vvm.drawall="true"
+					// 			=》答题成功=》已抽完奖：vvm.drawall="true"
+					// 						=》未抽完：点击抽奖
+											
+						// 抽奖
+						var pan = document.getElementById('zhuanpan');
+						var start = document.getElementById('start');
+		
+						start.onclick=function(){
+							intime();
+							pan.className="";
+							start.disabled="true";
+							$.ajax({
+								type:'POST',
+								url:'/ilsp-wechat/web/quiz/draw.do?aid='+getQueryString('aid'),
+								data:{},
+								success:function(res){
+									console.log(res)
+									if(res.s == 706){
+											vvm.drawall = 'true';
+											start.disabled="";		
+									}else if(res.s == 707){
+										///2、未中奖弹框
+										vvm.times = res.u.availableRaffleCount;
+										var rdm = Math.floor(Math.random()*30+330) + 1800;
+										// 保证转5圈效果
+										var timer = null;
+							 			timer = setInterval(function(){
+							 				pan.style.transform="rotate("+rdm+"deg)";
+							 				setTimeout(function(){
+							 	 				vvm.no = "true";
+							 	 				start.disabled="";
+							 	 			},4000)
+							 	 			clearInterval(timer);
+							 			},100)
+									}else{
+										vvm.times = res.u.availableRaffleCount;
+										// 一等奖小米5
+										if(res.r.level == '1'){
+											rdm = Math.floor(Math.random()*60+150) + 1800;
+										}
+										// 二等奖球衣
+										if(res.r.level == '2'){
+											rdm = Math.floor(Math.random()*60+90) + 1800;
+										}
+										// 三等奖足球
+										if(res.r.level == '3'){
+											rdm = Math.floor(Math.random()*60+30) + 1800;
+										}
+										// 四等奖水杯
+										if(res.r.level == '4'){
+											rdm = Math.floor(Math.random()*60+270) + 1800;
+										}
+										// 五等奖T恤
+										if(res.r.level == '5'){
+											rdm = Math.floor(Math.random()*60+210) + 1800;
+										}
+										
+										// 保证转5圈效果
+										var timer1 = null;
+										var timer2 = null;
+							
+							 			timer1 = setInterval(function(){
+							 				pan.style.transform="rotate("+rdm+"deg)";
+							 				var timer2 = setTimeout(function(){
+								 	 			vvm.yes="true";
+								 	 			start.disabled="";
+								 	 			//3、中奖弹框
+								 	 		},4000)
+								 	 		// clearTimeout(timer2)
+							 	 			clearInterval(timer1);
+							 			},100)
+							 			clearTimeout(timer2)
+							 				
+									}
+
+								
+								}
+							})
+						}
+				}
+			})
+
+			up();
+		});
+		
+		function vvm_init(){
+			vvm = new Vue({
+				el:"#draw",
+				data:{
+					prize:[],
+					times:'',
+					record:[],
+					yes:'',
+					no:'',
+					canans:'',
+					drawall:'',
+					intime:''
+				},
+				methods:{
+					toRecord:function(){
+						window.location.href='./record.html?aid='+getQueryString('aid')
+					},
+					addInfo:function(){
+						window.location.href='./address.html?aid='+getQueryString('aid')
+					},
+					// toAns:function(){
+					// 	window.location.href='./question.html'
+					// },
+					close1:function(){
+						vvm.drawall='';
+						vvm.intime="";
+					},
+					close4:function(){
+						var pan = document.getElementById('zhuanpan');
+						vvm.yes='';
+				 	 	pan.className="close";
+				 	 	rdm = 0;
+				 	 	pan.style.transform="rotate(0deg)";
+					},
+					close5:function(){
+						var pan = document.getElementById('zhuanpan');
+						vvm.no='';
+						pan.className="close";
+						rdm = 0;
+						pan.style.transform="rotate(0deg)";
+					}						
+				}
+			});
+		}
+
+		
+		// 滚动条显示
+		function up() {//向上滚动
+			var z = 0;
+			var active = $('#active');
+				 
+			var timer1 = null;
+			timer1 = setInterval(function(){
+				z -= 0.16
+				active.css({'top': z + 'rem'});	  
+			},1500)
+
+			var timer2 = null;
+			timer2 = setInterval(function(){
+				active.css({'top': '0'})
+		        .find("li:first").appendTo(active); 
+
+			},1500)
+
+
+		}
+
+		// 不在抽奖时间
+		function intime(){
+			var d = new Date();
+			var start = document.getElementById('start');
+			if(d.getHours()<9){
+				vvm.intime = "true";
+				start.disabled="";
+			}
+		}
+
+		function getQueryString(name){
+		     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		     var r = window.location.search.substr(1).match(reg);
+		     if(r!=null)return  unescape(r[2]); return null;
+		}
+
+
+	</script>
+
+</html>

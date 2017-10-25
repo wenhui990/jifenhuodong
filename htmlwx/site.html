@@ -1,0 +1,154 @@
+<!DOCTYPE html><html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>中国竞彩</title>
+	<link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+	<style type="text/css">
+	body,html,#l-map {width: 100%;height:100%;overflow: hidden;hidden;margin:0;}
+	</style>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/wxweb.js"></script>
+	<!--wi5XrpQi5eki13tLYkWDYXw8 94415 104048-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=wi5XrpQi5eki13tLYkWDYXw8"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  </head>
+  <body>
+    <div id="l-map"></div>
+<script type="text/javascript">
+var map = new BMap.Map("l-map");
+getLocation();
+
+function getLocation(){
+    var navigationControl = new BMap.NavigationControl({
+    anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+    type: BMAP_NAVIGATION_CONTROL_ZOOM,
+		enableGeolocation: true
+	});
+	map.addControl(navigationControl);
+	map.addControl(new BMap.ScaleControl());
+	map.addControl(new BMap.MapTypeControl({
+		anchor : BMAP_ANCHOR_TOP_RIGHT
+	}));
+	var geolocationControl = new BMap.GeolocationControl();
+	geolocationControl.addEventListener("locationSuccess", function(e){
+		var point =new BMap.Point(e.point.lng,e.point.lat);
+		map.centerAndZoom(point, 14);
+		map.clearOverlays();
+		var marker1 = new BMap.Marker(point);
+		var label = new BMap.Label("您在这里",{offset:new BMap.Size(20,-10)});
+		marker1.setLabel(label);
+		map.addOverlay(marker1);
+		search(e.point.lng,e.point.lat);
+	});
+	map.addControl(geolocationControl);
+
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(convertLoc,
+    function(error){
+		var point =new BMap.Point(116.403119,39.915599);
+		map.centerAndZoom(point, 14);
+		alert('无法定位，请确认已允许使用GPS :(');
+    },
+    {enableHighAccuracy:false, timeout:15000, maximumAge:120000}
+    );
+  }
+}
+
+function convertLoc(position){
+	var lon = position.coords.longitude;
+	var lat = position.coords.latitude;
+	var positionUrl = "http://api.map.baidu.com/geoconv/v1/?coords="+lon+","+lat+"&from=1&to=5&ak=wi5XrpQi5eki13tLYkWDYXw8&callback=convertLocCallback";
+    var script = document.createElement('script');
+    script.src = positionUrl;
+    document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+function convertLocCallback(data){
+    if(data.status!=0){
+        alert("地图坐标转换出错");
+        return;
+    }
+    var result = data.result;
+    var lon = result[0].x;//经度
+    var lat = result[0].y;//纬度
+
+	var point =new BMap.Point(lon,lat);
+	map.centerAndZoom(point, 14);
+
+	var marker1 = new BMap.Marker(point);
+	var label = new BMap.Label("您在这里",{offset:new BMap.Size(20,-10)});
+	marker1.setLabel(label);
+	map.addOverlay(marker1);
+    search(lon,lat);
+}
+
+function search(lon,lat){
+	$.ajax({
+        url: 'http://api.map.baidu.com/geosearch/v2/nearby?ak=wi5XrpQi5eki13tLYkWDYXw8&geotable_id=94415&location='+lon+','+lat+'&radius=3000&page_size=15&sortby=distance:1',
+        dataType: 'jsonp',
+        timeout: 5000,
+        success: function(json_o){
+			var json = json_o.contents;
+			searchCallback(json,lon,lat);
+        }
+     });
+}
+
+function searchCallback(hotelArray,lon,lat) {
+  var city = new BMap.LocalSearch(map, {
+	    renderOptions : {
+	      map : map,
+	      autoViewport : true
+	    }
+	  });
+  var icon = new BMap.Icon('../images/star.png', new BMap.Size(25, 25));
+  var opts = {enableAutoPan : true,enableMessage:false}
+
+  for(var o in hotelArray) {
+    var point = new BMap.Point(hotelArray[o].location[0],hotelArray[o].location[1]);
+    var nav = "http://api.map.baidu.com/direction?origin=latlng:"+lat+","+lon+"|name:我的位置&destination=latlng:"+hotelArray[o].location[1]+","+hotelArray[o].location[0]+"|name:终点&mode=driving&region=" + city+"&coord_type=bd09ll&output=html&src=TYM|com.baidu.navi.sdkdemo";
+    var sContent = "<div style='color:#969696;font-size:14px;padding:14px 4px;line-height:15px'>"
+        +hotelArray[o].title+" <a href='" + nav + "'><img src='../images/location.png' width='20'/></a>"
+	if(hotelArray[o].media){
+    	var ps=hotelArray[o].media.split(";");
+    	sContent+='<p>';
+    	for(var m=0;m<ps.length;m++){
+    		sContent+='<img src="'+downloadPath+ps[m]+'" alt="" style="width:80px;height:80px"/> ';
+    	}
+    	sContent+='</p>';
+    }
+	if(hotelArray[o].address){
+		sContent+='<p>地址：'+hotelArray[o].address+'</p>';
+    }
+	if(hotelArray[o].phone){
+		sContent+='<p>电话：'+hotelArray[o].phone+'</p>';
+    }
+	if(hotelArray[o].remark){
+		var rmk=hotelArray[o].remark;
+		if(rmk.length>50){
+			rmk=rmk.substring(0,50)+'...';
+		}
+		sContent+='<p>'+rmk+'</p>';
+    }
+	sContent+='</div>';
+
+    createMark = function(lng, lat, info_html) {
+      var _marker = new BMap.Marker(new BMap.Point(lng, lat),{icon:icon});
+      _marker.addEventListener("click", function(e) {
+        this.openInfoWindow(new BMap.InfoWindow(info_html,opts));
+      });
+      return _marker;
+    };
+    var marker = createMark(hotelArray[o].location[0],hotelArray[o].location[1], sContent);
+    map.addOverlay(marker);
+  }
+}
+
+initWx(window.location.href,"/htmlwx/site.html","中国竞彩-竞彩地图",false);
+loadGaScript();
+</script>
+</body>
+</html>

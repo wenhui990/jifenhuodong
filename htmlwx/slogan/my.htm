@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<link rel='stylesheet' href='http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css'>
+<link rel="stylesheet" href="css/weui.min.css">
+<link rel="stylesheet" href="css/jquery-weui.min.css">
+<style>
+    body{
+        margin:0;
+        background: url("img/beijing.png") no-repeat;
+        background-size: cover;
+        font-family:"Microsoft YaHei",微软雅黑;
+    }
+
+    .head {
+        margin-top: 20px;
+    }
+    .head h4{
+        color: #162b69;
+        text-align:center;
+        display: block;     /*设置为块级元素会独占一行形成上下居中的效果*/
+        position: relative;   /*定位横线（当横线的父元素）*/
+    }
+
+    h4:before, h4:after {
+            content: '';                 /*CSS伪类用法*/
+            position: absolute;         /*定位背景横线的位置*/
+            top: 52%;
+            background: #162b69;       /*宽和高做出来的背景横线*/
+            width: 6%;
+            height: 2px;
+        }
+        h4:before{
+            left: 30%;        /*调整背景横线的左右距离*/
+        }
+        h4:after {
+            right: 30%;
+        }
+
+    .head img{
+        width: 100%;
+    }
+    .submit {
+        margin-top: 30px;
+        color:#46bdf3;
+        text-align:center;
+    }
+    .submit img{
+        width: 80%;
+    }
+
+    .container{
+        text-align:center;
+        width:96%;
+        background-color: #162b69;
+        border-radius: 10px;
+    }
+
+    .kouhao {
+        color: #FFF;
+        font-size: 1.5em;
+        margin-left:10px;
+    }
+
+    .haoli {
+        color: #46bdf3;
+        font-size: 1em;
+        margin-left:10px;
+    }
+
+    .form-control {
+        height:50px;
+        background-color: #162b69;
+        border-radius: 25px;
+        border: 4px #46bdf3;
+    }
+
+
+    .bottom {
+       color:#46bdf3;
+       background-color:#162b69;
+       padding-top:10px;
+       padding-left: 10%;
+       padding-right: 10%;
+       padding-bottom:30px;
+    }
+
+
+    .container{
+        margin-top:-10px;
+        margin-bottom:30px;
+    }
+    .user {
+        color:#fff;
+        width:90%;
+        height:50px;
+    }
+    #name{
+        display: inline-block;
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .user p{
+        line-height: 60px;
+        margin-left: 120px;
+    }
+    .user .phone{
+        float:right;
+    }
+
+.avatar{
+    float: left;
+    margin-left:10%;
+    top: 20px;
+    width:70px;
+    height:70px;
+    border: 2px solid;
+    border-radius: 35px;
+    box-shadow: 0 0 2px 10px #3F2C6D;
+}
+
+label{
+    color:#46bdf3;
+    text-align:center;
+    margin-bottom: 10px;
+}
+.form-group{
+    margin-top: 50px;
+}
+
+.form-group .item{
+    margin-bottom: 30px;
+}
+.form-group img{
+    width:25px;
+    height:25px;
+    float: left;
+    margin-top: 14px;
+    margin-left: 20px;
+}
+.text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color:#fd9a1a;
+    border:2px solid;
+    border-radius:25px;
+    border-color:#46bdf3;
+    box-shadow: 0px 0px 10px 1px #46bdf3;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight:bold;
+}
+
+footer{
+    float:right;
+    font-size: 12px;
+    color:#46bdf3;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+</style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src='http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ce17fbd6942a666e6b8dcec4d3c4148e";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body>
+    <script type="text/javascript" src="../../js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+//        $.showLoading();
+        var cookie_key = "slogan_uid";
+        var uid = $.cookie(cookie_key);
+        console.log("cookie uid:" + uid);
+        if (typeof(uid) == "undefined"){
+            window.location.replace("share.htm");
+        }
+    </script>
+
+    <div class="head">
+        <img src="img/head.png">
+        <h4>我的口号</h4>
+    </div>
+
+    <div class="user">
+        <img class="avatar" id="avatar" align="middle"  src="http://wx.qlogo.cn/mmopen/uI5pczeERTZgUWdUN5tQUL7eCwcSVgUibCqia2ibpoEr3XB58Ev84b9M7TymlgOBDyM3K6BahS07zV3pqV6uuCibIiar204ricOJV9/0">
+        <p><span id="name"></span><span id="phone" class="phone"></span></p>
+    </div>
+
+    <div class="container">
+        <div class="form-group">
+            <div class="item">
+                <label>口号一</label>
+                <div class="text">
+                    <img src="img/laba.png"><span id="slogan0">&nbsp;</span>
+                </div>
+                <footer id="time0"></footer>
+            </div>
+            <div class="item">
+                <label>口号二</label>
+                <div class="text">
+                    <img src="img/laba.png"><span id="slogan1">&nbsp;</span>
+                </div>
+                <footer id="time1"></footer>
+            </div>
+            <div class="item">
+                <label>口号三</label>
+                <div class="text">
+                    <img src="img/laba.png"><span id="slogan2">&nbsp;</span>
+                </div>
+                <footer id="time2"></footer>
+            </div>
+         </div>
+
+    </div>
+
+    <script src="http://apps.bdimg.com/libs/moment/2.8.3/moment.js"></script>
+    <script src="js/jquery-weui.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/wxweb.js?v=20161024"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript">
+		initWx(window.location.href,"/htmlwx/slogan/share.htm",'我的竞彩我做主！',false, '竞彩你做主，一言值千金！5月31日-7月31日提交原创竞彩宣传口号就有机会获得千元大奖！');
+    $.showLoading();
+
+    var cookie_key = "slogan_uid";
+    var uid = $.cookie(cookie_key);
+    console.log("cookie uid:" + uid);
+    if (typeof(uid) == "undefined"){
+        window.location.replace("share.htm");
+    }
+
+    var aid=getQueryString("aid");
+    // var uid=getQueryString("uid");
+	$.getJSON('/ilsp-wechat/web/slogan/get.do?aid='+aid+"&uid="+uid,function(json){
+        if (json.s!=200){
+            $.alert(json.r, "加载失败!",function(){
+                wx.closeWindow();
+            });
+            return;
+        }
+        var slist=json.r;
+		var user=json.b;
+		for  (var i=0;i<slist.length;i++){
+			var item=slist[i];
+			$('#slogan'+i).html(item.slogan);
+
+//             var createTime=item.createTime;
+//             var time=moment().millisecond(createTime);
+// 			$('#time'+i).html(time.format('YYYY.MM.DD HH:mm:ss'));
+			$('#time'+i).html(formatDate(item.createTime));
+		}
+		$('#phone').html(user.phone);
+		$('#name').html(user.userName);
+		$('#avatar').attr("src",user.headimg);
+        $.hideLoading();
+	});
+
+    </script>
+
+</body>
+</html>

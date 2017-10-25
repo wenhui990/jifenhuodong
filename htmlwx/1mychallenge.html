@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>中国竞彩</title>
+<link href="../css/wx-styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="hd_bj">
+<div class="top_img"> <img src="../images/top_banner1.png" /> </div>
+<div class="zt_title">
+	我的战绩&nbsp;<a href="ranking.html" class="c_yellow f12">查看排名榜>></a> <font class="red f_r f12">当期排名：<b id="inteRanking"></b></font>
+</div>
+<div class="ahd_int">
+	<table class="ahd_table">
+		<!-- 	<tr>
+       		 <td width="50%">累计参加 <b class="c_yellow f14" id="ljczday">0</b> 天</td>
+        		<td>历史中奖 <b class="c_yellow f14" id="lszj">0</b> 次</td>
+      		</tr>
+      		<tr>
+        		<td>累计投注 <b class="c_yellow f14" id="ljtz">0</b> 次</td>
+        		<td>中奖率 <b class="c_yellow f14" id="zjl">0</b>% </td>
+      		</tr> -->
+		<tr>
+			<td width="50%" colspan="2">当期累计投注 <b class="c_yellow f14"
+				id="ljtzjf">0</b> 积分
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">当期累计中奖 <b class="c_yellow f14" id="ljzjjf">0</b>
+				积分
+			</td>
+		</tr>
+		<tr>
+			<td><b class="f14">当期当前账户积分：</b> <b class="f14" id="zhjf">--</b></td>
+			<td><a href="hdrecord.html" class="f_r">查看详情&gt;&gt;</a></td>
+		</tr>
+		<tr>
+            <td colspan="2">
+               <span class="f_l"><a href="questionDetail.html">答题送积分，帮你赢iPhone6</a></span><span class="f_r"><a href="question.html" class="red f_b">我去答题</a></span>
+            </td>
+       </tr>
+	</table>
+</div>
+<div class="zt_title"><font class="f_l">今日挑战</font><font class="f_r"><a href="hdbegin.html" class="red f_b">如何参加？</a></font></div>
+<div class="ahd_int2">
+	<font class="ahd_time" id="endTime">截止投注时间:</font>
+	<div class="main_w" id="odds">
+		<p class="align_c c_yellow" id="matchName"></p>
+		<ul class="my_choose">
+			<li><font id="homeName">主队 </font>(<font id="letCount">&nbsp;</font>)</li>
+			<li><font>VS</font></li>
+			<li><font id="awayName">客队</font></li>
+		</ul>
+		<ul class="my_choose">
+			<li><a href="javascript:void(0);" rel="3">主胜</a></li>
+			<li><a href="javascript:void(0);" rel="1">平</a></li>
+			<li><a href="javascript:void(0);" rel="0">主负</a></li>
+		</ul>
+		<ul class="my_peilv f12">
+			<li>&nbsp;</li>
+			<li>支持率</li>
+			<li>&nbsp;</li>
+			<li><font id="winRate">&nbsp;</li>
+			<li><font id="drawRate">&nbsp;</li>
+			<li><font id="lostRate">&nbsp;</li>
+		</ul>
+	</div>
+<div class="main_jg"></div>
+<!-- <input type="hidden" name="maxMultipleOrder" id="maxMultipleOrder"
+	value="99"> -->
+<div class="main_w">
+	投注倍数：<input type="text" style="width: 50px; height: 18px"id="allmutil" value="50">倍 &nbsp;&nbsp;
+	<span>消耗 <b class="red" id="totalsum">100</b> 积分</span>
+	<p>每注消耗 <b class="c_yellow">2</b> 积分<br /></p>
+</div>
+<center>
+	<a href="javascript:void(0);" class="ahd_but_big" id="betSubmit">确定投注</a>
+	</cetner>
+	<p class="ahd_time">
+		<!-- 每注消耗 <b class="c_yellow">2</b> 积分<br /> -->
+		<div class="ahd_time" id = "tzcs">还有<b class="c_yellow">1</b>次机会哦<br /></div>
+	<P>
+		<font>点击查看：&nbsp;</font><!-- <a href="hdlc.html">活动流程</a>  &nbsp; --><a
+			href="hdgz.html">活动规则</a>
+	</P>
+<div id="worn" style="display: none;">
+<div class="pop_title">
+	<div class="f_l">信息确认</div>
+	<div class="f_r">
+		<a href="javascript:void(0);" onclick="closeWindow();"><img
+			src="../images/close_icon.png" /></a>
+	</div>
+</div>
+<div class="pop_con" style="height: 90px;">
+<center>
+	<p style="color: #000;" name="message">您的投注订单已提交成功!</p>
+</center>
+<center>
+	<a href="javascript:void(0);" class="pop_but"
+		onclick="closeWindow();">确 定</a>
+		</center>
+	</div>
+</div>
+<div id="first" style="display:none;">
+		<div class="pop_title">
+        	<div class="f_l">信息确认</div>
+        	<div class="f_r" ><a href="javascript:void(0);" onclick="window.location = getPath() + '/htmlwx/mychallenge.html'"><img src="../images/close_icon.png"/></a></div>
+    	</div>
+    	<div class="pop_con" style="height:100px;">
+    		<center><p style="color:#000;" name="message">赠送500初始积分，今日登录送100积分。（每日登录可拿100积分哦）</p></center>
+        	<center><a href="javascript:void(0);" class="pop_but"   onclick="closeWindow();">确 定</a></center><br/>
+        </div>
+</div>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+myChallenge();
+//倍数输入操作
+$('input[id^=allmutil]').bind(
+		{
+		keyup : function(e) {
+			var val = Math.max(1, Math.min(parseInt(this.value || 0, 10) || 0, $("#maxMultipleOrder").val()|| Number.MAX_VALUE));
+			if (this.value == '') {
+				if (e.type != 'keyup') {
+				 this.value = val;
+				} else {
+				 return;
+				}
+			} else if (val != this.value) {
+				this.value = val;
+			}
+			pageshow();
+		},
+		blur : function() {
+			if ($(this).val() == '')
+				$(this).val(1);
+			pageshow();
+		},
+		click : function() {
+			if ($(this).val() == '')
+				$(this).val(1);
+			pageshow();
+		}
+	});
+
+initWx(window.location.href,"/htmlwx/hdbegin.html",'篮彩季，微竞猜',false);
+loadGaScript();
+</script>
+</body>
+</html>

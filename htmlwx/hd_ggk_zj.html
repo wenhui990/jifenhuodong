@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
+	<title>中奖纪录</title>
+	<style>
+	*{margin: 0;padding: 0;box-sizing:border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;-webkit-tap-highlight-color:rgba(0,0,0,0);tap-highlight-color:rgba(0,0,0,0);}
+  body{font-size:12px;}
+  a:link {text-decoration:none;} 
+  a:visited {text-decoration:none;}
+  a:hover {text-decoration:none;} 
+  a:active {text-decoration:none;}
+  li {list-style-type: none;}
+  table{border-collapse:collapse;width:100%;}
+  input,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0);tap-highlight-color:rgba(0,0,0,0);}
+	#record{width:100%;margin:10px 0;}
+	#record thead td{color:#5869a2;background:#fff;font-weight:700;}
+	#record tbody td{color:#fff;margin-bottom:10px;}
+	#record tbody tr.odd{
+	  background: -moz-linear-gradient(left, #499cc8 0%, #95e5da 100%);
+    background: -webkit-gradient(linear, left, left, color-stop(0%,#499cc8), color-stop(100%,#95e5da));
+    background: -webkit-linear-gradient(left, #499cc8 0%,#95e5da 100%);
+    background: -o-linear-gradient(left, #499cc8 0%,#95e5da 100%);
+    background: -ms-linear-gradient(left, #499cc8 0%,#95e5da 100%);
+    background: linear-gradient(to right, #499cc8 0%,#95e5da 100%);
+	}
+	#record tbody tr.even{color:#5869a2;background:#fff;
+	  background: -moz-linear-gradient(left, #f9795f 0%, #ffbf7a 100%);
+    background: -webkit-gradient(linear, left, left, color-stop(0%,#f9795f), color-stop(100%,#ffbf7a));
+    background: -webkit-linear-gradient(left, #f9795f 0%,#ffbf7a 100%);
+    background: -o-linear-gradient(left, #f9795f 0%,#ffbf7a 100%);
+    background: -ms-linear-gradient(left, #f9795f 0%,#ffbf7a 100%);
+    background: linear-gradient(to right, #f9795f 0%,#ffbf7a 100%);
+	}
+	#record tbody tr.spacetr{background:#e4e9ef;}
+	#record tbody tr.spacetr td{background:#e4e9ef;height:6px;padding:0;}
+	#record,#record td{font-size:12px;text-align:center;padding:10px 3px;line-height:1.5em;}
+	.togift{border-radius:12px;padding:0 10px;font-size:14px;color:#fff;margin-left:10px;height:24px;line-height:24px;display:inline-block;
+	  background: -moz-linear-gradient(left, #c03a79 0%, #ff4b5a 100%);
+    background: -webkit-gradient(linear, left, left, color-stop(0%,#c03a79), color-stop(100%,#ff4b5a));
+    background: -webkit-linear-gradient(left, #c03a79 0%,#ff4b5a 100%);
+    background: -o-linear-gradient(left, #c03a79 0%,#ff4b5a 100%);
+    background: -ms-linear-gradient(left, #c03a79 0%,#ff4b5a 100%);
+    background: linear-gradient(to right, #c03a79 0%,#ff4b5a 100%);
+	}
+	.wanshan{padding:10px 2em 5px;color:#677bad;}
+	header{height:34px;line-height:34px;background:#fff;font-size:15px;text-align:center;color:#484849;border-bottom:1px solid #eaeaee;}
+	.ggk_back{position:absolute;top:5px;left:15px;}
+	</style>
+</head>
+<body style="background:#e4e9ef;">
+<header><a href="./hd_ggk.html" class="ggk_back"><img src="../images/ggk_back.png"></a>积分终有用武之地</header>
+  <div class="wanshan"></div>
+	<table id="record">
+	</table>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js?v=20161024"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+initWx(window.location.href,"/htmlwx/hd_ggk_zj.html",'刮刮卡中奖',false);
+loadGaScript();
+ggkRecord();
+</script>  
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html style="background:#141926;">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>中国竞彩</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" href="../css/jc.css">
+<!--赛事的css-->
+<link type="text/css" rel="stylesheet" href="../css/common.css">
+<link type="text/css" rel="stylesheet" href="../css/lotCss.css">
+<link href="../css/jquery.selectbox.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script src="../js/jquery.mmenu.min.js" type="text/javascript"></script>
+<link href="../css/jquery.mmenu.css" type="text/css" rel="stylesheet" />
+<link href="../css/jquery.mmenu.positioning.css" type="text/css" rel="stylesheet" />
+<script src="../js/jcmenu.js" type="text/javascript"></script>
+</head>
+<body style="background:#141926;">
+	<div class="">
+		<header class="bar bar-nav">
+      <div class="row content">
+        <div class="col-15">
+          <a href="#menu" class="menuBtn"></a>
+        </div>
+        <div class="col-35 ftballTab current text-right">
+          <span>足球</span>
+        </div>
+        <div class="col-35 bskballTab text-left">
+          <a href="./matchListBst.html"><span>篮球</span></a>
+        </div>
+        <div class="col-15">
+          <a href="#filter" class="filterBtn"></a>
+        </div>
+        <div class="clearf"></div>
+      </div>
+    </header>
+		<div class="Calculator_begin matchResult">
+			<div id="container">
+				<div class='g-con'>
+					<div class="m-sel">
+						<div class="m-tit1" style="margin-bottom: 0;text-align:center;">
+							<select id="dataSelect" name="dataSelect"></select>
+						</div>
+					</div>
+					<div class="matchList"></div>
+				</div>
+				<div class="toMyOdds">
+					<a class="external" href="myOdds.html">查看我的模拟投注</a>
+				</div>
+			</div>
+		</div>
+	</div>
+  <nav id="menu">
+  </nav>
+	<nav id="filter">
+		<div class="filter-item">
+	      <div class="clearf"></div>
+	      <div id="fitlerItemDiv">
+	      </div>
+	      <div class="clearf"></div>
+	      <a href="#" onclick="selectFilterItem()">全选</a> <a href="#" onclick="unSelectFilterItem()">清空</a>
+	      <a href="#" onclick="filterItem()">确定</a>
+	    </div>
+	</nav>
+	<!-- 引入系统js -->
+	<script type="text/javascript" src="../js/wxbox.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/matchResult.js"></script>
+	<script type="text/javascript" src="../js/wxweb.js"></script>
+	<script type="text/javascript" src="../js/jquery.selectbox-0.2.js"></script>
+	<script type="text/javascript"
+		src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+		initWx(window.location.href, "/htmlwx/matchList.html", "中国竞彩-赛程赛果",false);
+		loadGaScript();
+		$(function() {
+			matchList(dateToday(0), 0);
+			oddsData();
+			$("#dataSelect").change(function() {
+				matchList($(".sbSelector").text(), 0);
+			});
+		});
+	</script>
+	<script type="text/javascript">
+$(function () {
+  $("[name='dataSelect']").selectbox({
+    effect:"slide"
+  });
+});
+</script>
+</body>
+</html>

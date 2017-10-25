@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<title>超级足球季，等你来参与！</title>
+		<link rel="stylesheet" href="./css/base.css">
+		<style>
+			html{
+				font-size: 100px;
+			}
+
+			body {
+				margin: 0;
+				background: url("images/q_bg.png") no-repeat;
+				font-family: "Microsoft YaHei", 微软雅黑;
+			}
+
+			.head{
+				position: relative;
+			}
+
+			.q_head{
+				width: 100%;
+				z-inde: -10;
+			}
+
+			.record_box{
+				position: relative;
+			}
+
+			.record_main{
+				width: 3.3rem;
+				height: auto;
+				border: 0.03rem solid #ff9e36;
+				margin-left: 0.2rem;
+				padding-top: 0.18rem;
+				margin-bottom: 0.72rem;
+			}
+
+			
+			.record_main li{
+				height: 0.35rem;
+				font-size: 0.13rem;
+				line-height: 0.35rem;
+				display: flex;
+				color: #ffb22d;
+			}
+
+			.time{
+				flex: 5;
+				text-align: center;
+			}
+
+			.cishu{
+				flex: 1;
+				text-align: center;
+			}
+
+			.award{
+				flex: 4;
+				text-align: center;
+			}
+
+			.record_shadow{
+				width: 3.3rem;
+				border: 0.03rem solid #c33239;
+				position: absolute;
+				top: 0.06rem;
+				left: 0.27rem;
+				z-index: -1;
+			}
+
+			.title{
+				position: absolute;
+				top: -0.27rem;
+				left: 0.32rem;
+				height: 0.45rem;
+				width: 3.15rem;
+			}
+
+			[v-cloak]{
+			  display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="head">
+			<img src="images/q_head.png" class="q_head">
+		</div>
+
+		<div class="record_box" id="record" v-cloak>
+			<img src="images/r_title.png" class="title">
+			<ul class="record_main">
+				<li v-for="item in record">
+					<p class="time">{{item.time}}</p>
+					<p class="cishu">1</p>
+					<p class="award">{{item.name?item.name:'未中奖'}}</p>
+				</li>
+			</ul>	
+			<div class="record_shadow"></div>
+		</div>
+	
+	</body>
+
+
+	<script src="./js/screen.js"></script>
+	<script type="text/javascript" src="../slogan/js/vue.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../js/wxweb.js?v=20171024"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script>
+		initWx(window.location.href,"/htmlwx/draw/share.html",'超级足彩季，等你来答题！',false, '“超级足彩季，3亿大派奖！”火热来袭，系列活动之一知识竞猜开始啦，快去参加吧！');
+		var vvm = null;
+		var aid = getQueryString('aid');
+		$(document).ready(function() {
+			vvm_init();
+			$.ajax({
+				type:'POST',
+				url:'/ilsp-wechat/web/quiz/record.do',
+				data:{aid:aid},
+				success:function(res){
+					if(res.s != 200){
+						alert(res.r);
+						return;
+					}
+					//if(res.s == 706){
+						vvm.record = res.r
+						console.log(res)
+						// 时间戳转换为标准时间
+						Date.prototype.toLocaleString = function() {
+							if(this.getMonth() <= 8){
+								month="0"+ (this.getMonth()+1 )
+							}else{
+								month=this.getMonth()+1
+							};
+							if(this.getDate() <= 9){
+								date="0"+this.getDate()
+							}else{
+								date=this.getDate()
+							};
+							if(this.getHours() <= 9){
+								hour="0"+this.getHours()
+							}else{
+								hour=this.getHours()
+							};
+							if(this.getMinutes() <= 9){
+								min="0"+this.getMinutes()
+							}else{
+								min=this.getMinutes()
+							};
+	          				return this.getFullYear() + "." + month + "." + date + " " + hour + ":" +min;
+	  					};
+	  					for(var i = 0 ; i < vvm.record.length; i ++){
+	  						var unixTimestamp = new Date(vvm.record[i].raffleTime) ;
+							var commonTime = unixTimestamp.toLocaleString();
+							vvm.record[i].time=commonTime;
+	  					}
+					//}
+					
+
+					// 黄框和阴影红框高度一致
+					$('.record_shadow').eq(0).css('height',(parseInt($('.record_main').eq(0).innerHeight())/100 + vvm.record.length * 0.35) + 'rem')
+				}
+			})
+		});
+
+		function vvm_init(){
+			vvm = new Vue({
+				el:"#record",
+				data:{
+					record:[]
+				},
+				methods:{
+
+				}
+			});
+		}
+
+		function getQueryString(name){
+		     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		     var r = window.location.search.substr(1).match(reg);
+		     if(r!=null)return  unescape(r[2]); return null;
+		}
+		
+	</script>
+
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<link rel='stylesheet' href='http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css'>
+		<style>
+			body {
+				margin: 0;
+				background: url("images/beijing.png") no-repeat;
+				background-size: cover;
+				font-family: "Microsoft YaHei", 微软雅黑;
+				font-size: 100px;
+			}
+
+			html{
+				font-size: 100px;
+			}
+
+			.head {
+				margin-top: 20px;
+			}
+
+			.head h4 {
+				font-weight: bold;
+				color: #162b69;
+				text-align: center;
+				display: block;
+				/*设置为块级元素会独占一行形成上下居中的效果*/
+				position: relative;
+				/*定位横线（当横线的父元素）*/
+			}
+
+			h4:before,
+			h4:after {
+				content: '';
+				/*CSS伪类用法*/
+				position: absolute;
+				/*定位背景横线的位置*/
+				top: 52%;
+				background: #162b69;
+				/*宽和高做出来的背景横线*/
+				width: 6%;
+				height: 2px;
+			}
+
+			h4:before {
+				left: 30%;
+				/*调整背景横线的左右距离*/
+			}
+
+			h4:after {
+				right: 30%;
+			}
+
+			.head img {
+				width: 100%;
+			}
+
+			.container {
+				position: relative;
+				text-align: left;
+				width: 91%;
+				background-color: #162b69;
+				border-radius: 10px;
+				border: 3px solid #46bdf3;
+			}
+
+			.box_style {
+				margin: 25px auto;
+			}
+
+			.huodong {
+				text-align: left;
+			}
+
+			.text_huang {
+				color: #e9374c;
+				font-weight: bold;
+			}
+
+			.text_lan,
+			.guanzhu {
+				color: #46bdf3;
+			}
+
+			.guanzhu h4 {
+				text-align: center;
+			}
+
+			.guanzhu #erweima {
+				width: 40%;
+				display: inline-block;
+				box-sizing: border-box;
+			}
+
+			.guanzhu img {
+				width: 100%;
+			}
+
+			.guanzhu #user {
+				width: 40%;
+				display: inline-block;
+				box-sizing: border-box;
+			}
+
+			.guanzhu .text {
+				width: 55%;
+				display: inline-block;
+				box-sizing: border-box;
+				margin-left: 10px;
+				text-align: justify;
+				vertical-align: middle;
+				font-size: 16px;
+			}
+
+			.left {
+				float: left;
+			}
+
+			.right {
+				float: right;
+			}
+
+			.qiu {
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				top: -10px;
+			}
+
+			#lanqiu {
+				position: absolute;
+				width: 60px;
+				left: 50%;
+				top: -20px;
+			}
+
+			#zuqiu {
+				right: 35px;
+			}
+
+			.qiu img {
+				width: 100%;
+			}
+
+			footer {
+				float: right;
+				font-size: 12px;
+				color: #46bdf3;
+				margin-top: 10px;
+				margin-right: 20px;
+			}
+
+			.ranking_text {
+				width: 91%;
+				margin: 0 auto;
+				padding: 0 10px;
+				color: #fff;
+			}
+
+			.ranking_text a{
+				color: #fff;
+			}
+
+			.ranking_text_left {
+				float: left;
+			}
+
+/*			.ranking_text_right {
+				float: right;
+			}*/
+
+			.ranking_text::after {
+				display: block;
+				content: "";
+				width: 0;
+				height: 0;
+				clear: both;
+			}
+
+			.rankings {
+				color: #fff;
+				box-sizing: border-box;
+				margin-bottom: 20px;
+			}
+
+			#c_txt {
+				height: 45px;
+				line-height: 45px;
+			}
+
+			#c_txt .rank {
+				float: left;
+			}
+
+			#c_txt .poll {
+				float: right;
+			}
+
+			#c_txt::after {
+				display: block;
+				content: "";
+				width: 0;
+				height: 0;
+				clear: both;
+			}
+
+			#c_user {
+				margin-bottom: 20px;
+			}
+
+			#c_user img.media-object {
+				border-radius: 50%;
+			}
+/*弹窗*/
+.msg_ico{position:absolute;right:10px;top:30px;}
+.msg_pop_block{z-index:10000;position:fixed;top:0;left:0;width:100%;height:100%;background: rgba(0,0,0,0.8);}
+.msg_pop{position:absolute;top:50%;left:0;margin-left:10%;margin-top:-100px;width:80%}
+.msg_pop h3{background:#162b69;color:#46bdf3;border:1px solid #46bdf3;border-radius:10px 10px 0 0;box-shadow:0 0 3px 3px #41d3fe;
+            font-size:13px;text-align:center;padding:8px 15px;margin-left:20px;float:left;}
+.msg_pop .msg_text{background:#162b69 url(./img/laba.png) no-repeat 20px center;background-size:30px auto;color:#fc9a1a;border:1px solid #46bdf3;border-bottom:0;border-radius:10px;box-shadow:0 0 3px 3px #41d3fe;
+            font-size:16px;text-align:left;padding:30px 10px 30px 20%;margin-top:-10px;width:100%;float:left;}
+.msg_btn{float:left;width:100%;margin-top:-22px;}
+.msg_btn a{float:left;display:block;background:url(./img/msg_btn.png) no-repeat 0 0;background-size:110px auto;width:110px;height:53px;line-height:45px;text-align:center;color:#fff;font-size:14px;}
+.msg_btn a:first-child{margin-right:10px;}
+.msg_btn div{margin:0 auto;width:230px;}
+		</style>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src='http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+		<script src="./js/screen.js"></script>
+	</head>
+
+	<body>
+		<!-- 弹窗 -->
+		<div class="msg_pop_block" style="display:none;">
+			<div class="msg_pop">
+				<h3>提&nbsp;示</h3><img class="msg_ico" src="./img/msg_ico.png">
+				<div class="msg_text" id="tipMsg"></div>
+				<div class="msg_btn">
+				    <div style="width:110px;"><!-- <a href="">取&nbsp;消</a> --><a href="javascript:void(0);" onclick="hideTip()">确&nbsp;定</a></div>
+				</div>
+			</div>
+		</div>
+		<style type="text/css">
+			[v-cloak] {
+			  display: none;
+			}
+		</style>
+		<div class="box_style huodong" id="ranking" v-cloak>
+			<div class="head">
+				<img src="images/head.png">
+				<h4>最新排名</h4>
+			</div>
+
+			<div class="ranking_text">
+				<!-- <p class="ranking_text_left">我的口号</p> -->
+				<a id="myslogan" href="" class="ranking_text_left" style="margin-bottom: 6px;">我的口号</a>
+				<!-- <p class="ranking_text_right">当前票数</p> -->
+			</div>
+
+			<div class="container rankings" v-for="(item, index) in votes">
+				<img src="images/lanqiu.png" id="lanqiu" v-show="index==0"/>
+				<div id="c_txt">
+					<div class="rank">第<span class="ranking_num text_huang">{{index+1}}</span>名</div>
+					<div class="poll guanzhu">{{item.count}}票</div>
+				</div>
+				<div class="media" id="c_user" style="margin-top: 0;">
+					<div class="media-left media-middle">
+						<a href="javascript:void(0);">
+							<img class="media-object" v-bind:src="item.headimg" width="45" height="45" alt="...">
+						</a>
+					</div>
+					<div class="media-body">
+						<h5 class="media-heading guanzhu">{{item.userName}}</h5> {{item.slogan}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="js/jquery-weui.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/wxweb.js?v=20161024"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+
+	<script type="text/javascript">
+		var vvm = null;
+		var uid = getQueryString("uid");
+		var aid = getQueryString("aid");
+
+		$(document).ready(function() {
+			// $.showLoading();
+			vvm_init();
+			getRanking();
+			//口号征集的活动，和口号投票活动的id不相同，现在先写死。
+			$('#myslogan').attr('href','my.htm?aid=216');
+		});
+
+		function vvm_init(){
+			vvm = new Vue({
+				el: '#ranking',
+				data:{
+					votes:[]
+				},
+				methods:{
+				}
+			});
+		}
+
+		function getRanking(){
+			// $.showLoading();
+			$.getJSON('/ilsp-wechat/web/slogan/rank.do?' + "uid="+uid+"&aid="+aid,function(json){
+	             if (json.s!=200){
+	                // $.hideLoading();
+	                showTip(json.r);
+	                return;
+	            }
+	            vvm.votes = json.r;
+	        });
+		}
+
+        function hideTip(){
+        	$(".msg_pop_block").hide();
+        }
+		function showTip(msg){
+        	$("#tipMsg").html(msg);
+        	$(".msg_pop_block").show();
+        }
+	</script>
+</html>

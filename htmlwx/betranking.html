@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>中国竞彩</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" href="../css/jc.css">
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<link href="../css/jquery.selectbox.css" type="text/css" rel="stylesheet" />
+<script src="../js/jquery.mmenu.min.js" type="text/javascript"></script>
+<script src="../js/jquery.mmenu.min.js" type="text/javascript"></script>
+<link href="../css/jquery.mmenu.css" type="text/css" rel="stylesheet" />
+<link href="../css/jquery.mmenu.positioning.css" type="text/css"
+  rel="stylesheet" />
+<script src="../js/jcmenu.js" type="text/javascript"></script>
+</head>
+<body>
+
+
+  <!-- 这里是页面内容区 -->
+  <div class="content">
+    <header class="bar bar-nav">
+      <div class="row content">
+        <div class="col-15">
+          <a href="#menu" class="menuBtn"></a>
+        </div>
+        <div id="title" class="col-70 text-center">英超</div>
+        <div class="col-15">
+          <a href="#filter" class="filterBtn"></a>
+        </div>
+        <div class="clearf"></div>
+      </div>
+    </header>
+    <div class="Calculator_begin">
+      <div id="container">
+        <!-- tab开始 -->
+        <div class='betranking_tab'>
+          <ul>
+            <li class='current' id="points">积分</li>
+            <li id="shooter">射手</li>
+            <li id="attack">助攻</li>
+            <li id="schedule">赛程</li>
+          </ul>
+          <div class='clearf'></div>
+        </div>
+
+		<div class="points_table tab_list">
+		</div>
+        <table class="shooter_table betranking_table tab_list" style="display:none;margin-top:20px;">
+          <thead>
+            <tr class='nth-head'>
+              <td>排名</td>
+              <td>球员</td>
+              <td class='tdleft'>球队</td>
+              <td>进球数</td>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <table class="attack_table betranking_table tab_list" style="display:none;margin-top:20px;">
+          <thead>
+            <tr class='nth-head'>
+              <td>排名</td>
+              <td>球员</td>
+              <td class='tdleft'>球队</td>
+              <td>助攻数</td>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <div class="schedule_table tab_list" style="display:none;">
+          <div class="schedule_header">
+            <div class="schedule_pre">上一轮</div>
+            <div class="schedule_title">常规赛</div>
+            <div class="schedule_next">下一轮</div>
+            <div class="clearf"></div>
+          </div>
+          <table class="betranking_table">
+	          <tbody>
+	          </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <nav id="menu">
+  </nav>
+  <nav id="filter">
+    <div class="filter-item">
+      <div class="clearf"></div>
+      <div id="fitlerItemDiv">
+      	<a href="#" class="current" name="8" onclick='filterItem(this)'>英超</a>
+      	<a href="#" name="10" onclick='filterItem(this)'>欧冠</a>
+      	<a href="#" name="385" onclick='filterItem(this)'>非洲杯</a>
+      	<a href="#" name="138" onclick='filterItem(this)'>国王杯</a>
+      	<a href="#" name="135" onclick='filterItem(this)'>意大利杯</a>
+      	<a href="#" name="95" onclick='filterItem(this)'>英联赛杯</a>
+      	<a href="#" name="241" onclick='filterItem(this)'>解放者杯</a>
+      	<a href="#" name="251" onclick='filterItem(this)'>亚冠</a>
+      	<a href="#" name="7" onclick='filterItem(this)'>西甲</a>
+      	<a href="#" name="9" onclick='filterItem(this)'>德甲</a>
+      	<a href="#" name="13" onclick='filterItem(this)'>意甲</a>
+      	<a href="#" name="16" onclick='filterItem(this)'>法甲</a>
+      	<a href="#" name="1" onclick='filterItem(this)'>荷甲</a>
+      	<a href="#" name="87" onclick='filterItem(this)'>阿甲</a>
+      	<a href="#" name="24" onclick='filterItem(this)'>比甲</a>
+      	<a href="#" name="26" onclick='filterItem(this)'>巴甲</a>
+      	<a href="#" name="63" onclick='filterItem(this)'>葡超</a>
+      	<a href="#" name="43" onclick='filterItem(this)'>苏超</a>
+      	<a href="#" name="121" onclick='filterItem(this)'>俄超</a>
+      	<a href="#" name="14" onclick='filterItem(this)'>意乙</a>
+      	<a href="#" name="12" onclick='filterItem(this)'>西乙</a>
+      	<a href="#" name="11" onclick='filterItem(this)'>德乙</a>
+      	<a href="#" name="17" onclick='filterItem(this)'>法乙</a>
+      	<a href="#" name="109" onclick='filterItem(this)'>日职</a>
+      </div>
+      <div class="clearf"></div>
+     <!--  <a href="#" onclick="filterItem()">确定</a> -->
+    </div>
+  </nav>
+
+  <script type="text/javascript" src="../js/wxbox.js"></script>
+  <script type="text/javascript" src="../js/common.js"></script>
+  <script type="text/javascript" src="../js/wxweb.js"></script>
+  <script type="text/javascript" src="../js/rank.js"></script>
+    <script type="text/javascript" src="../js/jquery.selectbox-0.2.js"></script>
+  <script type="text/javascript"
+    src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script type="text/javascript">
+  initWx(window.location.href,"/htmlwx/betranking.html","中国竞彩-积分排行",false);
+  loadGaScript('UA-99976220-5');
+  rankData(8);
+  </script>
+</body>
+</html>

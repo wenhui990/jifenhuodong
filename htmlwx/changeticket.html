@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>中国竞彩</title>
+<link href="../css/wx-styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="all_head heig_02">
+<div class="duihuan_box">
+<p class="zjbc3">当前账户兑换劵：<b id="ticketcount"></b>张<a href="awardaddress.html" class="col_orange align_r">填写领奖信息&nbsp;&nbsp;</a></p>
+</div>
+ <div id="orders"></div>
+</div>
+<input type="hidden" id="activityid" value="0"/>
+
+<div id="worn" style="display:none;">
+		<div class="pop_title">
+        	<div class="f_l">信息确认</div>
+        	<div class="f_r" ><a href="javascript:void(0);" onclick="window.location = getPath() + '/htmlwx/changeticket.html'"><img src="../images/close_icon.png"/></a></div>
+    	</div>
+    	<!-- <div class="pop_con" style="height:150px;"> -->
+    	<div class="pop_con">
+    		<center><p style="color:#000;" name="message"></p></center>
+        	<center><a href="javascript:void(0);" class="pop_but"  onclick="window.location = getPath() + '/htmlwx/changeticket.html'">确 定</a></center><br/>
+        </div>
+</div>
+<div id="alert" style="display:none;">
+		<div class="pop_title">
+        	<div class="f_l">信息确认</div>
+        	<div class="f_r" ><a href="javascript:void(0);" onclick="closeWindow();"><img src="../images/close_icon.png"/></a></div>
+    	</div>
+    	<!-- <div class="pop_con" style="height:150px;"> -->
+    	<div class="pop_con">
+    		<center><p style="color:#000;" name="message"></p></center>
+        	<center><a href="javascript:void(0);" class="pop_but"  onclick="closeWindow();toChange()">确 定</a></center><br/>
+        </div>
+</div>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="../js/adaptor/set.js"></script>
+<script type="text/javascript">
+getChangeTicket();
+initWx(window.location.href,"/htmlwx/hdbegin.html",'篮彩季，微竞猜',false);
+loadGaScript();
+</script>
+</body>
+</html>

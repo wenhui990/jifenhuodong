@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no" name="format-detection" />
+<meta
+	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0"
+	name="viewport" />
+<html class="pixel-ratio-1">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>中国竞彩</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" href="../css/jc.css">
+<!--赛事的css-->
+<link type="text/css" rel="stylesheet" href="../css/common.css">
+<link type="text/css" rel="stylesheet" href="../css/lotCss.css?v=20170620">
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script src="../js/jquery.mmenu.min.js" type="text/javascript"></script>
+<link href="../css/jquery.mmenu.css" type="text/css" rel="stylesheet" />
+<link href="../css/jquery.mmenu.positioning.css" type="text/css"
+	rel="stylesheet" />
+<script src="../js/jcmenu.js" type="text/javascript"></script>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?7b7dbdd27bebde98548832939845042c";
+	  var s = document.getElementsByTagName("script")[0];
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+</head>
+<body>
+	<div class="content">
+		<header class="bar bar-nav">
+      <div class="row content">
+        <div class="col-15">
+          <a href="#menu" class="menuBtn"></a>
+        </div>
+        <div class="col-35 ftballTab text-right">
+          <a href="bet.html"><span>足球</span></a>
+        </div>
+        <div class="col-35 bskballTab current text-left">
+          <span>篮球</span>
+        </div>
+        <div class="col-15">
+          <a href="#filter" class="filterBtn"></a>
+        </div>
+        <div class="clearf"></div>
+      </div>
+    </header>
+		<div class="Calculator_begin">
+			<div id="container">
+
+				<div id="headerTr">
+					<div id="calculator_menu">
+						<a id="sfSelect" class="tab_item current" title="8">
+							<div class="lineHeight">
+								<b>胜负</b>
+							</div>
+						</a> <a id="rsfSelect" class="tab_item" title="8">
+							<div class="lineHeight">
+								<b>让分胜负</b>
+							</div>
+						</a> <a id="sfcSelect" class="tab_item" title="4">
+							<div class="lineHeight">
+								<b>胜分差</b>
+							</div>
+						</a> <a id="sizeSelect" class="tab_item" title="8">
+							<div class="lineHeight">
+								<b>大小分</b>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<!--一胜负-->
+				<div id="sfSelectShow" class="sfShow tab_list data_block"></div>
+
+				<!--让分胜负-->
+				<div id="rsfSelectShow" class="rsfShow tab_list data_block"
+					style="display: none;"></div>
+
+				<!--胜负差-->
+				<table id="sfcSelectShow" class="mainTbl tab_list sfcShow"
+					style="display: none;">
+				</table>
+
+				<!--大小-->
+				<div id="sizeSelectShow" class="sizeShow tab_list data_block"
+					style="display: none;"></div>
+
+				<!--受注赛事下面固定条-->
+				<div class="bet_mask" onclick="hidePop();" style="display:none;"></div>
+				<div id="sel_pan">
+          <table width="100%;" cellspacing="0" cellpadding="0" align="center">
+            <tbody>
+              <tr>
+                <td colspan="3" align="center">
+                  <div id="sel_footer_up">
+                    <div class="sel_selected">
+                      <!-- <div id="selDetailBtn" class="matchBg">
+                              <span style="display:inline-block;">已选
+                                <span id="selCount">1</span></span>
+                            </div>
+                            <div class="showMatchs" style="display:none"></div> -->
+
+                      <!-- <div class="tip">
+                              <label id="optionTip" style="width: auto;"></label>
+                            </div> -->
+                    </div>
+                    <div class="sel_guan" style="padding-right:10px;">
+                      <div class="matchBg" id="passSelection">过关选择</div>
+                      <div id="allSelect" class="showMode" style="display: none">
+                        <div class="showModes" id="showModes">
+                        </div>
+                      </div>
+                      <div id="bonusDiv" class="showMode" style="display: none">
+                        <h3 class="title" onclick="hideById('bonusDiv')">奖金详情
+                          <img valign="center" src="../images/down_blue.png"></h3>
+                        <table>
+                          <thead>
+                            <tr>
+                              <td>命中场次</td>
+                              <td>最小奖金</td>
+                              <td></td>
+                              <td>最大奖金</td></tr>
+                          </thead>
+                          <tbody id="bonusTable"></tbody>
+                        </table>
+                      </div>
+                      <div id="bonusDetail" class="showMode" style="display: none">
+                        <h3 class="title" onclick="hideById('bonusDetail')">中奖注数
+                          <img valign="center" src="../images/down_blue.png"></h3>
+                        <div class="showModes" id="passDiv"></div>
+                        <div class="clearf"></div>
+                        <div class="passline">
+                          <span>过关：</span>
+                          <span id="passSpan" class="red"></span>
+                          <b class="yuan"></b>
+                          <span>注数：</span>
+                          <span id="countSpan" class="red"></span>
+                          <b class="yuan">注</b>
+                          <span>奖金：</span>
+                          <span id="bonusSpan" class="red"></span>
+                          <b class="yuan">元</b></div>
+                        <div id="detailDiv"></div>
+                      </div>
+                    </div>
+                    <div class="sel_selected" onclick="keyboardPop()">
+                      <div class="sel_nums">
+                        <span id="times">1</span>倍 <input id="initTimes"
+                          value="true" type="hidden">
+                      </div>
+                    </div>
+                    <div id="showDetail" class="money_detail">奖金详情</div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="sel_footer_down">
+                    <div id="keyboard">
+
+                      <table class="multiple_ta" width="100%" cellspacing="0"
+                        cellpadding="0" border="0">
+                        <tbody>
+                          <tr>
+                            <td width="33.3%"></td>
+                            <td><span id="multiple">1</span>倍</td>
+                            <td width="33.3%"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <table class="table_keyboard" width="100%" cellspacing="0"
+                        cellpadding="0" border="0">
+                        <tbody>
+                          <tr>
+                            <td width="33.3%">
+                              <div onclick="clickKeyboard(1)">1</div>
+                            </td>
+                            <td>
+                              <div onclick="clickKeyboard(2)">2</div>
+                            </td>
+                            <td style="border-right: 0" width="33.3%">
+                              <div onclick="clickKeyboard(3)">3</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div onclick="clickKeyboard(4)">4</div>
+                            </td>
+                            <td>
+                              <div onclick="clickKeyboard(5)">5</div>
+                            </td>
+                            <td style="border-right: 0">
+                              <div onclick="clickKeyboard(6)">6</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div onclick="clickKeyboard(7)">7</div>
+                            </td>
+                            <td>
+                              <div onclick="clickKeyboard(8)">8</div>
+                            </td>
+                            <td style="border-right: 0">
+                              <div onclick="clickKeyboard(9)">9</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div onclick="clickKeyboardDel()">删除</div>
+                            </td>
+                            <td>
+                              <div onclick="clickKeyboard(0)">0</div>
+                            </td>
+                            <td style="border-right: 0">
+                              <div onclick="clickKeyboardOK()">确认</div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="sel_clean">
+                      <a href="javascript:void(0)" id="clearSel"
+                        onclick="clearAll()"> <img src="../images/clean.png">
+                        <span>清&nbsp;空</span></a>
+                    </div>
+                    <div id="bonusTd" class="sel_money_div">
+                      <div class="sel_money">
+                        <b>投注金额：</b> <span id="consume">0</span>元 <br> <b>理论最高奖：</b>
+                        <span id="bonus">0</span>元
+                      </div>
+                    </div>
+                    <div id="voteBtn" onclick="bet()">模拟投注</div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+			</div>
+
+		</div>
+	</div>
+	<nav id="menu">
+    </div>
+  </nav>
+	<nav id="filter">
+		<div class="filter-item">
+			<div class="clearf"></div>
+			<div id="fitlerItemDiv">
+      		</div>
+			<div class="clearf"></div>
+			<a href="#" onclick="selectFilterItem()">全选</a> <a href="#" onclick="unSelectFilterItem()">清空</a>
+      		<a href="#" onclick="filterItem()">确定</a>
+		</div>
+	</nav>
+	<!-- 比分的css -->
+	<link type="text/css" rel="stylesheet" href="../css/crs.css">
+	<!-- 引入系统js -->
+	<script type="text/javascript" src="../js/wxbox.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/wxweb.js?v=20170601"></script>
+	<script type="text/javascript" src="../js/jc.js?v=20170620"></script>
+	<script type="text/javascript"
+		src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+	initWx(window.location.href,"/htmlwx/basketball.html","中国竞彩-模拟投注",false);
+	loadGaScript('UA-99976220-6');
+	</script>
+</body>
+</html>

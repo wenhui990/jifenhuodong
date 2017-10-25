@@ -1,0 +1,54 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>中国竞彩</title>
+<link href="../css/wx-styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body class="question_bj">
+<div class="top_img"> <img src="../images/head_bg.jpg" /> </div>
+<div class="main_jg"></div>
+<div class="main_jg"></div>
+<div class="text_box" style="overflow:hidden;">
+	 <p>答题送积分：</p>
+     <p>想赢取更多积分参加“微信玩竞彩，大奖送不停“活动，赢取iPhone6吗？快来答题，答对一题就有积分，每日最多100积分。</p>
+    <p class="blue">题目竟然会问今天的小编是谁？答题前一定要好好看今天的推送消息哦~</p>
+    <p><a class="red f_b f_l"  href="hdbegin.html">如何参加？</a><font class="f_r"><a href="questionDetail.html">答题活动详情&gt;&gt;</a></font></p>
+</div>
+<div class="login_ad">
+        <span><input class="shuru" type="text" id="mobile" onkeyup="this.value=this.value.replace(/\D/g,'');$('#mobileErrMsg').html('');"
+   		onafterpaste="this.value=this.value.replace(/\D/g,'')"
+   		maxlength="11" size="30" onblur="checkMobile();" placeholder="请输入手机号"/></span>
+        <span><input class="shuru" type="password" id="password" size="30" maxlength="18" autocomplete="off"
+    	onkeyup="this.value=this.value.replace(/[^\w!;:,._=@#$%^&*()]|_/ig,'');"
+  		onfocus="changeInput('password')" onblur="checkUserPwd()" placeholder="请输入密码"/></span>
+  		<p style="height:18px"><font id="mobileErrMsg" style="color:red"></font></p>
+</div>
+<div class="main_jg"></div>
+<div class="login_text"><input type="radio" checked id="readgz"/> <font>我已阅读并同意活动规则及<a href="xieyi.html" class="c_yellow">《相关条款》</a></font></div>
+<div class="main_jg"></div>
+	<a href="javascript:void(0);" class="login_but" onclick="loginChallenge('question');">登录去答题</a>
+	<div id="worn" style="display:none;">
+		<div class="pop_title">
+        	<div class="f_l">信息确认</div>
+        	<div class="f_r" ><a href="javascript:void(0);" onclick="window.location = getPath() + '/htmlwx/question.html'"><img src="../images/close_icon.png"/></a></div>
+    	</div>
+    	<div class="pop_con">
+    		<center><p style="color:#000;" name="message">赠送500初始积分，今日登录送100积分。（每日登录可拿100积分哦）</p></center>
+        	<center><a href="javascript:void(0);" class="pop_but"  onclick="window.location = getPath() + '/htmlwx/question.html'">确 定</a></center><br/>
+        </div>
+</div>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+initWx(window.location.href,"/htmlwx/hdbegin.html",'篮彩季，微竞猜',false);
+loadGaScript();
+</script>
+</body>
+</html>

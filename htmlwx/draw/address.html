@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<link rel="stylesheet" href="./css/base.css">
+		<title>超级足球季，等你来参与！</title>
+		<style>
+			html{
+				font-size: 100px;
+			}
+
+			body {
+				margin: 0;
+				background: url("images/q_bg.png") no-repeat;
+				background-size: cover;
+				font-family: "Microsoft YaHei", 微软雅黑;
+			}
+
+			.address_box{
+				position: relative;
+				top: 0.63rem;
+				margin-left: 0.2rem;
+				margin-right: 0.17rem;
+			}
+			
+			.address_main{
+				border: 0.03rem solid #ff9e36;
+				width: 3.31rem;
+				height: 2.97rem;
+				padding-top: 0.31rem;
+				color: #ffe65a;
+				font-size: 0.13rem;
+			}
+
+			.address_shadow{
+				width: 3.31rem;
+				height: 3.28rem;
+				border: 0.03rem solid #c33239;
+				position: absolute;
+				top: 0.07rem;
+				left: 0.07rem;
+				z-index: -1;
+			}
+			
+			.address_img{
+				position: absolute;
+				top: -0.28rem;
+				left: 2.17rem;
+				width: 0.91rem;
+				height: 0.44rem;
+				z-index: 10;
+			}
+			
+			.s_box{
+				width: 2.8rem;
+				height: 0.40rem;
+				background:#2b4890;
+				border-radius: 0.2rem;
+				position: relative;
+				margin: 0 0.16rem 0.13rem 0.19rem;
+				padding-left: 0.17rem;
+			}
+
+			.s_boxshadow{
+				width: 2.97rem;
+				height: 0.4rem;
+				background:#6d0000;
+				border-radius: 0.2rem;
+				z-index: -10;
+				position: absolute;
+				top: 0.03rem;
+				left: 0.02rem;
+			}
+			
+			.s_box p{
+				float: left;
+				line-height: 0.4rem;
+			}
+
+			.s_box input{
+				float: left;
+				background: #19306b;
+				border: none;
+				border-radius: 0.2rem;
+				height: 0.3rem;
+				width: 1.86rem;
+				margin-top: 0.05rem;
+				margin-left: 0.02rem;
+				outline: none;
+				padding-left: 0.19rem;
+				color: #ffe65a;
+				font-size: 0.13rem;
+				letter-spacing: 0.01rem;
+			}
+
+			textarea::placeholder,input::placeholder{
+				color: #2b4890;
+				font-family: "Microsoft YaHei", 微软雅黑;
+				font-size: 0.13rem;
+				letter-spacing: 0.01rem;
+			}
+
+			.box1 input{
+				width: 2rem;
+			}
+
+			.l_box{
+				width: 2.8rem;
+				height: 1.16rem;
+				background:#2b4890;
+				border-radius: 0.2rem;
+				position: relative;
+				margin: 0 0.16rem 0.13rem 0.19rem;
+				padding-left: 0.17rem;
+			}
+
+			.l_boxshadow{
+				width: 2.97rem;
+				height: 1.16rem;
+				background:#6d0000;
+				border-radius: 0.2rem;
+				z-index: -10;
+				position: absolute;
+				top: 0.03rem;
+				left: 0.02rem;
+			}
+			
+			.l_box p{
+				float: left;
+				line-height: 0.4rem;
+			}
+
+			.l_box textarea{
+				float: left;
+				background: #19306b;
+				border: none;
+				border-radius: 0.2rem;
+				margin-top: 0.05rem;
+				margin-left: 0.02rem;
+				outline: none;
+				padding-left: 0.2rem;
+				padding-right: 0.12rem;
+				padding-top: 0.03rem;
+				color: #ffe65a;
+				font-size: 0.13rem;
+				line-height: 0.26rem;
+				font-family: "Microsoft YaHei", 微软雅黑;
+				letter-spacing: 0.01rem;
+			}
+
+			.id_box{
+				width: 1.64rem;
+				height: 0.5rem;
+				background: #c33239;
+				margin-top: 0.28rem;
+				border-radius: 0.05rem;
+				padding-top: 0.05rem;
+				padding-left: 0.02rem;
+				padding-right: 0.02rem;
+				display: flex;
+				justify-content: space-around;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.id_box>img{
+				width: 0.47rem;
+				height: 0.3rem;
+				margin-top:0.08rem;
+			}
+
+			.img1{
+				position: absolute;	
+			}
+
+			.img2{
+				position: absolute;		
+				left: 1.13rem;
+			}
+
+			.photo{
+				height: 0.45rem;
+				width: 0.5rem;
+				background: #dc5346;
+				font-size: 0.125rem;
+				text-align: center;
+				letter-spacing: 0.01rem;
+				line-height: 0.21rem; 
+				color: #fff;
+				border-radius: 0.05rem;
+				position: absolute;
+				left: 0.05rem;
+
+			}
+		
+			.add_photo1{
+				height: 0.4rem;
+				width: 0.44rem;
+				border: 0.03rem solid #ff9e36;
+				border-radius: 0.05rem;
+				background: url(images/add.png) no-repeat;
+				background-size: cover;
+				position: absolute;		
+				left: 0.59rem;
+				overflow: hidden;
+			}
+
+			.add_photo2{
+				height: 0.4rem;
+				width: 0.44rem;
+				border: 0.03rem solid #ff9e36;
+				border-radius: 0.05rem;
+				background: url(images/add.png) no-repeat;
+				background-size: cover;
+				position: absolute;		
+				left: 1.13rem;
+				overflow: hidden;
+			}
+
+			#addphoto1{
+				position: absolute;
+				top: 0.11rem;
+				overflow: hidden;
+				outline: none;
+				opacity: 0;
+				-webkit-tap-highlight-color:rgba(0,0,0,0);
+			}
+
+			#addphoto2{
+				position: absolute;
+				top: 0.11rem;
+				overflow: hidden;
+				opacity: 0;
+				-webkit-tap-highlight-color:rgba(0,0,0,0);
+			}
+			
+			.tip{
+				display: flex;
+			}
+			
+			.tip p{
+				color: #ffe65a;
+				font-size: 0.13rem;
+				letter-spacing: 0.01rem;
+				margin: 0.08rem 0.03rem 0.38rem 0.05rem;
+			}
+
+			.id1box,.id2box{
+				width: 0.44rem;
+				margin-left: 0.1rem;
+				margin-top: 0.08rem;
+			}
+
+			.id1box p,.id2box p{
+				font-size: 0.1rem;
+				margin-top: 0.01rem;
+				margin-left: 0.11rem;
+			}
+
+			.sub{
+				width: 1.34rem;
+				height: 0.52rem;
+				margin-left: 1.05rem;
+				margin-bottom: 0.1rem;
+				margin-top: 1rem;
+			}
+
+			/*弹框样式*/
+			.box_shadow{
+				position: absolute;
+				top: -0.7rem;
+				left: -0.2rem;
+				background: #000;
+				width: 3.75rem;
+				height: 6.8rem;
+				opacity: 0.6;
+			}
+
+			.box{
+				position: absolute;
+				top:1.2rem;
+				left: -0.2rem;
+				width: 3.75rem;
+			}
+
+			.box2{
+				top:1.2rem;
+			}
+
+			.cha2{
+				width: 0.33rem;
+				height: 0.33rem;
+				position: absolute;
+				top: 1.66rem;
+				left: 1.72rem;
+			}
+
+			[v-cloak]{
+			  display: none;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div class="address_box"  id="address" v-cloak>
+			<img src="images/address_img.png" class="address_img">
+			
+
+			<div class="address_main">
+				<div class="s_box box1">
+					<p>收货人：</p>
+					<input type="text" placeholder="请输入姓名"  maxlength="6" v-model="name">
+					<div class="s_boxshadow"></div>
+				</div>
+				<div class="s_box">
+					<p>联系方式：</p>
+					<input type="number" placeholder="请输入手机号" v-model="phone" @blur="tip2">
+					<div class="s_boxshadow"></div>
+				</div>
+				<div class="l_box">
+					<p>收货地址：</p>
+					<textarea cols="21" rows="4" placeholder="请输入详细地址"  maxlength="30" v-model="address"></textarea>
+					<div class="l_boxshadow"></div>
+				</div>
+				<div class="s_box box4">
+					<p>身份证号：</p>
+					<input type="number" placeholder="请输入身份证号信息" v-model="id" @blur="tip4">
+					<div class="s_boxshadow"></div>
+				</div>
+			</div>
+			
+			<div class="address_shadow"></div>
+			
+			<!-- 照片上传 -->
+			<!-- <div class="id_box">
+				<div class="photo">身份证照片</div>
+				
+				<img :src=url1 v-if="url1" class="img1" >
+				<div class="add_photo1" v-else="url1"></div>
+				<form id="imageForm" enctype="multipart/form-data" method="POST">
+				    <input type="file" name="file" accept="" id="addphoto1" v-if="!added">
+				</form>	 
+				
+				<img :src=url2 v-if="url2" class="img2">
+				<div class="add_photo2" v-else="url2"></div>
+				<form id="imageForm" enctype="multipart/form-data" method="POST">
+				    <input type="file" name="file" accept="" id="addphoto2" v-if="!added">
+				</form>
+				
+			</div>
+
+			<div class="tip">
+				<p>示例：</p>
+				<div class="id1box">
+					<img src="images/id1.png">
+					<p>正面</p>
+				</div>
+				<div class="id2box">
+					<img src="images/id2.png">
+					<p>反面</p>
+				</div>
+
+				<p style="font-size: 0.1rem">(注：提交后不可再次修改!)</p>
+			</div> -->
+	
+			<img src="images/sub.png" class="sub" onclick="submit()">
+
+			<!-- 照片提交成功弹框 -->
+			<div class="box_shadow" v-if="success"></div>
+			<div  class="box box1" v-if="success">
+				<img src="images/success.png" >
+				<img src="images/cha2.png" class="cha2" @click="close1">
+			</div>
+			<!-- 照片提交失败弹框 -->
+			<div class="box_shadow" v-if="fail"></div>
+			<div  class="box box2" v-if="fail">
+				<img src="images/fail.png" >
+				<img src="images/cha2.png" class="cha2" @click="close1">
+			</div>
+			<!-- 纯汉字-->
+			<div class="box_shadow" v-if="nohanzi"></div>
+			<div  class="box box3" v-if="nohanzi">
+				<img src="images/hanzi.png" >
+				<img src="images/cha2.png" class="cha2" @click="close1">
+			</div>
+			<!-- 请填写全部信息 -->
+			<div class="box_shadow" v-if="notall"></div>
+			<div  class="box box4" v-if="notall">
+				<img src="images/writeall.png" >
+				<img src="images/cha2.png" class="cha2" @click="close1">
+			</div>
+			<!-- 收货地址已保存提示弹框 -->
+			<div class="box_shadow" v-if="save"></div>
+			<div  class="box box5" v-if="save">
+				<img src="images/save.png" >
+				<img src="images/cha2.png" class="cha2" @click="close5">
+			</div>
+
+		</div>
+	
+	</body>
+
+
+	<script src="./js/screen.js"></script>
+	<script type="text/javascript" src="../slogan/js/vue.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="../../js/common.js"></script>
+	<script src="https://cdn.bootcss.com/jquery.form/4.2.2/jquery.form.min.js"></script>
+	<script type="text/javascript" src="../../js/wxweb.js?v=20171024"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script>
+		initWx(window.location.href,"/htmlwx/draw/share.html",'超级足彩季，等你来答题！',false, '“超级足彩季，3亿大派奖！”火热来袭，系列活动之一知识竞猜开始啦，快去参加吧！');
+		var vvm = null;
+		vvm_init();
+
+		function vvm_init(){
+			vvm = new Vue({
+				el:"#address",
+				data:{
+					name:"",
+					phone:"",
+					address:"",
+					id:"",
+					url1:'',
+					url2:'',
+					added:window.localStorage.getItem('added')?true:false,
+					success:'',
+					fail:'',
+					nohanzi:'',
+					notall:'',
+					save:''
+				},
+				mounted:function(){
+					$.ajax({
+						url:'/ilsp-wechat/web/quiz/user/get.do',
+						type: 'POST',
+						data:{},
+						success:function(res){
+							// console.log(res)
+							if(res.u){
+								vvm.name=res.u.realName;
+								vvm.phone=res.u.phone;
+								vvm.address=res.u.postAddress;
+								vvm.id=res.u.idnum;
+								// 照片
+								// vvm.url1 = res.u.idcard1;
+								// vvm.url2 = res.u.idcard2;
+							}
+						},
+						error:function(res){
+							console.log(res)
+						}
+					})
+				},
+				methods:{
+					tip2:function(){
+						var reg2 = /^\d{1,11}$/;
+						if(!reg2.test(vvm.phone)){
+							vvm.phone = vvm.phone.substr(0,11);
+						}				
+					},
+					tip4:function(){
+						var reg3 = /^\d{1,18}$/;
+						if(!reg3.test(vvm.id)){
+							vvm.id = vvm.id.substr(0,18);
+						}
+					},
+					close1:function(){
+						vvm.success="";
+						vvm.fail="";
+						vvm.nohanzi="";
+						vvm.notall="";
+					},
+					close5:function(){
+						vvm.save="";
+						window.location.href='../hd_quiz_draw.html'
+					}
+				}
+			});
+		}
+
+		
+		//上传图片
+		$(document).on("change", '#addphoto1', function() {
+			var formData = new FormData();
+			// console.log($('#addphoto1')[0].files[0])
+			formData.append('file', $('#addphoto1')[0].files[0]);
+			// console.log(formData);
+			$.ajax({
+				url: '/ilsp-wechat/web/upload/image.do?name=id1',
+				type: 'POST',
+				cache: false,
+				data: formData,
+				processData: false,
+				contentType: false,
+				success: function(data) {
+					console.log(data);
+					var _data = eval('('+data+')')
+					// vvm.url1 = _data.r.url;
+					vvm.success="true";
+				},
+				error: function(data) {
+					console.log(data);
+					vvm.fail="true";
+				}
+			}).done(function(res) {}).fail(function(res) {});
+		});
+
+		$(document).on("change", '#addphoto2', function() {
+			var formData = new FormData();
+			// console.log($('#addphoto2')[0].files[0])
+			formData.append('file', $('#addphoto2')[0].files[0]);
+			// console.log(formData);
+			$.ajax({
+				url: '/ilsp-wechat/web/upload/image.do?name=id2',
+				type: 'POST',
+				cache: false,
+				data: formData,
+				processData: false,
+				contentType: false,
+				success: function(data) {
+					// console.log(data);
+					var _data = eval('('+data+')')
+					// console.log(_data);
+					// vvm.url2 = _data.r.url;
+					vvm.success="true";
+				},
+				error: function(data) {
+					console.log(data);
+					vvm.fail="true";
+				}
+			}).done(function(res) {}).fail(function(res) {});
+		});
+				
+
+		// 提交表单
+		function submit(){
+			var reg1 = /^[\u4e00-\u9fa5]{0,}$/;
+			if(!reg1.test(vvm.name)){
+				// 验证姓名是否为汉字
+				vvm.nohanzi="true";
+			}else if(vvm.name && vvm.phone && vvm.address && vvm.id){
+					window.localStorage.setItem('added',true)
+					$.ajax({
+						type:'POST',
+						url:'/ilsp-wechat/web/quiz/user/update.do',
+						data:{
+							realName:vvm.name,
+							detailAddrss:vvm.address,
+							mobile:vvm.phone,
+							idCard:vvm.id
+						},
+						success:function(res){
+							vvm.save="true";
+						}
+					});	
+			}else{
+				vvm.notall="true";
+			}
+		}
+
+		
+	</script>
+
+</html>
+
+
+

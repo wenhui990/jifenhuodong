@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>中国竞彩</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" href="../css/jc.css?v=20170530">
+<!--赛事的css-->
+<link type="text/css" rel="stylesheet" href="../css/common.css">
+<link type="text/css" rel="stylesheet" href="../css/lotCss.css">
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script src="../js/jquery.mmenu.min.js" type="text/javascript"></script>
+<link href="../css/jquery.mmenu.css" type="text/css" rel="stylesheet" />
+<link href="../css/jquery.mmenu.positioning.css" type="text/css"  rel="stylesheet" />
+</head>
+  <body>
+
+        <!-- 这里是页面内容区 -->
+        <div class="content">
+          <header class="bar bar-nav">
+			      <div class="row content">
+			        <div class="col-15">
+			          <div onclick="javascript:history.go(-1)" class="backBtn"></div>
+			        </div>
+			        <div class="col-100 text-center">
+			                     赛事详情
+			        </div>
+			        <div class="clearf"></div>
+			      </div>
+			    </header>
+          <div class="Calculator_begin matchResult">
+            <div id="container">
+              <!--赛果结果-->
+              <div class='match_result'>
+              	<!-- banner上的国家和比分 -->
+              	<div class='result_banner'>
+              	  <div class='left_country'><img id="hlogo" src=''><p id='home'></p></div>
+              	  <div class='result_score'>
+              	    <p id='aleague'></p>
+              	  	<div><span id='homeScore'></span><b>-</b><span id='guestScore'></span></div>
+              	  </div>
+              	  <div class='right_country'><img id="glogo" src=''><p id='guest'></p></div>
+              	  <div class='clearf'></div>
+              	</div>
+              	
+              	<div class="result_tab">
+              	  <ul>
+              	    <li class='tab_item money_tab current' style="width:48%;">奖金</li>
+<!--               	    <li class='tab_item status_tab'>赛况</li> -->
+              	    <!-- <li class='tab_item lineup_tab'>阵容</li> -->
+              	    <li class='tab_item analysis_tab' style="width:48%;">分析</li>
+              	    <!-- <li class='tab_item odds_tab'>赔率</li> -->
+              	  </ul>
+              	  <div class='clearf'></div>
+              	</div>
+              	
+              	<!-- 奖金 -->
+              	<div class="money_block item_list_tab">
+              		<table class='money_spf money_table'>
+	              	  <thead>
+	              	    <tr>
+	              	      <td colspan='3'>胜负</td>
+	              	    </tr>
+	              	  </thead>
+	              	  <tbody>
+	              	    <tr>
+	              	      <td>主胜<span class="sh" id="sfs"></span></td>
+	              	      <td>主负<span class="fu" id="sff"></span></td>
+	              	    </tr>
+	              	  </tbody>
+	              	</table>
+	              	<table class='money_rq money_table'>
+	              	  <thead>
+	              	    <tr>
+	              	      <td colspan='3'>让分胜负(<span id="let"></span>)</td>
+	              	    </tr>
+	              	  </thead>
+	              	  <tbody>
+	              	    <tr>
+	              	      <td>让分主胜<span class="sh" id='rfsfs'></span></td>
+	              	      <td>让分主负<span class="fu" id='rfsff'></span></td>
+	              	    </tr>
+	              	  </tbody>
+	              	</table>
+	              	<table class='money_jq money_table'>
+	              	  <thead>
+	              	    <tr>
+	              	      <td colspan='8'>大小分<span id="preset"></span></td>
+	              	    </tr>
+	              	  </thead>
+	              	  <tbody>
+	              	    <tr>
+	              	      <td id='bigScorer'>大分</td>
+	              	      <td id='smallScorer'>小分</td>
+	              	    </tr>
+	              	    <tr>
+	              	      <td id='bigScore'></td>
+	              	      <td id='smallScore'></td>
+	              	    </tr>
+	              	  </tbody>
+	              	</table>
+	              	<table class='money_bc money_table'>
+	              	  <thead>
+	              	    <tr>
+	              	      <td colspan='7'>胜分差</td>
+	              	    </tr>
+	              	  </thead>
+	              	  <tbody>
+	              	    <tr>
+	              	      <td></td>
+	              	      <td id='sfc1_5'>1-5</td>
+	              	      <td id='sfc6_10'>6-10</td>
+	              	      <td id='sfc11_15'>11-15</td>
+	              	      <td id='sfc16_20'>16-20</td>
+	              	      <td id='sfc21_25'>21-25</td>
+	              	      <td id='sfc26'>26+</td>
+	              	    </tr>
+	              	    <tr>
+	              	      <td>主胜</td>
+	              	      <td id='sfc1_5_z'></td>
+	              	      <td id='sfc6_10_z'></td>
+	              	      <td id='sfc11_15_z'></td>
+	              	      <td id='sfc16_20_z'></td>
+	              	      <td id='sfc21_25_z'></td>
+	              	      <td id='sfc26_z'></td>
+	              	    </tr>
+	              	    <tr>
+	              	      <td>客胜</td>
+	              	      <td id='sfc1_5_k'></td>
+	              	      <td id='sfc6_10_k'></td>
+	              	      <td id='sfc11_15_k'></td>
+	              	      <td id='sfc16_20_k'></td>
+	              	      <td id='sfc21_25_k'></td>
+	              	      <td id='sfc26_k'></td>
+	              	    </tr>
+	              	  </tbody>
+	              	</table>
+              	</div>
+              	<div class="analysis_block item_list_tab" style="display:none;">
+              	  <div class='inner_tab'>
+	              	  <ul class="analysis_link_tab"">
+	              	  	<li class='clasli_tab current radius3' style="width:100%;">对阵数据</li>
+	              	  	<!-- <li class='ranking_tab'>排名</li> -->
+	              	  </ul>
+	              	  <div class='clearf'></div>
+	              </div>
+             	  <div class="clasli_block">
+	              	<div class="data_block_header up"><span>近5场交锋&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span><span id="vsr"></span><span>主场:</span><span id="zvsr"></span></div>
+	              	<table id="vsTable">
+	              	</table>
+	              	<div class="data_block_header up"><span>(主)近5场交锋:</span><span id="homevsr"></span><span>主场:</span><span id="homezvsr"></span></div>
+	              	<table id="homeTable">
+	              	</table>
+	              	<div class="data_block_header down" onclick="showOneVersus('g')"><span>(客)近5场交锋:</span><span id="gvsr"></span><span>主场:</span><span id="gzvsr"></span></div>
+	              	<table id="gTable">
+	              	</table>
+	              	<div class="data_block_header down" onclick="showOneVersus('hf')"><span>(主)未来5场交锋:</span><span id='hfvsr'></span><span>主场:</span><span id='hfzvsr'></span></div>
+	              	<table id="hfTable">
+	              	</table>
+	              	<div class="data_block_header down" onclick="showOneVersus('gf')"><span>(客)未来5场交锋:</span><span id='gfvrs'></span><span>主场:</span><span id='gfvsrf'></span></div>
+	              	<table id="gfTable">
+	              	</table>
+	              </div>
+	              <div class="ranking_block" style="display:none;">
+	              	<table class="betranking_table">
+		                <thead>
+		                  <tr>
+		                    <td></td>
+		                    <td>球队</td>
+		                    <td>场</td>
+		                    <td>胜</td>
+		                    <td>平</td>
+		                    <td>负</td>
+		                    <td>进/失</td>
+		                    <td>积分</td>
+		                  </tr>
+		                </thead>
+		                <tbody>
+		                  <tr>
+		                    <td>1</td>
+		                    <td><img alt="" src="">切尔西</td>
+		                    <td>14</td>
+		                    <td>11</td>
+		                    <td>1</td>
+		                    <td>2</td>
+		                    <td>32/22</td>
+		                    <td>34</td>
+		                  </tr>
+		                  <tr>
+		                    <td>1</td>
+		                    <td><img alt="" src="">切尔西</td>
+		                    <td>14</td>
+		                    <td>11</td>
+		                    <td>1</td>
+		                    <td>2</td>
+		                    <td>32/22</td>
+		                    <td>34</td>
+		                  </tr>
+		                  <tr>
+		                    <td>1</td>
+		                    <td><img alt="" src="">切尔西</td>
+		                    <td>14</td>
+		                    <td>11</td>
+		                    <td>1</td>
+		                    <td>2</td>
+		                    <td>32/22</td>
+		                    <td>34</td>
+		                  </tr>
+		                  <tr>
+		                    <td>1</td>
+		                    <td><img alt="" src="">切尔西</td>
+		                    <td>14</td>
+		                    <td>11</td>
+		                    <td>1</td>
+		                    <td>2</td>
+		                    <td>32/22</td>
+		                    <td>34</td>
+		                  </tr>
+		                  <tr>
+		                    <td>1</td>
+		                    <td><img alt="" src="">切尔西</td>
+		                    <td>14</td>
+		                    <td>11</td>
+		                    <td>1</td>
+		                    <td>2</td>
+		                    <td>32/22</td>
+		                    <td>34</td>
+		                  </tr>
+		                  <tr>
+		                    <td>1</td>
+		                    <td><img alt="" src="">切尔西</td>
+		                    <td>14</td>
+		                    <td>11</td>
+		                    <td>1</td>
+		                    <td>2</td>
+		                    <td>32/22</td>
+		                    <td>34</td>
+		                  </tr>
+		                </tbody>
+		              </table>
+	              </div>
+              	</div>
+              	<!-- 亚盘、欧赔 -->
+              	<div class='odds_block item_list_tab' style="display:none;">
+              		<div class='inner_tab'>
+	              	  <ul class="odds_link_tab">
+	              	  	<li class='current' name='12'>亚盘</li>
+	              	  	<li name='11'>欧赔</li>
+	              	  </ul>
+	              	  <div class='clearf'></div>
+	              	</div>
+              		<table class='yapan_table'>
+	              	</table>
+              	</div>
+              	
+              </div>
+            </div>
+          </div>
+        </div>
+
+  <!-- 比分的css -->
+  <link type="text/css" rel="stylesheet" href="../css/crs.css">
+  <script type="text/javascript" src="../js/matchResult.js?v=20170530"></script>
+  <!-- 引入系统js -->
+  <script type="text/javascript" src="../js/jquery.js"></script>
+  <script type="text/javascript" src="../js/wxbox.js"></script>
+  <script type="text/javascript" src="../js/common.js"></script>
+  <script type="text/javascript" src="../js/wxweb.js"></script>
+  <script type="text/javascript"
+                        src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+	initWx(window.location.href,"/htmlwx/matchResultBasketBall.html","中国竞彩-固定奖金",false);
+	loadGaScript('UA-99976220-3');
+    $(function(){
+	  $(".yapan_table tbody tr:odd,.money_spf tbody tr:odd,.money_rq tbody tr:odd,.money_jq tbody tr:odd,.money_bc tbody tr:odd,.money_bf tbody tr:odd,.clasli_block tr:odd").addClass("odd");
+	  $(".yapan_table tbody tr:even,.money_spf tbody tr:odd,.money_rq tbody tr:even,.money_jq tbody tr:even,.money_bc tbody tr:even,.money_bf tbody tr:even,.clasli_block tr:even").addClass("even");
+	
+		var hidStr = getQueryString("hid");
+		var gidStr = getQueryString("gid");
+		if(hidStr && gidStr){
+			$(".money_tab").removeClass("current");
+			$(".analysis_tab").addClass("current");
+			$(".analysis_block").show().siblings(".item_list_tab").hide();
+			hid = hidStr;
+			gid = gidStr;
+			showVersus(getQueryString("mid"));
+		} else {
+			matchOdds();
+		}
+    })
+	var mtype = 1;
+	</script>
+  </body>
+</html>

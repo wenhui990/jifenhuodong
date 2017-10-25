@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<title>超级足球季，等你来参与！</title>
+		<link rel="stylesheet" href="./css/base.css">
+		<style>
+			html{
+				font-size: 100px;
+			}
+
+			body {
+				margin: 0;
+				background: url("images/q_bg.png") no-repeat;
+				background-size: cover;
+				font-family: "Microsoft YaHei", 微软雅黑;
+			}
+
+			.head{
+				position: relative;
+				z-index: -10;
+			}
+
+			.q_head{
+				width: 100%;
+			}
+			
+			.box_question{
+				position: relative;
+			}
+
+			.q_box{
+				margin-top: -0.15rem;
+				margin-left: 0.39rem;
+				width: 2.97rem;
+				height: auto;
+				background: #ffb22d;
+				font-size: 0.15rem;
+				font-weight: bolder;
+				position: relative;
+				z-index: 10;
+			}
+
+			.q_shadow{
+				position: absolute;
+				top: -0.1rem;
+				left: 0.05rem;
+				margin-left: 0.39rem;
+				width: 2.97rem;
+				height: auto;
+				background: #6d0000;
+				font-size: 0.15rem;
+				line-height: 0.25rem;
+				letter-spacing: 0.01rem;
+				text-indent: 0.45rem;
+				padding-top: 0.08rem;
+				z-index: -1;
+			}
+
+			.q_num{
+				position: absolute;
+				top: -0.15rem;
+				left: 0.11rem;
+				width: 0.45rem;
+			}
+
+			.q_text{
+				padding-left:0.14rem;
+				padding-top: 0.08rem;
+				line-height: 0.25rem;
+				width: 2.81rem;
+				text-indent: 0.45rem;
+				letter-spacing: 0.01rem;
+				color: #750e0e;
+			}
+
+			.a_box{
+				margin: -0.32rem 0 0.1rem 0.19rem;
+				width: 3.1rem;
+				height: auto;
+				border: 0.03rem solid #ff9e36;
+				z-index: 1;
+				padding-left: 0.2rem;
+				padding-top: 0.51rem;
+				position: relative;
+			}
+
+			#a_shadow{
+				width: 3.1rem;
+				border: 0.03rem solid #c33239;
+				position: absolute;
+				top: 0.05rem;
+    			left: 0.05rem;
+				z-index: -100;
+				padding-left: 0.2rem;
+				padding-top: 0.51rem;
+			}
+
+			.a_box li{
+				width: 2.04rem;
+				height: auto;
+				border-radius: 0.28rem;
+				box-shadow: 0.02rem 0.03rem 0 #6d0000;
+				margin-bottom: 0.15rem;
+				position: relative;
+				display: flex;
+				font-size: 0.15rem;
+				font-weight: bolder;
+				letter-spacing: 0.01rem;
+				color: #fff;
+				flex: 3;
+				line-height: 0.21rem;
+				padding: 0.08rem 0.11rem 0.1rem 0.78rem;
+			}
+
+			.a_box li img{
+				display: none;
+			}
+
+			.a_box li:nth-child(1){
+				background: #2b4890 url(images/a1.png) no-repeat 0.12rem 0.07rem;
+				background-size: 0.58rem 0.25rem;
+			}
+			
+			.a_box li:nth-child(2){
+				background: #2b4890 url(images/b1.png) no-repeat 0.12rem 0.07rem;
+				background-size: 0.58rem 0.25rem;
+			}
+
+			.a_box li:nth-child(3){
+				background: #2b4890 url(images/c1.png) no-repeat 0.12rem 0.07rem;
+				background-size: 0.58rem 0.25rem;
+			}
+
+			.a_box li:nth-child(4){
+				background: #2b4890 url(images/d1.png) no-repeat 0.12rem 0.07rem;
+				background-size: 0.58rem 0.25rem;
+			}
+		
+			.a_box li.selected{
+				background:-webkit-linear-gradient(left, #fb82ac,#3ab6bd,#78f8f6);
+				box-shadow: 0.05rem 0.03rem 0.03rem #a9393a;
+				position: relative;
+			}
+
+			.a_box li.selected img{
+				width: 0.6rem;
+				height: 0.25rem;
+				position: absolute;
+				top: 0.07rem;
+				left: 0.12rem;
+			}
+
+			/*弹框样式*/
+			.box_shadow{
+				position: absolute;
+				top: -2.65rem;
+				background: #000;
+				width: 3.75rem;
+				height: 6.67rem;
+				opacity: 0.6;
+			}
+
+			.box{
+				position: absolute;
+				top: -0.75rem;
+				width: 3.75rem;
+				z-index: 100;
+			}
+			
+			.todraw{
+				width: 1.32rem;
+				height: 0.53rem;
+				position: absolute;
+				top: 1.46rem;
+				left: 1.23rem;
+			}
+			
+			.cha1{
+				width: 0.33rem;
+				height: 0.33rem;
+				position: absolute;
+				top: 2.29rem;
+				left: 1.72rem;
+			}
+
+			.cha2{
+				width: 0.33rem;
+				height: 0.33rem;
+				position: absolute;
+				top: 1.66rem;
+				left: 1.72rem;
+			}
+
+			#ans2,#ans2 li{
+				visibility: hidden;
+			}
+
+			[v-cloak]{
+			  display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="head">
+			<img src="images/q_head.png" class="q_head">
+
+		</div>
+		
+		<div class="box_question" id="question" v-cloak>
+			<div class="q_box">
+				<img src="images/1.png" class="q_num" v-if="quesId==0">
+				<img src="images/2.png" class="q_num" v-if="quesId==1">
+				<img src="images/3.png" class="q_num" v-if="quesId==2">
+				<img src="images/4.png" class="q_num" v-if="quesId==3">
+				<img src="images/5.png" class="q_num" v-if="quesId==4">
+				<img src="images/6.png" class="q_num" v-if="quesId==5">
+				<p class="q_text">
+					{{text}}
+				</p>
+			</div>
+			<div class="q_shadow" style="height:"><p>{{text}}</p></div>
+			
+			<div class="a_box" >
+				<ul id="ans">
+					<li v-for="item in options"  @click="iClick">
+						<img :src="'images/'+abcd+'2.png'" class="aaa">
+						{{item}}
+					</li>
+				</ul>
+
+				<div id="a_shadow">
+					<ul id="ans2">
+					<li v-for="item in options"  @click="iClick">
+						<img :src="'images/'+abcd+'2.png'" class="bbb">
+						{{item}}
+					</li>
+				</ul>
+				</div>
+			</div>
+			
+
+			
+			<!-- 去抽奖弹框 -->
+			<div class="box_shadow" v-if="candraw"></div>
+			<div  class="box" v-if="candraw">
+				<img src="images/candraw.png" >
+				<img src="images/todraw.png" class="todraw" @click="toDraw">
+				<img src="images/cha1.png" class="cha1" @click="close1">
+			</div>
+			<!-- 答错弹框 -->
+			<div class="box_shadow" v-if="wrong"></div>
+			<div  class="box" v-if="wrong">
+				<img src="images/wrong.png" >
+				<img src="images/cha2.png" class="cha2" @click="close2">
+			</div>
+			<!-- 不可答题弹框 -->
+			<div class="box_shadow" v-if="!canans"></div>
+			<div  class="box" v-if="!canans">
+				<img src="images/ansall.png" >
+				<img src="images/cha2.png" class="cha2" @click="close3">
+			</div>
+			<!-- 不在答题时间弹框-->
+			<div class="box_shadow" v-if="intime"></div>
+			<div  class="box" v-if="intime">
+				<img src="images/onlytime.png" >
+				<img src="images/cha2.png" class="cha2" @click="close3">
+			</div>
+		</div>
+				
+	</body>
+
+
+	<script src="./js/screen.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../slogan/js/vue.js"></script>
+	<script type="text/javascript" src="../../js/wxweb.js?v=20161024"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+		initWx(window.location.href,"/htmlwx/draw/share.html",'超级足彩季，等你来答题！',false, '“超级足彩季，3亿大派奖！”火热来袭，系列活动之一知识竞猜开始啦，快去参加吧！');
+
+		var vvm = null;
+		// var aid = sessionStorage.getItem("aid");
+		// console.log(aid)
+		
+		vvm_init();
+		
+		// 答案框黄框和红框高度一致
+		// $('.a_shadow').eq(0).css('height',parseInt($('.a_box').eq(0).innerHeight())/100 + 'rem')
+
+		function vvm_init(){
+			vvm = new Vue({
+				el:"#question",
+				data:{
+					ques:[''],
+					quesId:0,
+					as:'',
+					text:"",
+					options:[],
+					canans:'true',
+					candraw:'',
+					wrong:'',
+					intime:'',
+					abcd:1
+				},
+				mounted:function(){
+					var d = new Date();
+					if(d.getHours() < 9){
+						// 不在抽奖时间
+						this.intime = "true";
+					}else{
+						axios.post("/ilsp-wechat/web/quiz/get.do")
+						.then(function(res){
+							// vvm.aid=res.data.a.id;
+							// console.log(vvm.aid)
+							if(res.data.s == 200){
+								vvm.ques = res.data.r;
+								vvm.t = res.data.t;
+								vvm.text = vvm.ques[vvm.quesId].text;
+								console.log(vvm.ques);
+								// 分割答案选项
+								var _options = vvm.ques[vvm.quesId].options.split(";");
+								var l = _options.length;
+								for(var i = 0 ; i < l; i ++){
+							      if(_options[i] != ''){
+							         vvm.options.push(_options[i])
+							      }
+							    }
+								console.log(vvm.options)
+							}else{
+								vvm.canans = ""
+								// 答题后再进入 弹框提示已答完
+							}	
+						})
+					}
+				},
+				methods:{
+					iClick:function(e){//传入事件对象
+						var aLi = document.getElementsByTagName('li');
+						var evt = e || window.event;
+						if (evt.target.nodeName = "Li"){ //注意节点首字母为大写！
+							for(var i = 0 ; i < 4 ; i ++){
+								console.log(evt.target)
+								if(evt.target == aLi [i]){
+									// alert(i)
+									var id = vvm.ques[vvm.quesId].id
+									// 获取题目id
+									var index = (i + 1).toString().charCodeAt(0) 
+									evt.target.className = 'selected';
+									// 选中的选项改变样式
+									vvm.abcd=i+1;
+									$('.selected img').css('display','block')
+									// 选项选中变色
+								}
+							}
+						}
+
+						var timer = null;
+						var that = evt.target;
+						if(vvm.quesId < 5){
+							timer= setTimeout(function(){
+								that.className = '';
+								vvm.quesId ++;
+								$('.aaa').css('display','none')
+								vvm.text = vvm.ques[vvm.quesId].text;
+								// 分割答案选项
+								;
+								vvm.options = vvm.ques[vvm.quesId].options.split(";");
+								console.log(vvm.options)
+								// 答案as:{1:'A',2:'B'...}
+								vvm.as += id+':'+ String.fromCharCode(index + 16)+',';
+								console.log(vvm.as)
+							},300)
+							// 300ms后清空样式并进入下一道题目
+						}else{
+							vvm.quesId = 5;
+							vvm.as += id+':'+ String.fromCharCode(index + 16)
+							console.log(vvm.as)
+
+							$.ajax({
+								type:'POST',
+								url:'/ilsp-wechat/web/quiz/answer.do?aid='+getQueryString('aid'),
+								data:{
+									t:vvm.t,
+									as:vvm.as
+								},
+								success:function(res){
+									if(res.s==701){
+										vvm.candraw='true';
+									}else{
+										vvm.wrong = 'true';
+									}
+								}
+							})
+						}
+
+					},
+					// 全部答对点击抽奖进入抽奖页面
+					toDraw:function(){
+						vvm.candraw='';
+						window.location.href='./draw.html?aid='+getQueryString('aid')
+					},
+					// 关闭去抽奖则返回首页
+					close1:function(){
+						vvm.candraw='';
+						window.location.href='../hd_quiz_draw.html?aid='+getQueryString('aid')
+					},
+					// 关闭答错提示返回首页
+					close2:function(){
+						vvm.wrong = '';
+						window.location.href='../hd_quiz_draw.html?aid='+getQueryString('aid')
+					},
+					// 关闭不可答题/不在答题时间提示返回首页
+					close3:function(){
+						vvm.canans = 'true';
+						vvm.intime = "";
+						window.location.href='../hd_quiz_draw.html?aid='+getQueryString('aid')
+					}
+				}
+			});
+		}
+			
+		function getQueryString(name){
+		     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		     var r = window.location.search.substr(1).match(reg);
+		     if(r!=null)return  unescape(r[2]); return null;
+		}
+
+	</script>
+</html>

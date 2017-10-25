@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<link rel='stylesheet' href='http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css'>
+<link rel='stylesheet' href='css/balloon.css'>
+<link rel="stylesheet" href="css/weui.min.css">
+<link rel="stylesheet" href="css/jquery-weui.min.css">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+</head>
+<body>
+	<script type="text/javascript" src="../../js/jquery.cookie.js"></script>
+    <script src="js/jquery-weui.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/wxweb.js?v=20161024"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript"> 
+		initWx(window.location.href,"/htmlwx/slogan/share.htm",'我的竞彩我做主！',false, '竞彩你做主，一言值千金！5月31日-7月31日提交原创竞彩宣传口号就有机会获得千元大奖！');
+        $.showLoading();
+        var uid=getQueryString("uid");
+        var cookie_key = "slogan_uid";
+        
+        $.cookie(cookie_key, uid, { expires: 30, path: '/' });
+        window.location.replace("index.htm");
+    </script>
+</body>
+</html>
+

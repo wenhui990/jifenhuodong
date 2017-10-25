@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html style="background:#141926;">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>中国竞彩</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" href="../css/jc.css">
+<script type="text/javascript" src="../js/jquery.js"></script>
+<link href="../css/jquery.mmenu.css" type="text/css" rel="stylesheet" />
+</head>
+<body style="background:#141926;">
+	<div class="content">
+		<header class="bar bar-nav">
+	      <div class="col-70 text-center">我的竞猜</div>
+	    </div>
+	  </header>
+		<div class="Calculator_begin">
+			<div id="container">
+				<div class="g-con">
+					<div class="m-sel" style="padding-top:10px;">
+						<div id="data" class="select-wrapper">
+							<i class="icon select-down"></i> <select id="activitySelect">
+							</select>
+						</div>
+						<div class="m-det">
+							<p>
+								<span class="left">竞猜参与<br> <b><i id="totalConsume" class="red money">--</i>次</b>
+								</span>
+								<span class="right">总赔率<br><b><i id="totalBounus" class="red money">--.--</i></b>
+								</span>
+								<div class="clearf"></div>
+							</p>
+						</div>
+					</div>
+					<!-- 投注列表 -->
+					<div class="m-list2"></div>
+					<!-- 投注列表 -->
+				</div>
+			</div>
+		</div>
+	<script type="text/javascript" src="../js/userBet.js"></script>
+	<!-- 引入系统js -->
+	<script type="text/javascript" src="../js/wxbox.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/wxweb.js"></script>
+	<script type="text/javascript"
+		src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+	initWx(window.location.href,"/htmlwx/hd_bet_user.html","中国竞彩-我的竞猜",false);
+	loadGaScript();
+	$(function(){
+		userBet(0);
+		$("#activitySelect").change(function(){
+			userBet($("#activitySelect option:selected").val());
+		});
+	});
+	</script>
+</body>
+</html>

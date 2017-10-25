@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<link rel='stylesheet' href='http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css'>
+<link rel="stylesheet" href="css/weui.min.css">
+<link rel="stylesheet" href="css/jquery-weui.min.css">
+<style>
+    body{
+        margin:0;
+        background: url("img/beijing.png") no-repeat;
+        background-size: cover;
+        font-family:"Microsoft YaHei",微软雅黑;
+    }
+
+    .head {
+        margin-top: 20px;
+    }
+    .head img{
+        width: 100%;
+    }
+    .submit {
+        margin-top: 30px;
+        color:#46bdf3;
+        text-align:center;
+    }
+    .submit img{
+        width: 80%;
+    }
+
+    .container{
+        text-align:left;
+        margin-left:10%;
+        margin-right:10%;
+    }
+
+    .kouhao {
+        color: #FFF;
+        font-size: 1.5em;
+        margin-left:10px;
+    }
+
+    .haoli {
+        color: #46bdf3;
+        font-size: 1em;
+        margin-left:10px;
+    }
+
+    .form-control {
+        height:50px;
+        background-color: #162b69;
+        border-radius: 25px;
+        border: 4px #000;
+        margin-bottom: 20px;
+	text-align: center;
+	color: #fff;
+    }
+
+    input::-webkit-input-placeholder{text-align: center;color:#46bdf3;}
+	.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+	    background-color: #162b69;
+		color: #fff;
+	}
+
+    .bottom {
+       color:#46bdf3;
+       background-color:#162b69;
+       padding-top:10px;
+       padding-left: 10%;
+       padding-right: 10%;
+       padding-bottom:30px;
+    }
+
+/*弹窗*/
+.msg_ico{position:absolute;right:10px;top:30px;}
+.msg_pop_block{z-index:10000;position:fixed;top:0;left:0;width:100%;height:100%;background: rgba(0,0,0,0.8);}
+.msg_pop{position:absolute;top:50%;left:0;margin-left:10%;margin-top:-100px;width:80%}
+.msg_pop h3{background:#162b69;color:#46bdf3;border:1px solid #46bdf3;border-radius:10px 10px 0 0;box-shadow:0 0 3px 3px #41d3fe;
+            font-size:13px;text-align:center;padding:8px 15px;margin-left:20px;float:left;}
+.msg_pop .msg_text{background:#162b69 url(./img/laba.png) no-repeat 20px center;background-size:30px auto;color:#fc9a1a;border:1px solid #46bdf3;border-bottom:0;border-radius:10px;box-shadow:0 0 3px 3px #41d3fe;
+            font-size:16px;text-align:left;padding:30px 10px 30px 20%;margin-top:-10px;width:100%;float:left;}
+.msg_btn{float:left;width:100%;margin-top:-22px;}
+.msg_btn a{float:left;display:block;background:url(./img/msg_btn.png) no-repeat 0 0;background-size:110px auto;width:110px;height:53px;line-height:45px;text-align:center;color:#fff;font-size:14px;}
+.msg_btn a:first-child{margin-right:10px;}
+.msg_btn div{margin:0 auto;width:230px;}
+</style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src='http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ce17fbd6942a666e6b8dcec4d3c4148e";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body>
+    <script type="text/javascript" src="../../js/jquery.cookie.js"></script>
+        <script type="text/javascript">
+//        $.showLoading();
+        var cookie_key = "slogan_uid";
+        var uid = $.cookie(cookie_key);
+        console.log("cookie uid:" + uid);
+        if (typeof(uid) == "undefined"){
+            window.location.replace("share.htm");
+        }
+    </script>
+
+	<!-- 弹窗 -->
+	<div class="msg_pop_block" id="tip" style="display:none;">
+		<div class="msg_pop">
+			<h3>提&nbsp;示</h3><img class="msg_ico" src="./img/msg_ico.png">
+			<div class="msg_text" id="tipMsg"></div>
+			<div class="msg_btn">
+			    <div style="width:110px;"><a href="javascript:void(0);" id="tipSure">确&nbsp;定</a></div>
+			</div>
+		</div>
+	</div>
+	<div class="msg_pop_block" id="tip2" style="display:none;">
+		<div class="msg_pop">
+			<h3>提&nbsp;示</h3><img class="msg_ico" src="./img/msg_ico.png">
+			<div class="msg_text" id="tipMsg2"></div>
+			<div class="msg_btn">
+			    <div><a href="javascript:void(0);" onclick="hide('tip2')">取&nbsp;消</a><a href="javascript:void(0);" id="tipSure2">确&nbsp;定</a></div>
+			</div>
+		</div>
+	</div>
+    <div class="head">
+        <img src="img/head.png">
+    </div>
+
+    <div class="container">
+        <label>
+            <span class="kouhao">填写口号</span>
+            <span class="haoli">赢取超级豪礼</span>
+        </label>
+        <form>
+        <div class="form-group">
+            <input type="text" disabled="disabled" maxlength="10" class="form-control" id="slogan1" placeholder="口号一">
+            <input type="text" disabled="disabled" maxlength="10" class="form-control" id="slogan2" placeholder="口号二">
+            <input type="text" disabled="disabled" maxlength="10" class="form-control" id="slogan3" placeholder="口号三">
+        <label>
+            <span class="kouhao">填写手机号</span>
+            <span class="haoli">大奖不落榜</span>
+        </label>
+            <input type="tel" disabled="disabled" maxlength="11" class="form-control" id="phone" placeholder="请填写手机号">
+          </div>
+        </form>
+
+    </div>
+
+    <div class="submit">
+        <a id="submit">
+        <img src="img/submit_button.png"/>
+        </a>
+        <h4>活动简介</h4>
+    </div>
+
+    <div class="xx">
+        </div>
+
+    <div class="bottom">
+        <p>1. 每名用户最多可填写3个口号。</p>
+        <p>2. 口号内容可包含汉字、标点、英文字母，不得超过10个字符。</p>
+        <p>3. 同时须填写唯一识别手机号，用于后期发奖，提交后口号内容及手机号均不可更改，请务必填写准确信息！</p>
+        <p>4. 可在“我的口号”中查看已提交内容。详细规则请见下方“规则介绍”。</p>
+    </div>
+
+
+    <script src="js/jquery-weui.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/wxweb.js?v=20161024"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript">
+	initWx(window.location.href,"/htmlwx/slogan/share.htm",'我的竞彩我做主！',false, '竞彩你做主，一言值千金！5月31日-7月31日提交原创竞彩宣传口号就有机会获得千元大奖！');
+    $.showLoading();
+
+    var cookie_key = "slogan_uid";
+    var uid = $.cookie(cookie_key);
+    console.log("cookie uid:" + uid);
+    if (typeof(uid) == "undefined"){
+        window.location.replace("share.htm");
+    }
+
+    var aid=getQueryString("aid");
+    // var uid=getQueryString("uid");
+	$.getJSON('/ilsp-wechat/web/slogan/get.do?aid='+aid+"&uid="+uid,function(json){
+        if (json.s!=200){
+        	showTip(json.r);
+//             $.alert(json.r, "加载失败!",function(){
+//                 wx.closeWindow();
+//             });
+            return;
+        }
+        var slist=json.r;
+		var user=json.b;
+        var hasFinish=true;
+		for  (var i=0;i<slist.length;i++){
+			var item=slist[i];
+			$('#slogan'+(i+1)).val(item.slogan);
+		}
+		for  (var i=slist.length;i<3;i++){
+            hasFinish=false;
+			$('#slogan'+(i+1)).removeAttr('disabled');
+		}
+		if (user.phone){
+		 	$('#phone').val(user.phone);
+            slist.length<3&&($('#phone').removeAttr('disabled'));
+		}else{
+            hasFinish=false;
+		 	$('#phone').removeAttr('disabled');
+		}
+
+        if (hasFinish){
+        	showTip("您已经完成所有的口号提交！", function(){
+                location.href="my.htm?aid="+aid;
+            });
+//             $.alert("您已经完成所有的口号提交！", "恭喜",function(){
+//                 location.href="my.htm?aid="+aid+"&uid="+uid;
+//             });
+        }
+
+        $("#submit").on("click",function(){
+            if (hasFinish){
+                 $.toast("已经提交完成");
+            }else{
+            	showTip2("您确定要提交口号吗\n,提交后的口号无法修改?", function() {
+                    submit();
+                });
+//                  $.confirm("您确定要提交口号吗\n,提交后的口号无法修改?", "确认提交?", function() {
+//                           submit();
+//                         }, function() { }
+//                 );
+
+            }
+        });
+        $.hideLoading();
+	});
+
+
+	function submit(){
+        $.showLoading();
+		var finished=$('.form-control').filter("[disabled='disabled']").length;
+		var list=$('.form-control').not("[disabled='disabled']");
+        var postdata={aid:aid,uid:uid};
+        var submitted=0;
+        var err=false;
+        list.each(function(i,e){
+            if (e.id=='phone'){
+                if (e.value.indexOf("****")>-1){
+                }else if (!isMobile(e.value)){
+                    $.hideLoading();
+                    //$.toast("请提交合法手机号","text");
+                    showTip("请提交合法手机号");
+                    err=true;
+                }else{
+                    postdata[e.id]=e.value;
+                    submitted++;
+                }
+           }else if (!isBlank(e.value)){
+                    postdata[e.id]=e.value;
+                    submitted++;
+            }
+        });
+        if (err) {
+            return;
+        }
+        if (submitted==0) {
+            $.hideLoading();
+            //$.toast("没有任何修改","text");
+            showTip("没有任何修改");
+            return;
+        }
+        //console.log(JSON.stringify(postdata));
+		$.post('/ilsp-wechat/web/slogan/add.do',postdata,function(result){
+            $.hideLoading();
+            if (result.s==200){
+                //$.toast("提交成功!!");
+                //showTip("提交成功!!");
+                if ((finished+submitted)==4){
+			        location.href="my.htm?aid="+aid;
+                }else{
+                	location.href="index.htm?aid="+aid;
+                    //location.reload();
+                }
+            }else{
+            	showTip("提交失败："+result.r);
+               //$.alert(result.r, "提交失败!");
+            }
+		});
+	}
+
+    function isBlank(str) {
+       str=str.replace(/\s/g,'');
+       if (str.length>0) return false;
+       return true;
+    }
+    function isMobile(s) {
+        var patrn = /^(1[0-9]{10})$/;
+        if (!patrn.exec(s)) return false
+        return true;
+    }
+
+    function showTip(msg,func){
+    	if(!func){
+    		$("#tipSure").click(function(){
+    			hide("tip");
+    		});
+    	} else {
+    		$("#tipSure").click(function(){
+    			hide("tip");
+    			func();
+    		});
+    	}
+    	$("#tipMsg").html(msg);
+    	$("#tip").show();
+    }
+
+    function hide(id){
+    	$("#"+id).hide();
+    }
+
+    function showTip2(msg,func){
+    	if(!func){
+    		$("#tipSure2").click(function(){
+    			hide("tip2");
+    		});
+    	} else {
+    		$("#tipSure2").click(function(){
+    			hide("tip2");
+    			func();
+    		});
+    	}
+    	$("#tipMsg2").html(msg);
+    	$("#tip2").show();
+    }
+    </script>
+</body>
+</html>

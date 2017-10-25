@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0" name="viewport" />
+<title>中国竞彩</title>
+<link href="../css/wx-styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body style="background:#050811;">
+<span id="picture"><img src="../images/zhiyin.jpg" width="100%" /></span>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+zhiyin();
+$("#picture").click(function(){
+	closeWindow();
+	window.location = getPath() + "/htmlwx/mychallenge.html";
+});
+loadGaScript();
+</script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0" name="viewport" />
+<html class="pixel-ratio-1">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>中国竞彩</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm.min.css">
+    <link rel="stylesheet" href="../css/sm-extend.min.css">
+    <link rel="stylesheet" href="../css/jc.css">
+    <!--赛事的css-->
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+    <link type="text/css" rel="stylesheet" href="../css/lotCss.css"> 
+    <link href="../css/old-styles.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+		body{
+			background:#323232;
+			padding-bottom:0px;
+			font-family:microsoft yahei;
+			font-size:14px;
+			color:#fff;
+		}
+		.Calculator_begin{background:#323232 !important;}
+	</style>
+    <script type="text/javascript" src="../js/zepto.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+
+  <div class="page-group">
+
+    <!-- 单个page ,第一个.page默认被展示-->
+    <div class="page">
+        <!-- 标题栏 -->
+        <header class="bar bar-nav">
+          <div class="row content">
+              <div class="col-10 pull-left open-panel">侧</div>
+              <div class="col-80 text-center">
+              	<span>期数:<span id="gameNum"></span></span>
+                <select id="issue" onchange="changeIssue()"></select>
+              </div>
+              <div class="col-10"><a href="#router1">筛</a></div>
+          </div>
+        </header>
+        <!-- 这里是页面内容区 -->
+        <div class="content">
+          <div class="Calculator_begin">
+            <div id="container">
+              <div class="sais_top">
+				  
+				  <div class="sais_top_con">
+				    <div class="sais_top_con">
+				        <!-- 公告轮播 -->
+				        <div class="tra_slider">
+				          <ul class="bxslider">
+				            <li></li>
+				          </ul>
+				          <div class="clearf"></div>
+				        </div>
+				    </div>
+				  </div>
+				  <div class="sais_svn">
+				    <div class="f_l" id="saisId">
+				      <div name="saishi_0" class="on">
+				        <span>
+				          <img src="../images/sais_icon.png" /></span>
+				        <img src="../images/sais_img01.png" /></div>
+				      <div name="saishi_1">
+				        <span>
+				          <img src="../images/sais_icon.png" /></span>
+				        <img src="../images/sais_img03.png" /></div>
+				      <div name="saishi_2">
+				        <span>
+				          <img src="../images/sais_icon.png" /></span>
+				        <img src="../images/sais_img02.png" /></div>
+				    </div>
+				    <!-- <div class="f_r">
+				    <select id="issue" onchange="changeIssue()"></select></div> -->
+				  </div>
+				</div>
+				<div id="saishi_0" name="saishi">
+				  <div class="sais_word">
+				    <div class="f_l">开售：
+				      <font class="green">
+				        <b id="startTime"></b></font>
+				    </div>
+				    <div class="f_r">停售：
+				      <font class="red">
+				        <b id="stopTime"></b></font>
+				    </div>
+				  </div>
+				  <div class="sais_bj">
+				    <table cellpadding="0px" cellspacing="0">
+				      <thead>
+				        <tr class="tit">
+				          <td>赛事</td>
+				          <td>场次</td>
+				          <td>比赛日期</td>
+				          <td>主队</td>
+				          <td>客队</td>
+				          <td>比分</td>
+				          <td style="border-right:none;">结果</td></tr>
+				      </thead>
+				      <tbody id="res0"></tbody>
+				    </table>
+				  </div>
+				  <div class="sais_bj">
+				    <table cellpadding="0px" cellspacing="0">
+				      <thead>
+				        <tr class="tit">
+				          <td colspan="3" style="border-right:none;">奖金明细</td></tr>
+				      </thead>
+				      <tbody id="res00"></tbody>
+				    </table>
+				  </div>
+				</div>
+				<div id="saishi_1" style="display:none;" name="saishi">
+				  <div class="sais_word">
+				    <div class="f_l">开售：
+				      <font class="green">
+				        <b id="startTime1"></font></div>
+				    <div class="f_r">停售：
+				      <font class="red">
+				        <b id="stopTime1"></font></div>
+				  </div>
+				  <div class="sais_bj">
+				    <table cellpadding="0px" cellspacing="0">
+				      <thead>
+				        <tr class="tit">
+				          <td>赛事</td>
+				          <td>场次</td>
+				          <td>比赛日期</td>
+				          <td>对阵</td>
+				          <td>比分</td>
+				          <td style="border-right:none;">结果</td></tr>
+				      </thead>
+				      <tbody id="res1"></tbody>
+				    </table>
+				  </div>
+				  <div class="sais_bj">
+				    <table cellpadding="0px" cellspacing="0">
+				      <thead>
+				        <tr class="tit">
+				          <td colspan="3" style="border-right:none;">奖金明细</td></tr>
+				      </thead>
+				      <tbody id="res11"></tbody>
+				    </table>
+				  </div>
+				</div>
+				<div id="saishi_2" style="display:none;" name="saishi">
+				  <div class="sais_word">
+				    <div class="f_l">开售：
+				      <font class="green">
+				        <b id="startTime2"></font></div>
+				    <div class="f_r">停售：
+				      <font class="red">
+				        <b id="stopTime2"></font></div>
+				  </div>
+				  <div class="sais_bj">
+				    <table cellpadding="0px" cellspacing="0">
+				      <thead>
+				        <tr class="tit">
+				          <td>赛事</td>
+				          <td>场次</td>
+				          <td>比赛日期</td>
+				          <td>主队</td>
+				          <td>客队</td>
+				          <td>比分</td>
+				          <td style="border-right:none;">结果</td></tr>
+				      </thead>
+				      <tbody id="res2"></tbody>
+				    </table>
+				  </div>
+				  <div class="sais_bj">
+				    <table cellpadding="0px" cellspacing="0">
+				      <thead>
+				        <tr class="tit">
+				          <td colspan="3" style="border-right:none;">奖金明细</td></tr>
+				      </thead>
+				      <tbody id="res22"></tbody>
+				    </table>
+				  </div>
+				</div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- 其他的单个page内联页（如果有） -->
+    <div class="page" id='router1'>
+      <header class="bar bar-nav">
+        <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+          <span class="icon icon-left"></span>
+          返回
+        </a>
+        <h1 class='title'>赛事筛选</h1>
+      </header>
+      <div class="content">
+        <div class="content-block">
+          <div class="filter-item">
+            <a href="#">全选</a>
+            <a href="#">清空</a>
+            <div class="clearf"></div>
+          </div>
+          <div class="filter-item">
+            <a href="#" class="current">德甲</a>
+            <a href="#">意甲</a>
+            <a href="#">英甲</a>
+            <a href="#">阿甲</a>
+            <div class="clearf"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- popup, panel 等放在这里 -->
+  <div class="panel-overlay"></div>
+  <!-- Left Panel with Reveal effect -->
+  <div class="panel panel-left panel-reveal">
+    <div class="content-block">
+        <h2>中国竞彩</h2>
+        <div class="panel-list">
+          <h3>看赛事</h3>
+          <ul>
+            <li>受注赛事</li>
+            <li>赛程赛果</li>
+            <li>传足赛程</li>
+            <li>塞队排名</li>
+          </ul>
+          <div class="clearf"></div>
+        </div>
+        <div class="panel-list">
+          <h3>玩竞彩</h3>
+          <ul>
+            <li>竞彩日历</li>
+            <li>专家推荐</li>
+            <li>精彩讲堂</li>
+            <li>网点地图</li>
+          </ul>
+        </div>
+        <div class="panel-list">
+          <ul>
+            <li>我的积分</li>
+            <li>模拟投注</li>
+          </ul>
+        </div>
+        
+    </div>
+  </div>
+  <!-- 比分的css -->
+  <link type="text/css" rel="stylesheet" href="../css/crs.css">
+  <script type="text/javascript" src="../js/jc.js"></script>
+  <!--
+  <script type="text/javascript" src="../js/lotJs.js"></script>
+  -->
+  
+  <!--sui-->
+  <script type='text/javascript' src='../js/sm.js' charset='utf-8'></script>
+  <script type='text/javascript' src='../js/sm-extend.js' charset='utf-8'></script>
+  
+  <!-- 引入系统js -->
+  	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/wxbox.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/wxweb.js"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="../js/calculator/jquery.bxslider.js"></script>
+    <link  type="text/css" rel="stylesheet" href="../css/calculator/jquery.bxslider.css" />
+	<script type="text/javascript">
+	searchIssue(0,4,1014,0);
+	$("#saisId div").click(function(){
+			var name = $(this).attr("name");
+			$(this).siblings().removeClass("on").end().addClass("on");
+			var div = $("div[name=saishi]");
+			for(var i=0;i<div.length;i++){
+				if(name==div[i].id){
+					$("#"+div[i].id).css('display','');
+					if(i==0){
+					    searchIssue(0,4,1014,0);
+					}else if(i==1){
+						searchIssue(0,4,1004,1);
+					}else{
+						searchIssue(0,4,1006,2);
+					}
+				}else{
+					$("#"+div[i].id).css('display','none');
+				}
+			}
+	});
+	initWx(window.location.href,"/htmlwx/tradmatch.html","中国竞彩-传统足彩",false);
+	loadGaScript();
+	</script>
+  </body>
+</html>

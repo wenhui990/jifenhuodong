@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>中国竞彩</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" href="../css/jc.css">
+<!--赛事的css-->
+<link type="text/css" rel="stylesheet" href="../css/common.css">
+<link type="text/css" rel="stylesheet" href="../css/lotCss.css">
+<script type="text/javascript" src="../js/jquery.js"></script>
+<link href="../css/jquery.mmenu.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<div class="content">
+		<header class="bar bar-nav">
+			<div class="row content">
+				<div class="col-15">
+					<a href="#menu"></a>
+				</div>
+				<div class="col-35 ftballTab current text-right">
+					<span>足球</span>
+				</div>
+				<div class="col-35 bskballTab text-left">
+					<a href="hd_bet_basket.html"><span>篮球</span></a>
+				</div>
+<!-- 				<div class="col-15"> -->
+<!-- 					<a href="#filter" class="filterBtn"></a> -->
+<!-- 				</div> -->
+				<div class="clearf"></div>
+			</div>
+		</header>
+		<div class="Calculator_begin">
+			<div id="container">
+				<div id="matchDiv"></div>
+				<!-- 弹窗提示同场比赛不能选择 -->
+        		<div class="loading_wrap"><span class="loading_ico"></span></div>
+				<!--受注赛事下面固定条-->
+				<div id="sel_pan" style="height:50px;padding:10px;">
+					<table width="100%;" cellspacing="0" cellpadding="0" align="center">
+						<tbody>
+							<tr>
+								<td align="center">
+									<div class="sel_footer_down">
+										<div id="voteBtn" onclick="bet(0)" style="width:100%;margin-left:10%;">参与竞猜</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 比分的css -->
+  <link type="text/css" rel="stylesheet" href="../css/crs.css">
+  <script type="text/javascript" src="../js/bet.js"></script>
+  <!-- 引入系统js -->
+  <script type="text/javascript" src="../js/wxbox.js"></script>
+  <script type="text/javascript" src="../js/common.js"></script>
+  <script type="text/javascript" src="../js/wxweb.js"></script>
+  <script type="text/javascript"
+    src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+	initWx(window.location.href,"/htmlwx/hd_bet.html","中国竞彩-猜比赛",false);
+	loadGaScript();
+	searchBet(0);
+	</script>
+</body>
+</html>

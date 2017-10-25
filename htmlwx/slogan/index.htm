@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<link rel='stylesheet' href='http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css'>
+<link rel='stylesheet' href='css/balloon.css'>
+<link rel="stylesheet" href="css/weui.min.css">
+<link rel="stylesheet" href="css/jquery-weui.min.css">
+<style>
+    body{
+        margin:0;
+        background: url("img/beijing.png") no-repeat;
+        background-size: cover;
+        font-family:"Microsoft YaHei",微软雅黑;
+    }
+
+    .head {
+        padding-top: 20px;
+        z-index: 9999;
+        position: relative;
+        background: url("img/beijing.png") no-repeat;
+        background-size: cover;
+    }
+    .head img{
+        width: 100%;
+    }
+    .bottom {
+        position: fixed;
+        bottom: 10px;
+    }
+    #apply img {
+        z-index: 300;
+    }
+    .bottom img{
+        width: 100%;
+    }
+    .bottom p img{
+        width:50%;
+        display:inline-block;
+    }
+
+
+.avatar{
+    position: absolute;
+    top: 20px;
+    left: 30%;
+    width:40px;
+    height:40px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 20px #fff;
+}
+.flag {
+    text-align: center;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border: 0.5em solid red;
+    border-top-width: 1rem;
+    border-bottom-color: transparent;
+    border-bottom-width: 1rem;
+    font-size: 1em;
+
+}
+
+.weui_toast {
+    z-index: 2000;
+}
+/*弹窗*/
+.msg_ico{position:absolute;right:10px;top:30px;}
+.msg_pop_block{z-index:10000;position:fixed;top:0;left:0;width:100%;height:100%;background: rgba(0,0,0,0.8);}
+.msg_pop{position:absolute;top:50%;left:0;margin-left:10%;margin-top:-100px;width:80%}
+.msg_pop h3{background:#162b69;color:#46bdf3;border:1px solid #46bdf3;border-radius:10px 10px 0 0;box-shadow:0 0 3px 3px #41d3fe;
+            font-size:13px;text-align:center;padding:8px 15px;margin-left:20px;float:left;}
+.msg_pop .msg_text{background:#162b69 url(./img/laba.png) no-repeat 20px center;background-size:30px auto;color:#fc9a1a;border:1px solid #46bdf3;border-bottom:0;border-radius:10px;box-shadow:0 0 3px 3px #41d3fe;
+            font-size:16px;text-align:left;padding:30px 10px 30px 20%;margin-top:-10px;width:100%;float:left;}
+.msg_btn{float:left;width:100%;margin-top:-22px;}
+.msg_btn a{float:left;display:block;background:url(./img/msg_btn.png) no-repeat 0 0;background-size:110px auto;width:110px;height:53px;line-height:45px;text-align:center;color:#fff;font-size:14px;}
+.msg_btn a:first-child{margin-right:10px;}
+.msg_btn div{margin:0 auto;width:230px;}
+</style>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ce17fbd6942a666e6b8dcec4d3c4148e";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body>
+    <script type="text/javascript" src="../../js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        var cookie_key = "slogan_uid";
+        var uid = $.cookie(cookie_key);
+        console.log("cookie uid:" + uid);
+        if (typeof(uid) == "undefined"){
+            window.location.replace("share.htm");
+        }
+    </script>
+	<!-- 弹窗 -->
+	<div class="msg_pop_block" style="display:none;">
+		<div class="msg_pop">
+			<h3>提&nbsp;示</h3><img class="msg_ico" src="./img/msg_ico.png">
+			<div class="msg_text" id="tipMsg"></div>
+			<div class="msg_btn">
+			    <div style="width:110px;"><!-- <a href="">取&nbsp;消</a> --><a href="javascript:void(0);" onclick="hideTip()">确&nbsp;定</a></div>
+			</div>
+		</div>
+	</div>
+    <div class="head" style="z-index:9999;position:relative;height:30%;">
+        <img src="img/head.png">
+        <img src="img/text.png">
+    </div>
+
+    <div class="container" id="balloon">
+        <div class="qiqiu1 qiqiu">
+            <img class="balloon" src="img/balloon_r.png"/>
+            <img id="avatar_0" class="avatar" src="img/jc_icon.jpg">
+            <div id="text_0" class="text">出口号赢大奖</div>
+            <div class="flag"></div>
+        </div>
+            <div class="qiqiu2 qiqiu">
+            <img class="balloon" src="img/balloon_b.png"/>
+            <img id="avatar_1" class="avatar" src="img/jc_icon.jpg">
+            <div id="text_1" class="text">快来参加有大奖</div>
+            <div class="flag"></div>
+        </div>
+            <div class="qiqiu3 qiqiu">
+            <img class="balloon" src="img/balloon_p.png"/>
+            <img id="avatar_2" class="avatar" src="img/jc_icon.jpg">
+            <div id="text_2" class="text">我的口号我做主</div>
+            <div class="flag"></div>
+        </div>
+            <div class="qiqiu4 qiqiu">
+            <img class="balloon" src="img/balloon_g.png"/>
+            <img id="avatar_3" class="avatar" src="img/jc_icon.jpg">
+            <div id="text_3" class="text">中国竞彩口号征集活动</div>
+            <div class="flag"></div>
+        </div>
+            <div class="qiqiu5 qiqiu">
+            <img class="balloon" src="img/balloon_pink.png"/>
+            <img id="avatar_4" class="avatar" src="img/jc_icon.jpg">
+            <div id="text_4" class="text">大奖就是您</div>
+            <div class="flag"></div>
+        </div>
+    </div>
+
+    <div class="bottom">
+	<a id="apply" href="">
+        <img src="img/button1.png">
+	</a>
+        <p>
+        	<a id="rule" href="">
+        		<img class="col-xs-6" src="img/rule.png">
+        	</a>
+	        <a id="my" href="">
+                <img class="col-xs-6" src="img/kouhao.png">
+            </a>
+        </p>
+    </div>
+
+    <script src="js/jquery-weui.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/wxweb.js?v=20161024"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript">
+		initWx(window.location.href,"/htmlwx/slogan/share.htm",'我的竞彩我做主！',false, '竞彩你做主，一言值千金！5月31日-7月31日提交原创竞彩宣传口号就有机会获得千元大奖！');
+        $.showLoading();
+
+        var cookie_key = "slogan_uid";
+        var uid = $.cookie(cookie_key);
+        console.log("cookie uid:" + uid);
+        if (typeof(uid) == "undefined"){
+            window.location.replace("share.htm");
+        }
+
+        // var uid=getQueryString("uid");
+        $.getJSON('/ilsp-wechat/web/slogan/index.do?' + "uid="+uid,function(json){
+             //活动结束，但是可以看我的口号，和规则
+             if (json.s == 606){
+                //FIXME 因为无法拿到活动ID，现在只能先写死
+                $('#my').attr('href','my.htm?aid='+216);
+                $('#rule').attr('href','../kh_ruler.html?aid='+216);
+                $.hideLoading();
+                //$.alert(json.r, "提示");
+                showTip(json.r);
+                return;
+             }
+
+             if (json.s!=200){
+                $.hideLoading();
+                //$.alert(json.r, "提示");
+                showTip(json.r);
+                return;
+            }
+
+            var slogans=json.r;
+            var aid=json.b.id;
+
+            $('#apply').attr('href','apply.htm?aid='+aid);
+            $('#my').attr('href','my.htm?aid='+aid);
+            $('#rule').attr('href','../kh_ruler.html?aid='+aid);
+
+	        var max=Math.min(slogans.length,5);
+            for (var i=0;i<max;i++){
+                var item=slogans[i];
+                $('#avatar_'+i).attr("src",item.headimg);
+                $('#text_'+i).html(item.slogan);
+            }
+            $.hideLoading();
+        });
+
+        function hideTip(){
+        	$(".msg_pop_block").hide();
+        }
+        function showTip(msg){
+        	$("#tipMsg").html(msg);
+        	$(".msg_pop_block").show();
+        }
+    </script>
+</body>
+</html>
+

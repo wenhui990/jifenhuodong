@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link href="../css/wx-styles.css?v=20161024" rel="stylesheet" />
+    <link href="../css/wx-styles20161024.css?v=20161024" rel="stylesheet" />
+	<title>答题</title>
+</head>
+<body>
+    <div class="container">
+       <div class="content_hd02">
+       		<div id="desc"></div>
+         	<!-- timu start -->
+         	<div id="question"></div>
+         	<!-- timu end -->
+         	<div id="questionEnd" style="display:none">
+         		<div class="main_con" style="height:200px; padding:30px; font-size:20px; line-height:35px;">
+     				<center>
+         				您总共答对<font class="red" id="count">0</font>题<br>
+         				共获得<font class="red" id="accountBalance">0</font>积分</br>
+      				</center>
+				</div>
+      		</div>
+        <div class="bt_bj"></div>      
+	</div>
+  </div>
+  	<div id="login" style="display:none;">
+		<div class="pop_title">
+        	<div class="f_l">信息确认</div>
+        	<div class="f_r" ><a href="javascript:void(0);" onclick="window.location = getPath() + '/htmlwx/login.html?state=question'"><img src="../images/close_icon.png"/></a></div>
+    	</div>
+    	<div class="pop_con" style="height:130px;">
+    		<center><p style="color:#000;" name="message"></p></center>
+        	<center><a href="javascript:void(0);" class="pop_but"  onclick="window.location = getPath() + '/htmlwx/login.html?state=question'">确 定</a></center><br/>
+        </div>
+	</div>
+    <div id="alert" style="display:none;">
+		<div class="pop_title">
+        	<div class="f_l">信息确认</div>
+        	<div class="f_r" ><a href="javascript:void(0);" onclick=""><img src="../images/close_icon.png"/></a></div>
+    	</div>
+    	<div class="pop_con" style="height:130px;">
+    		<center><p style="color:#000;" name="message"></p></center>
+        	<center><a href="javascript:void(0);" class="pop_but"  onclick="">确 定</a></center><br/>
+        </div>
+	</div>
+<input type="hidden" value="" id="answerattr"/>
+<input type="hidden" value="" id="answer"/>
+<input type="hidden" value="" id="points"/>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js?v=20161024"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+$("#answerattr").val("");
+$("#answer").val("");
+$("#points").val("");
+question2();
+initWx(window.location.href,"/htmlwx/hd_dati2.html",'答题',false);
+loadGaScript();
+</script>
+</body>
+</html>

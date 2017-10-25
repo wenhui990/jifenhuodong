@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link href="../css/wx-styles20161024.css?v=20161024" rel="stylesheet" />
+	<title>登录</title>
+</head>
+<body>
+    <div class="container">
+<div class="content_hd02">
+         <div class="zp_bj"></div>
+            <div class="js_bj"><p>答题送奖啦！10月25日-10月30日期间<br />在“中国竞彩”订阅号活动页面参加篮球知识问答<br />就有机会获得iPad、篮球、NBA正版T恤等大奖，<br />
+每天一次，100%中奖，快快参加！
+</p></div>
+            <div class="jpgz_xq">
+               <a href="hd_jiangpin.html"><img src="../images/jpxq.png"></a> &nbsp;&nbsp;<a href="hd_guize.html"><img src="../images/hdgz.png"></a>
+            </div> 
+            <br/><br/>
+
+  <div class="denglu">
+       <div class="xinxi"><img src="../images/user.png">
+         <span>
+       		<input class="" type="text" id="mobile" onkeyup="this.value=this.value.replace(/\D/g,'');$('#mobileErrMsg').html('');"
+   				onafterpaste="this.value=this.value.replace(/\D/g,'')"
+   				maxlength="11" size="30" onblur="checkMobile();" placeholder="请输入手机号"/>
+   		  </span></div>
+       <div class="xinxi"><img src="../images/mima.png">
+         <span>
+       		<input class="" type="password" id="password" size="30" maxlength="18" autocomplete="off"
+    			onkeyup="this.value=this.value.replace(/[^\w!;:,._=@#$%^&*()]|_/ig,'');"
+  				onfocus="changeInput('password')" onblur="checkUserPwd()" placeholder="请输入密码"/>
+  		  </span></div>
+       <div class="xinxi"><img src="../images/yanzm.png">
+       	 <span>
+       	 	<input name="checkCode" id="checkCode" type="text" class="" maxlength="4" autocomplete="off"  size="10" style="width:140px;"/>&nbsp;&nbsp;
+         </span>
+         <a href="javascript:refreshCc()">&nbsp;&nbsp;<img src="/ilsp-wechat/manage/captcha.do" id="checkCodeImg"/></a>&nbsp;&nbsp;
+       </div>
+       <div class="xinxi"><input type="radio" checked id="readgz"> <font style="color:#999999;font-size:24px;">我已阅读并同意 <a href="hd_guize.html">活动规则</a> 和<a href="hd_guize.html">《相关条款》</a></font></div>
+     </div>
+    <a href="javascript:loginChallenge('question');" class="dl_btn"><img src="../images/denglu.png"></a>
+	<p style="height:18px" class="dl_btn"><font id="mobileErrMsg" style="color:red"></font></p>
+    <div class="bt_bj"></div>      
+	</div>  
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js?v=20161024"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+initWx(window.location.href,"/htmlwx/hdbegin.html",'激情美洲杯，天天送大奖',false);
+loadGaScript();
+</script>
+</body>
+</html>

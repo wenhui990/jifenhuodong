@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>中国竞彩</title>
+<link href="../css/wx-styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="question" class="all_head heig_01"></div>
+<div class="all_head heig_01" id="questionEnd" style="display:none">
+<br/>
+ <center>
+  <p  style="text-align:center;">您总共答对<font class="col_red" id="count"> </font>题</p>
+  <p style="text-align:center;">共获得<font class="col_red" id="accountBalance"> </font>积分</p>
+  <a href="mychallenge.html">去虚拟投注</a>
+ </center>
+  <br/>
+</div>
+<!-- <div id="questionEnd" style="display:none">
+<div class="question_con qu_center">
+	您总共答对<font id="count"></font>题<br/>
+           共获得<font id="accountBalance"></font>积分
+</div>
+<div class="question_btn">
+	<a href="mychallenge.html">去看看积分</a>
+</div>
+</div> -->
+<div id="worn" style="display:none;">
+		<div class="pop_title">
+        	<div class="f_l">信息确认</div>
+        	<div class="f_r" ><a href="javascript:void(0);" onclick="window.location = getPath() + '/htmlwx/mychallenge.html'"><img src="../images/close_icon.png"/></a></div>
+    	</div>
+    	<!-- <div class="pop_con" style="height:150px;"> -->
+    	<div class="pop_con">
+    		<center><p style="color:#000;" name="message"></p></center>
+        	<center><a href="javascript:void(0);" class="pop_but"  onclick="window.location = getPath() + '/htmlwx/mychallenge.html'">确 定</a></center><br/>
+        </div>
+</div>
+<input type="hidden" value="" id="answerattr"/>
+<input type="hidden" value="" id="answer"/>
+<input type="hidden" value="" id="points"/>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="../js/adaptor/set.js"></script>
+<script type="text/javascript">
+question();
+initWx(window.location.href,"/htmlwx/hdbegin.html",'篮彩季，微竞猜',false);
+loadGaScript();
+</script>
+</body>
+</html>

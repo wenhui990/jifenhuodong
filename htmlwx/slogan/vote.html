@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<link rel='stylesheet' href='http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css'>
+		<style>
+			body {
+				margin: 0;
+				background: url("images/beijing.png") no-repeat;
+				background-size: cover;
+				font-family: "Microsoft YaHei", 微软雅黑;
+				font-size: 12px;
+			}
+			.none{
+				display: none;
+			}
+
+			.head {
+				margin-top: 20px;
+			}
+
+			.head h4 {
+				font-weight: bold;
+				color: #162b69;
+				text-align: center;
+				display: block;
+				/*设置为块级元素会独占一行形成上下居中的效果*/
+				position: relative;
+				/*定位横线（当横线的父元素）*/
+			}
+
+			h4:before,
+			h4:after {
+				content: '';
+				/*CSS伪类用法*/
+				position: absolute;
+				/*定位背景横线的位置*/
+				top: 52%;
+				background: #162b69;
+				/*宽和高做出来的背景横线*/
+				width: 6%;
+				height: 2px;
+			}
+
+			h4:before {
+				left: 30%;
+				/*调整背景横线的左右距离*/
+			}
+
+			h4:after {
+				right: 30%;
+			}
+
+			.head img {
+				width: 100%;
+			}
+
+			.container {
+				position: relative;
+				box-sizing: border-box;
+				text-align: left;
+				width: 95%;
+				background-color: #162b69;
+				border-radius: 10px;
+				border: 3px solid #46bdf3;
+				padding: 15px;
+				z-index: 10;
+			}
+
+			.box_style {
+				margin: 25px auto;
+			}
+
+			.huodong {
+				text-align: left;
+			}
+
+			.text_huang {
+				color: #e9374c;
+				font-weight: bold;
+			}
+
+			.text_lan,
+			.guanzhu {
+				color: #46bdf3;
+			}
+
+			.guanzhu h4 {
+				text-align: center;
+			}
+
+			.guanzhu #erweima {
+				width: 40%;
+				display: inline-block;
+				box-sizing: border-box;
+			}
+
+			.guanzhu img {
+				width: 100%;
+			}
+
+			.guanzhu #user {
+				width: 40%;
+				display: inline-block;
+				box-sizing: border-box;
+			}
+
+			.guanzhu .text {
+				width: 55%;
+				display: inline-block;
+				box-sizing: border-box;
+				margin-left: 10px;
+				text-align: justify;
+				vertical-align: middle;
+				font-size: 16px;
+			}
+
+			.left {
+				float: left;
+			}
+
+			.right {
+				float: right;
+			}
+
+			.qiu {
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				top: -10px;
+			}
+
+			#lanqiu {
+				left: 22px;
+			    position: absolute;
+			    z-index: 11;
+			    margin-top: -20px;
+			    width: 60px;
+			}
+
+			#zuqiu {
+				right: 35px;
+				position: absolute;
+			    z-index: 11;
+			    margin-top: 5px;
+			    width: 50px;
+			}
+
+			.qiu img {
+				width: 100%;
+			}
+
+			.guize{
+				padding: 10px;
+			}
+
+			footer {
+				float: right;
+				font-size: 12px;
+				color: #46bdf3;
+				margin-top: 10px;
+				margin-right: 20px;
+			}
+
+			.people_num {
+				color: #fff;
+				text-align: center;
+				border-radius: 50px;
+				font-size: 17px;
+			}
+
+			.people_num>div {
+				float: left;
+				width: 33%;
+				border-left: 1px solid #fff;
+			}
+
+			.people_num_color {
+				color: #fd9a1a;
+			}
+
+			.introduce {
+				color: #46BDF3;
+				padding: 0;
+				width: 80%;
+				margin: -10px auto 0;
+				z-index: 9;
+			}
+
+			.in_top_start {
+				float: left;
+				width: 50%;
+				box-sizing: border-box;
+				text-align: right;
+				border-right: 3px solid #46bdf3;
+				border-bottom: 3px solid #46bdf3;
+				padding: 15px 10px 0 0;
+				font-size: 14px;
+			}
+
+			.in_top_end {
+				float: left;
+				width: 50%;
+				box-sizing: border-box;
+				text-align: left;
+				padding: 15px 0 0 10px;
+				border-bottom: 3px solid #46bdf3;
+				font-size: 14px;
+			}
+
+			.in_times {
+				font-size: 11px;
+				color: #FD9A1A;
+			}
+
+			.in_top::after {
+				display: block;
+				content: "";
+				width: 0;
+				height: 0;
+				clear: both;
+			}
+
+			.in_middle {
+				padding: 5px 10px;
+				border-bottom: 3px solid #46bdf3;
+			}
+
+			.in_bottom {
+				vertical-align: middle;
+				text-align: center;
+				padding: 5px 0;
+				cursor: pointer;
+			}
+
+			.in_bottom img {
+				vertical-align: middle;
+			}
+
+			.in_bottom a {
+				color:#46BDF3;
+				font-size: 14px;
+			}
+
+			.in_bottom p {
+				color: #fd9a1a;
+			}
+
+			.see_rankings {
+				background: url(images/paiming.png) no-repeat center;
+				background-size: contain;
+				width: 100%;
+				height: 70px;
+				line-height: 55px;
+				text-align: center;
+				margin: 10px auto;
+				font-size: 14px;
+				color: #FFFFFF;
+			}
+			.see_rankings a{
+				color: #fff;
+			}
+
+			.vote_boxs {
+				width: 90%;
+				margin: 0 auto;
+				position: relative;
+				color: #46bdf3;
+			}
+
+			.vote_box_panle {
+				position: relative;
+				left: 0;
+				top: 0;
+			}
+
+			.vote_box {
+				width: 48%;
+				box-sizing: border-box;
+				float: left;
+				border: 3px solid #46bdf3;
+				margin: 5% 1%;
+				border-radius: 10px;
+				position: relative;
+				left: 0;
+				top: 0;
+				background-color: #162B69;
+			}
+
+			.vb_top {
+				border-bottom: 3px solid #46bdf3;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.vb_top_num {
+				border-radius: 50%;
+				text-align: center;
+				width: 30px;
+				height: 35px;
+				line-height: 38px;
+				border: 2px solid #46bdf3;
+				position: absolute;
+				z-index: 2;
+				top: -12px;
+				left: -12px;
+				text-indent: 8px;
+			}
+
+			.vb_top_user {
+				width: 35%;
+				margin: 0 auto;
+				padding: 10px 0 0;
+				font-size: 11px;
+			}
+
+			.vb_top_user img {
+				border-radius: 50%;
+			}
+
+			.vb_top_poll {
+				position: absolute;
+				z-index: 2;
+				top: 3px;
+				right: 10px;
+				color: #FFFFFF;
+			}
+
+			.vb_top .user_name {
+				text-align: center;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+				padding: 0 5px;
+			}
+
+			.vote_boxs::after {
+				display: block;
+				content: "";
+				width: 0;
+				height: 0;
+				clear: both;
+			}
+
+			.vb_middle {
+				text-align: center;
+				border-bottom: 3px solid #46bdf3;
+				padding: 5px;
+				color: #FD9A1A;
+				font-size: 13px;
+			}
+			.vb_bottom{
+				width: 100%;
+				height: 20px;
+			}
+			.vb_bottom .vb_button {
+				background: url(images/vote.png) no-repeat center;
+				width: 55%;
+				height: 50px;
+				background-size: contain;
+				position: absolute;
+				bottom: -25px;
+				left: 22%;
+				text-align: center;
+				line-height: 45px;
+				color: #fff;
+			}
+			.voted_text{
+				color: #000000;
+			}
+/*弹窗*/
+.msg_ico{position:absolute;right:10px;top:30px;}
+.msg_pop_block{z-index:10000;position:fixed;top:0;left:0;width:100%;height:100%;background: rgba(0,0,0,0.8);}
+.msg_pop{position:absolute;top:50%;left:0;margin-left:10%;margin-top:-100px;width:80%}
+.msg_pop h3{background:#162b69;color:#46bdf3;border:1px solid #46bdf3;border-radius:10px 10px 0 0;box-shadow:0 0 3px 3px #41d3fe;
+            font-size:13px;text-align:center;padding:8px 15px;margin-left:20px;float:left;}
+.msg_pop .msg_text{background:#162b69 url(./img/laba.png) no-repeat 20px center;background-size:30px auto;color:#fc9a1a;border:1px solid #46bdf3;border-bottom:0;border-radius:10px;box-shadow:0 0 3px 3px #41d3fe;
+            font-size:16px;text-align:left;padding:30px 10px 30px 20%;margin-top:-10px;width:100%;float:left;}
+.msg_btn{float:left;width:100%;margin-top:-22px;}
+.msg_btn a{float:left;display:block;background:url(./img/msg_btn.png) no-repeat 0 0;background-size:110px auto;width:110px;height:53px;line-height:45px;text-align:center;color:#fff;font-size:14px;}
+.msg_btn a:first-child{margin-right:10px;}
+.msg_btn div{margin:0 auto;width:230px;}
+		</style>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src='http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+	</head>
+
+	<body>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script type="text/javascript" src="../../js/jquery.cookie.js"></script>
+	    <script type="text/javascript">
+        var uid=getQueryString("uid");
+        var cookie_key = "slogan_uid";
+        $.cookie(cookie_key, uid, { expires: 30, path: '/' });
+        console.log("set cookie uid");
+	    </script>
+
+	<!-- 弹窗 -->
+	<div class="msg_pop_block" style="display:none;">
+		<div class="msg_pop">
+			<h3>提&nbsp;示</h3><img class="msg_ico" src="./img/msg_ico.png">
+			<div class="msg_text" id="tipMsg"></div>
+			<div class="msg_btn">
+			    <div style="width:110px;"><!-- <a href="">取&nbsp;消</a> --><a href="javascript:void(0);" onclick="hideTip()">确&nbsp;定</a></div>
+			</div>
+		</div>
+	</div>
+		<style type="text/css">
+			[v-cloak] {
+			  display: none;
+			}
+		</style>
+		<div class="box_style huodong" id="votemain" v-cloak>
+			<div class="head">
+				<img src="images/head.png">
+			</div>
+			<div class="container people_num">
+				<div class="pn_left" style="border: none; font-size">
+					<div style="font-size:12px">参与口号</div>
+					<div class="slogan_num people_num_color">{{slogancount}}</div>
+				</div>
+				<div class="pn_center">
+					<div style="font-size:12px">累计投票</div>
+					<div class="vote_num people_num_color">{{votecount}}</div>
+				</div>
+				<div class="pn_right">
+					<div style="font-size:12px">访问次数</div>
+					<div class="visit_num people_num_color">{{viewcount}}</div>
+				</div>
+			</div>
+			<img src="images/lanqiu.png" id="lanqiu"/>
+			<div class="container introduce">
+				<div class="in_top" style="border: none;">
+					<div class="in_top_start">
+						<p style="margin:0 0 0">开始时间</p>
+						<p class="in_times">{{votestarttime}}</p>
+					</div>
+					<div class="in_top_end">
+						<p style="margin:0 0 0">截止时间</p>
+						<p class="in_times">{{voteendtime}}</p>
+					</div>
+				</div>
+				<div class="in_middle" style="font-size:11px">
+					投票规则：每人每天可投票10次，每个口号每天只能投票1次。
+				</div>
+				<div class="in_bottom">
+					<a href="../kh_ruler2.html">活动介绍</a>
+				</div>
+			</div>
+			<img src="images/zuqiu.png" id="zuqiu"/>
+			<div class="see_rankings">
+				<!-- 查看排名 -->
+				<a v-bind:href="'paiming.html?aid=' + acitivityid + '&uid=' + uid ">查看排名</a>
+			</div>
+
+
+			<div class="vote_boxs">
+
+				<div class="vote_box" v-for="(item, index) in votes">
+					<div class="vb_top">
+						<div class="vb_top_num">
+							{{index + 1}}
+						</div>
+						<div class="vb_top_user">
+							<div class="vb_top_user_img">
+								<img v-bind:src="item.headimg" width="50" height="50" />
+							</div>
+						</div>
+						<p class="user_name">{{item.userName}}</p>
+						<div class="vb_top_poll">
+							{{item.count}}票
+						</div>
+					</div>
+					<div class="vb_middle">
+						{{item.slogan}}
+					</div>
+					<div class="vb_bottom">
+						<div class="vb_button" v-on:click="vote(item.id)" v-if="item.hasvote==0">
+							<span>投票</span>
+						</div>
+						<div class="vb_button" v-on:click="vote(item.id)" v-else>
+							<span class="voted_text" >已投票</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src="js/jquery-weui.min.js"></script>
+    <script type="text/javascript" src="../../js/wxweb.js?v=20161024"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+
+	<script type="text/javascript">
+		var vvm = null;
+		// var uid = "oB_Qew2T2JQklHambGEBWAZuqwzs";
+		var uid = getQueryString("uid");
+
+		$(document).ready(function() {
+			// $.showLoading();
+			vvm_init();
+			getSlogans();
+		});
+
+		function vvm_init(){
+			vvm = new Vue({
+				el: '#votemain',
+				data:{
+					slogancount:0,
+					votecount:0,
+					viewcount:0,
+					votestarttime:"",
+					voteendtime:"",
+					votes:[],
+					acitivity:null,
+					acitivityid:0,
+					uid:uid
+				},
+				methods:{
+					vote: function(sid){
+						// var sid = $(event.target).attr('id');
+						$.getJSON('/ilsp-wechat/web/slogan/vote.do?' + "uid="+uid+"&aid="+vvm.acitivity.id+"&sid="+sid,function(json){
+							// console.log("resp: " + JSON.stringify(json));
+				             if (json.s!=200){
+				                $.hideLoading();
+				                showTip(json.r);
+				                return;
+				            }else{
+				            	showTip("投票成功，谢谢参与");
+				            	vvm.votecount += 1;
+				            	for (slogan of vvm.votes){
+				            		if (sid == slogan['id']){
+				            			slogan['count'] += 1;
+				            			slogan['hasvote'] = 1;
+				            			break;
+				            		}
+				            	}
+
+				            	for(var i = 0; i < vvm.votes.length; i++){
+				            		if (sid == vvm.votes[i]['id']){
+				            			vvm.votes[i]['count'] += 1;
+				            			break;
+				            		}
+				            	}
+				            }
+				        });
+					}
+				}
+			});
+		}
+
+		function timeStamp2String (time){
+			var datetime = new Date();
+			datetime.setTime(time);
+			var year = datetime.getFullYear();
+			var month = datetime.getMonth() + 1;
+			var date = datetime.getDate();
+			var hour = datetime.getHours();
+			var minute = datetime.getMinutes();
+			var second = datetime.getSeconds();
+			var mseconds = datetime.getMilliseconds();
+			return year + "-" + month + "-" + date+" "+hour+":"+minute+":"+second;
+		};
+
+		function getSlogans(){
+			// $.showLoading();
+				$.getJSON('/ilsp-wechat/web/slogan/votepage.do?' + "uid="+uid,function(json){
+	             if (json.s!=200){
+	                $.hideLoading();
+	                showTip(json.r);
+	                return;
+	            }
+	            vvm.slogancount = json.b.sloganCount;
+	            vvm.votecount = json.b.voteCount;
+	            vvm.viewcount = json.b.param2;
+	            vvm.votestarttime = timeStamp2String(json.b.startTime);
+	            vvm.voteendtime = timeStamp2String(json.b.endTime);
+	            vvm.votes = json.r;
+	            for (b of vvm.votes){
+    				b['hasvote'] = 0;
+        		}
+
+	            //标记此用户当天投票的记录。
+	            for (a of json.t){
+	            	for (b of vvm.votes){
+            			if (b['id'] == a['sid']){
+            				b['hasvote'] = 1;
+            				break;
+            			}
+            		}
+	            }
+
+	            vvm.acitivity = json.b;
+	            vvm.acitivityid= json.b.id;
+	        });
+		}
+
+        function hideTip(){
+        	$(".msg_pop_block").hide();
+        }
+		function showTip(msg){
+        	$("#tipMsg").html(msg);
+        	$(".msg_pop_block").show();
+        }
+		$(document).on('click','.in_bottom',function(){
+			$('.guize').toggleClass('none');
+		})
+	</script>
+	</body>
+</html>

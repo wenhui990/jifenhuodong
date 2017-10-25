@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=1080, user-scalable=no">
+    <link href="../hd_css/css.css"  type="text/css" rel="stylesheet"/>
+    <title>注册</title>
+</head>
+<body>
+<div class="all_head heig_bet">
+    <p class="wid align_c f26">中国竞彩订阅号账户注册绑定</p>
+    <p class="wid3">注册绑定账号后，中国竞彩不会获得您的微信用户名和密码，
+        请放心使用。</p>
+
+    <div class="shan_line"></div>
+<div class="srk_all">
+	 <input type="text" class="skr01" id="mobile" onkeyup="this.value=this.value.replace(/\D/g,'');$('#mobileErrMsg').html('');"
+      onafterpaste="this.value=this.value.replace(/\D/g,'')" onfocus="if(this.value=='请输入手机号码'){this.value='';}"
+      maxlength="11" size="30" onblur="if(this.value==''){this.value='请输入手机号码';};checkMobile();" value="请输入手机号码"/>
+       <br/>
+
+      <input type="text" class="skr03" id="mobileCode" onkeyup="this.value=this.value.replace(/\D/g,'');$('#mobileErrMsg').html('');"
+      onafterpaste="this.value=this.value.replace(/\D/g,'')" onfocus="if(this.value=='请输入验证码'){this.value='';}"
+      maxlength="6" size="30" onblur="if(this.value==''){this.value='请输入验证码';};" value="请输入验证码"/>
+      <a href="javascript:void(0);"  id="smsSend" onclick="sendSms();"><input type="button" value="" class="skr04"></a>
+       <br />
+
+      <span style="display:none;">短信校验码<span id="codeAlive"></span>分钟内有效，<span id="codeWait"></span>秒内未收到校验短信，可重新获取。</span>
+      <!-- <a href="javascript:void(0);" class="fx_but" id="smsSend" onclick="sendSms();" style="margin-top:15px; margin-left:-130px;"> -->
+      <span id="counta" style="display:none;color:gray;"><span id="time">0</span>秒后重发</span><!-- </a> -->
+      <br />
+
+      <input class="skr02" type="password" id="password" size="30" maxlength="18" autocomplete="off"
+       onkeyup="this.value=this.value.replace(/[^\w!;:,._=@#$%^&*()]|_/ig,'');"
+   		onfocus="changeInput('password')" onblur="checkUserPwd();"
+   		placeholder="请输入登录密码"/>
+      <br />
+      <input class="skr02" type="password" id="rePassword" size="30" maxlength="18" autocomplete="off"
+       onkeyup="this.value=this.value.replace(/[^\w!;:,._=@#$%^&*()]|_/ig,'');"
+      onfocus="changeInput('rePassword')" onblur="checkCfmUserPwd();"
+   		placeholder="请确认登录密码"/>
+   		<br />
+</div>
+<p class="align_c" style="height:18px"><font id="mobileErrMsg" style="color: red"></font></p>
+<center class="yue col_blu"><input type="radio" id="xieyi" checked="checked"> <font class="purple">我已阅读并同意<a href="activity_gz.html" target="_blank">活动规则</a>和<a href="xieyi.html" target="_blank">《相关条款》</a></font></center>
+<p class="wid2 f18 col_gray">注意：<br/>
+1.请使用真实手机号作为账户名：<br/>
+2.密码支持6-18个字符,数字,英文字母,区分大小写</p>
+  <br/>
+  <a href="javascript:void(0);" class="zc_btn" onclick="register();"><img src="../hd_imgs/tz_btn.png"></a>
+</div>
+ <div id="worn" style="display:none;">
+		<div class="pop_title">
+        	<div class="f_l">信息确认</div>
+        	<div class="f_r" ><a href="javascript:void(0);" onclick="window.location = getPath() + '/htmlwx/newactivity.html?flag=first'"><img src="../images/close_icon.png"/></a></div>
+    	</div>
+    	<div class="pop_con">
+    		<center><p style="color:#000;" name="message"></p></center>
+        	<center><a href="javascript:void(0);" class="pop_but"  onclick="window.location = getPath() + '/htmlwx/newactivity.html?flag=first'">确 定</a></center><br/>
+        </div>
+</div>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<!--<script type="text/javascript" src="../js/adaptor/set.js"></script>-->
+<script type="text/javascript">
+getCodeData();
+initWx(window.location.href,"/htmlwx/hdbegin.html",'篮彩季，微竞猜',false);
+loadGaScript();
+</script>
+</body>
+</html>

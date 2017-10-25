@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>中国竞彩</title>
+<link href="../css/wx-styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="overflow-x:hidden">
+<div class="all_head heig_09">
+<div class="hdcj_bootm">
+   <div class="hdcj_jj" id="userinfo"></div>
+</div>
+<div class="duihuan_box_n">
+	&nbsp;&nbsp;&nbsp;&nbsp;当前账户兑换券：<b id="ticketcount">0</b>张<a class="col_orange align_r" href="changeticket.html">立即兑换</a>
+ <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;累计获得兑换券：<b id="ticketsum">0</b>张<a class="col_orange align_r" href="hdrecord.html">查看详情</a>
+ </div>
+ <div id="matchInfo"></div>
+	<center><div class="ahd_time" id = "tzcs">剩余投注次数：<b class="c_yellow">1</b>次<br /></div></center>
+	<a href="javascript:void(0);" class="sure_zt" id="betSubmit"></a>
+</div>
+<input type="hidden" value="" id="jifen"/>
+<div id="worn" style="display: none;">
+	<div class="pop_title">
+		<div class="f_l">信息确认</div>
+		<div class="f_r">
+			<a href="javascript:void(0);" onclick="closeWindow();"><img src="../images/close_icon.png" /></a>
+		</div>
+	</div>
+	<div class="pop_con">
+		<center>
+			<p style="color: #000;" name="message">您的投注订单已提交成功!</p>
+		</center>
+		<center>
+			<a href="javascript:void(0);" class="pop_but" onclick="closeWindow();">确 定</a>
+		</center>
+	</div>
+</div>
+<div id="first" style="display:none;">
+		<div class="pop_title">
+        	<div class="f_l">信息确认</div>
+        	<div class="f_r" ><a href="javascript:void(0);" onclick="window.location = getPath() + '/htmlwx/mychallenge.html'"><img src="../images/close_icon.png"/></a></div>
+    	</div>
+    	<div class="pop_con">
+    		<center><p style="color:#000;" name="message">赠送500初始积分，今日登录送100积分。（每日登录可拿100积分哦）</p></center>
+        	<center><a href="javascript:void(0);" class="pop_but"   onclick="closeWindow();">确 定</a></center><br/>
+        </div>
+</div>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="../js/adaptor/set.js"></script>
+<script language="javascript" src="../js/lucky/Rotate.js" type="text/javascript"></script>
+<script language="javascript" src="../js/lucky/jquery.bootstrap.newsbox.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+myChallenge();
+//倍数输入操作
+$('input[id^=allmutil]').bind(
+		{
+		keyup : function(e) {
+			var val = Math.max(1, Math.min(parseInt(this.value || 0, 10) || 0, $("#maxMultipleOrder").val()|| Number.MAX_VALUE));
+			if (this.value == '') {
+				if (e.type != 'keyup') {
+				 this.value = val;
+				} else {
+				 return;
+				}
+			} else if (val != this.value) {
+				this.value = val;
+			}
+			pageshow();
+		},
+		blur : function() {
+			if ($(this).val() == '')
+				$(this).val(1);
+			pageshow();
+		},
+		click : function() {
+			if ($(this).val() == '')
+				$(this).val(1);
+			/* if ($(this).val() > '')
+				$(this).val(1); */
+
+			pageshow();
+		}
+	});
+
+initWx(window.location.href,"/htmlwx/hdbegin.html",'篮彩季，微竞猜',false);
+loadGaScript();
+</script>
+</body>
+</html>

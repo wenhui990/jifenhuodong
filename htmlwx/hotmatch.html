@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0" name="viewport" />
+<title>中国竞彩</title>
+<link href="../css/old-styles.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+	body{
+	 	background-image:url(../images/footb_bj.png);
+		background-repeat:no-repeat;
+		background-position:top center;
+		background-attachment:fixed;
+		background-size:cover;
+	}
+</style>
+</head>
+<body>
+<!--  <div class="main_w sig_but">
+	<a href="javascript:void(0);" class="a_left2 on" id="hotMatch_2" onclick="searchWxMatch(0,2);">足球热门赛事</a>
+    <a href="javascript:void(0);" class="a_right2" id="hotMatch_3" onclick="searchWxMatch(0,3);">篮球热门赛事</a>
+</div>  -->
+<div class="main_jg"></div>
+<div id="matchs"></div>
+	<!-- 标记显示收藏 -->
+	<input style="display:none;" id="initCollect" value="0"/>
+<div class="main_fot">
+	<div class="main_w">
+		<div class="fot_left"><a id="hotMatch_2">篮球</a></div>
+    	<div class="fot_mid"><a href="javascript:void(0);" onclick="showTipsWindown('','sx_pop',300,200);getShowTeams(true);">筛选</a></div>
+        <div class="fot_right"><a id="showCollect" href="javascript:void(0);" onclick="showCollect();">收藏</a></div>
+    </div>
+</div>
+
+<div id="sx_pop" style="display:none;">
+	<!-- 标记显示出来的赛事 -->
+	<input style="display:none;" id="initTeams" value=""/>
+	<input style="display:none;" id="initSingle" value="0"/>
+	<div class="pop_title">
+    	<div class="f_l">请选择需要查看的赛事</div>
+        <div class="f_r" ><a href="javascript:void(0);" onclick="cancleSelect();"><img src="../images/close_icon.png"/></a></div>
+    </div>
+    <div class="pop_con">
+    	<center><a href="javascript:void(0);" class="ss_big_on" name="chooseAll"
+    		onclick="changeChooseAll(true);">全部赛事</a></center>
+        <div class="ss_sm_but" id="teams">
+        <!-- <a href="#" class="on">西甲</a>
+        <a href="#">意甲</a>
+        <a href="#">英超</a>
+        <a href="#">西甲</a>
+        <a href="#">西甲</a>
+        <a href="#">西甲</a>
+        <a href="#">西甲</a> -->
+        </div>
+        <center><a href="javascript:void(0);"
+         onclick="if(this.className =='ss_big_on'){this.className='ss_big_but';document.getElementById('initSingle').value=0}else{this.className='ss_big_on';document.getElementById('initSingle').value=1}" class="ss_big_but">只看单固赛事</a></center>
+    	<center>
+    		<a href="javascript:void(0);" class="pop_but_gray"  onclick="cancleSelect();">取 消</a>
+    		<a href="javascript:void(0);" class="pop_but"  onclick="showTeams();">确 定</a>
+    	</center>
+  	</div>
+</div>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+searchWxMatch(0,2);
+//足球篮球切换
+$("#hotMatch_2").click(function(e){
+	var target = e.target;
+	if(target.nodeName == "A"){
+		var inner = $(target).html();
+		if(inner.indexOf('篮球')>-1){
+			$(document.body).css("background-image","url('../images/bsb_bj.png')");
+			$(document.body).css("background-repeat","no-repeat");
+			$(document.body).css("background-position","top center");
+			$(document.body).css("background-attachment","fixed");
+			$(document.body).css("background-size","cover");
+			$(target).html('足球');
+			searchWxMatch(0,3);
+		}else{
+			$(document.body).css("background-image","url('../images/footb_bj.png')");
+			$(document.body).css("background-repeat","no-repeat");
+			$(document.body).css("background-position","top center");
+			$(document.body).css("background-attachment","fixed");
+			$(document.body).css("background-size","cover");
+			$(target).html('篮球');
+			searchWxMatch(0,2);
+		}
+	}
+});
+initWx(window.location.href,"/htmlwx/hotmatch.html","中国竞彩-热门赛事",false);
+loadGaScript();
+</script>
+</body>
+</html>

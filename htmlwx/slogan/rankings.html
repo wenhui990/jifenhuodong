@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<link rel='stylesheet' href='http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css'>
+		<style>
+			body {
+				margin: 0;
+				background: url("images/beijing.png") no-repeat;
+				background-size: cover;
+				font-family: "Microsoft YaHei", 微软雅黑;
+				font-size: 16px;
+			}
+
+			.head {
+				margin-top: 20px;
+			}
+
+			.head h4 {
+				font-weight: bolder;
+				color: #162b69;
+				text-align: center;
+				display: block;
+				/*设置为块级元素会独占一行形成上下居中的效果*/
+				position: relative;
+				/*定位横线（当横线的父元素）*/
+				font-size: 14px;
+			}
+
+			h4:before,
+			h4:after {
+				content: '';
+				/*CSS伪类用法*/
+				position: absolute;
+				/*定位背景横线的位置*/
+				top: 52%;
+				background: #162b69;
+				/*宽和高做出来的背景横线*/
+				width: 6%;
+				height: 2px;
+			}
+
+			h4:before {
+				left: 32%;
+				/*调整背景横线的左右距离*/
+			}
+
+			h4:after {
+				right: 32%;
+			}
+
+			.head img {
+				width: 100%;
+			}
+
+			.container.head{
+				width: 95%;
+				background-color: #162b69;
+				border-radius: 30px;
+				border: 3px solid #46bdf3;
+				color: #46bdf3;
+				padding-left: 8%;
+				padding-right: 7%;
+				box-shadow: 0 0 15px #46bdf3;
+				/*排名标题栏阴影效果*/
+				position: relative;
+			}
+			
+			#write{
+				position: absolute;
+				width: 100px;
+				left: 72%;
+				top: -44px;
+			}
+
+			#lanqiu {
+				position: absolute;
+				width: 47px;
+				left: -6%;
+				top: 326px;
+				z-index: 10;
+			}
+
+			.rank,.slogan,.sName{
+				float: left;
+				text-align: center;
+				font-size: 14px;
+				height: 42px;
+				line-height: 40px;
+			}
+			
+			.rank{
+				width: 12%;
+			}
+
+			.slogan{
+				width: 55%;	
+			}
+
+			.sName{
+				width: 30%;
+			}
+
+			.out_rankings{
+				position: relative;
+				height: auto;
+				margin-bottom: 20px;
+				z-index: -10;
+			}
+
+			.container.rankings{
+				position: relative;
+				top: -3px;
+				/*数据栏上移以无缝连接标题栏*/
+				width: 85%;
+				border: 3px solid #46bdf3;
+				border-top: none;
+				color: #fd9a1a; 
+				height: 49px;
+				line-height: 47px;
+				background-color: #162b69;
+				font-weight: bolder;
+				padding-left: 3%;
+				padding-right: 3%;
+			}
+			
+			.ranking_num,.ranking_text,.ranking_user{
+				float: left;
+				text-align: center;
+				font-size: 14px;
+			}
+
+			.ranking_num{
+				width: 10%;
+			}
+
+			.ranking_text{
+				width: 57%;				
+			}
+
+			.ranking_user{
+				width: 32%;
+				overflow: hidden;
+				text-overflow:ellipsis;
+				white-space: nowrap;
+			}
+			
+			
+/*弹窗*/
+.msg_ico{position:absolute;right:10px;top:30px;}
+.msg_pop_block{z-index:10000;position:fixed;top:0;left:0;width:100%;height:100%;background: rgba(0,0,0,0.8);}
+.msg_pop{position:absolute;top:50%;left:0;margin-left:10%;margin-top:-100px;width:80%}
+.msg_pop h3{background:#162b69;color:#46bdf3;border:1px solid #46bdf3;border-radius:10px 10px 0 0;box-shadow:0 0 3px 3px #41d3fe;
+            font-size:13px;text-align:center;padding:8px 15px;margin-left:20px;float:left;}
+.msg_pop .msg_text{background:#162b69 url(./img/laba.png) no-repeat 20px center;background-size:30px auto;color:#fc9a1a;border:1px solid #46bdf3;border-bottom:0;border-radius:10px;box-shadow:0 0 3px 3px #41d3fe;
+            font-size:16px;text-align:left;padding:30px 10px 30px 20%;margin-top:-10px;width:100%;float:left;}
+.msg_btn{float:left;width:100%;margin-top:-22px;}
+.msg_btn a{float:left;display:block;background:url(./img/msg_btn.png) no-repeat 0 0;background-size:110px auto;width:110px;height:53px;line-height:45px;text-align:center;color:#fff;font-size:14px;}
+.msg_btn a:first-child{margin-right:10px;}
+.msg_btn div{margin:0 auto;width:230px;}
+		</style>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src='http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+	</head>
+
+	<body>
+		<!-- 弹窗 -->
+		<div class="msg_pop_block" style="display:none">
+			<div class="msg_pop">
+				<h3>提&nbsp;示</h3><img class="msg_ico" src="./img/msg_ico.png">
+				<div class="msg_text" id="tipMsg"></div>
+				<div class="msg_btn">
+				    <div style="width:110px;"><!-- <a href="">取&nbsp;消</a> --><a href="javascript:void(0);" onclick="hideTip()">确&nbsp;定</a></div>
+				</div>
+			</div>
+		</div>
+		<style type="text/css">
+			[v-cloak] {
+			  display: none;
+			}
+		</style>
+		
+		
+		<div class="box_style huodong" id="ranking" v-cloak>
+			<div class="head">
+				<img src="images/head.png">
+				<h4>排名展示</h4>
+			</div>
+
+			<div class="container head">
+				<div  id="write">
+					<img src="images/write.png" class="write">
+				</div>
+				<div class="rank">排名</div>
+				<div class="	slogan">口号</div>
+				<div class="sName">提交人</div>
+				<img src="images/lanqiu_r.png" id="lanqiu"/>
+			</div>
+
+			<div class="out_rankings">
+				<div class="container rankings" v-for="item in votes">
+					<div class="ranking_num">{{item.rank}}</div>
+					<div class="ranking_text">{{item.slogan}}</div>
+					<div class="ranking_user">{{item.userName}}</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+
+   
+	<script src="js/jquery-weui.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/wxweb.js?v=20161024"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	
+
+	<script type="text/javascript">
+		var vvm = null;
+		var uid = getQueryString("uid");
+		var aid =219;
+
+		$(document).ready(function(){
+			vvm_init();
+			getRank();
+		});
+
+		function vvm_init(){
+			vvm = new Vue({
+				el: '#ranking',
+				data:{
+					votes:[]
+				},
+				methods:{
+				}
+			});
+		}
+		
+		function getRank(){
+			$.getJSON('/ilsp-wechat/web/slogan/final/rank.do?' + "uid="+uid+"&aid="+aid,function(json){
+	            if (json.s!=200){
+	                // $.hideLoading();
+	                showTip(json.r);
+	                return;
+	            }
+	            vvm.votes = json.r;
+
+	            $("#write").click(function(){
+	            	// c为1可以填写地址信息，其余值跳出弹窗
+					if(json.c != 1){
+						showTip("很遗憾，您未中奖！");
+						return;
+					}else{
+						window.location.replace("information.html?uid=" + uid);	
+					}
+				});
+	        });
+		}
+
+        function hideTip(){
+        	$(".msg_pop_block").hide();
+        }
+		
+		function showTip(msg){
+        	$("#tipMsg").html(msg);
+        	$(".msg_pop_block").show();
+        }
+	</script>
+</html>

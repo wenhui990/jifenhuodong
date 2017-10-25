@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=1080, user-scalable=no">
+	<link href="../hd_css/css.css"  type="text/css" rel="stylesheet"/>
+	<title>竞猜胜平负</title>
+</head>
+<body>
+<div class="all_head03 heig_bet">
+	<div class="xinxi">
+		<input id="chooseodd" value="3" type="hidden">
+		<div class="wid_pic"><a id="topaward" href="../web/topAward.do?u=1"><img src="../images/paiming.png"></a> &nbsp; <a href="../web/personaJXlHistory.do"><img src="../images/touzhuxq.png"></a></div>
+	</div><br /><br /><br /><br /><br />
+	<div class="tz_tit align_c"><span id="todaytitle">今日挑战</span><a href="activity_gz.html" class="ba_a f_r f28">玩法规则</a></div>
+
+	<div id="mainbetdiv">
+	<!--投注区01-->
+		<div class="tz_body">
+			<p class="mzb"><span id="today"></span> &nbsp; &nbsp; <span id="matchWeek"></span> &nbsp; &nbsp; <span id="leguageName"></span> &nbsp; &nbsp; <span id="endBet"></span><span>截售</span></p>
+			<div class="qiudui">
+				<span class="f_l"  id="home"></span>
+				<span class="f_r"  id="guest"></span></div>
+			<div class="btn_3">
+				<div class="btn_body" id="btnbod">
+					<ul>
+						<li class="mar_left">
+							<a href="javascript:void(0);" class="btn_sheng_on"> <font class="bt_fen" id="odd3">0</font></a>
+						</li>
+						<li class="mar_left">
+							<a href="javascript:void(0);" class="btn_ping"> <font class="bt_fen" id="odd1">0</font></a>
+						</li>
+						<li class="mar_left">
+							<a href="javascript:void(0);" class="btn_fu"> <font class="bt_fen" id="odd0">0</font></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--投注区01结束-->
+			<div class="tzjh">您当前剩余投注机会：<font class="yellow" id="betAgain">0</font>次</div>
+			<div class="tzjh2" id="timeprompt" style="display: none;"></div>
+			<span class="tzjh" id="subbutton">
+			<a href="#" class="zc_btn" onclick="checkbetSubmit()"><img id="betImg" src="../hd_imgs/qrtz.png"></a></span>
+		</div>
+	</div>
+	<div id="worn" style="display: none;">
+		<div class="pop_title">
+			<div class="f_l">信息确认</div>
+			<div class="f_r">
+				<a href="javascript:void(0);" onclick="closeWindow();"><img src="../images/close_icon.png" /></a>
+			</div>
+		</div>
+		<div class="pop_con">
+			<center>
+				<p style="color: #000;" name="message">您的投注订单已提交成功!</p>
+			</center>
+			<center>
+				<a href="javascript:void(0);" class="pop_but" onclick="closeWindow();">确 定</a>
+			</center>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script language="javascript" src="../js/lucky/Rotate.js" type="text/javascript"></script>
+<script language="javascript" src="../js/lucky/jquery.bootstrap.newsbox.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+   initWx(window.location.href,"/htmlwx/hd_guess",'竞猜胜平负',false);
+   mychallengeChoose();
+   myChallenge2();
+</script>
+</body>
+</html>

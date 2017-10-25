@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<title>超级足球季，等你来参与！</title>
+		<link rel="stylesheet" href="draw/css/base.css">
+		<style>
+			html{
+				font-size: 100px;
+			}
+
+			body {
+				margin: 0;
+				background: url("draw/images/index_bg1.png") no-repeat;
+				background-size: cover;
+				font-family: "Microsoft YaHei", 微软雅黑;
+			}
+
+			.head{
+				position: relative;
+			}
+
+			.i_head{
+				width: 100%;
+			}
+
+			.time{
+				width: 2.23rem;
+				height: 0.57rem;
+				z-index: 10;
+				position: absolute;
+				top: 2.94rem;
+			}
+
+			.box_choujiang{
+				position: absolute;
+				top: 3.91rem;
+				width: 100%;
+				height: auto;
+			}
+			
+			.join{
+				margin-left: 0.32rem;
+				width: 2.48rem;
+				height: 0.66rem;
+				margin-bottom: 0.24rem;
+			}
+			
+			.draw{
+				margin-left: 0.88rem;
+				width: 2.52rem;
+				height: 0.7rem;
+				margin-bottom: 0.41rem;
+			}
+
+			.entry{
+				display:flex;
+				margin: 0 0.22rem 0 0.19rem;
+				justify-content: space-between;
+			}
+			
+			.entry img{
+				width: 0.86rem;
+				height: 0.21rem;
+			}
+
+			/*播报中奖信息*/
+			.broadcast{
+				margin: 0 auto;
+				padding: 0.17rem 0 0.1rem 0.9rem;
+				display: flex;
+			}
+			
+			.broadcast img{
+				width: 0.15rem;
+				height: 0.15rem;
+				margin-top: 0.02rem;
+				margin-right: 0.08rem;
+			}
+
+			.cansee{
+				position: relative;
+				height: 0.16rem;
+				overflow: hidden;
+			}
+
+			ul{
+				position: relative;
+				top: 0;
+			}
+		
+			ul li{
+				color: #ffb22d;
+				font-size: 0.12rem;
+			}
+			
+			[v-cloak]{
+			  display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="head">
+			<img src="draw/images/i_head.png" class="i_head">
+			<img src="draw/images/time.png" class="time">
+		</div>
+		
+		<div class="box_choujiang" id="box" v-cloak>
+			<img src="draw/images/join.png" class="join" @click="iClick('question')">
+			<img src="draw/images/choujiang.png" class="draw" @click="iClick('draw')">
+
+			<div class="box_bottom">
+				<div class="entry">
+					<img src="draw/images/rule.png" class="rule" @click="iClick('rules')">
+					<img src="draw/images/record.png" class="record" @click="iClick('record')">
+					<img src="draw/images/address.png" class="address" @click="iClick('address')">
+				</div>
+				
+				<div class="broadcast">
+					<img src="draw/images/laba.png" class="laba">
+					<div class="cansee">
+						<ul class="active" id="active">
+							<li v-for="item in record">恭喜<span>{{item.username}}</span>获得<span>{{item.name}}</span>一个！</li>
+						</ul>
+					</div>	
+				</div>
+				
+			</div>
+		</div>
+				<input type="hidden" id="aid" value="">
+	</body>
+
+
+	<script src="draw/js/screen.js"></script>
+	<script src="https://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/wxweb.js?v=20171024"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="./slogan/js/vue.js"></script>
+	<script type="text/javascript">
+		initWx(window.location.href,"/htmlwx/draw/share.html",'超级足彩季，等你来答题！',false, '“超级足彩季，3亿大派奖！”火热来袭，系列活动之一知识竞猜开始啦，快去参加吧！');
+		var vvm = null;
+		var code = getQueryString("code");
+		// console.log("code: " + code);
+		vvm_init();
+		up();
+
+		function vvm_init(){
+			vvm = new Vue({
+				el:"#box",
+				data:{
+					record:[]
+				},
+				mounted:function(){
+					axios.post('/ilsp-wechat/web/quiz/index.do?code='+code)
+					.then(function(res){
+						// console.log(res.headers.date)
+						if(res.data.s == 200){
+							// console.log("res.data.a.id: " + res.data.a.id);
+							vvm.record = res.data.r.slice(0,20);
+
+							window.sessionStorage.setItem("aid", res.data.a.id)
+							console.log(sessionStorage.getItem("aid"));
+							$("#aid").val(res.data.a.id);
+						} else {
+							alert(res.data.r);
+						}
+					})
+				},
+				methods:{
+					iClick:function(name){
+						window.location.href='./draw/'+name+'.html?aid='+$("#aid").val();
+					}
+				}
+			});
+		}
+
+		// 滚动条显示
+		function up() {//向上滚动
+			var z = 0;
+			var active = $('#active');
+				 
+			var timer1 = null;
+			timer1 = setInterval(function(){
+				z -= 0.16
+				active.css({'top': z + 'rem'});	  
+			},1500)
+
+			var timer2 = null;
+			timer2 = setInterval(function(){
+				active.css({'top': '0'})
+		        .find("li:first").appendTo(active);  
+			},1500)
+		}
+
+
+	</script>
+</html>

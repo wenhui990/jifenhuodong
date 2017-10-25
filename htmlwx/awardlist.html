@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>中国竞彩</title>
+<link href="../css/wx-styles.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+.main_page {
+overflow: hidden;
+padding: 10px;
+text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="all_head heig_02">
+  <!-- <span class="f_l col_green"><font class="f26">您的昨天排名：<b id="inteRanking"></b></font></span> -->
+   <div class="jfxq_n">查询
+  <select class="hjxq" id="awardlist" onchange="awardList(0);"></select>
+  <a href="awardaddress.html" class="f_r">填写领奖信息</a>
+ </div>
+<div class="shan_line2"></div>
+<div class="h_10"></div>
+<table class="pai_list">
+</thead>
+  <tr class="add_c">
+    <td width="65%">排名</td>
+    <td width="35%">手机号码</td>
+ </tr>
+ </thead>
+    <tbody id="res" ></tbody>
+</table>
+  <br/>
+  <div class="main_page">&nbsp;</div><br>
+</div>
+<!-- <body class="hd_bj">
+<div class="top_img"> <img src="../images/top_banner1.png" /> </div>
+<div class="main_w">
+ 查询：<select id="awardlist" onchange="awardList(0);">
+ </select>
+</div>
+<div class="zt_title">
+	您当前的全国排名：<b id="inteRanking"></b>
+    <br/><a href="awardaddress.html"><font class="c_yellow">填写领奖信息</font></a>
+</div>
+    <div class="ahd_int">
+        	<table cellspacing="0" class="adv_table">
+        	</thead>
+       		<tr class="tit">
+       		    <td width="30%">奖级</td>
+       		    <td width="36%">手机号码</td>
+       		</tr>
+       	   </thead>
+       		 <tbody id="res" ></tbody>
+        </table>
+
+</div>
+ 	<div class="main_page">&nbsp;</div><br>
+</body> -->
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="../js/adaptor/set.js"></script>
+<script type="text/javascript">
+awardIsssue(0);
+//awardList(0);
+initWx(window.location.href,"/htmlwx/hdbegin.html",'篮彩季，微竞猜',false);
+loadGaScript();
+</script>
+</body>
+</html>

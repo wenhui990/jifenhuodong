@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=750, user-scalable=no">
+    <link href="../css/wx-styles.css?v=20161024" rel="stylesheet" />
+    <link href="../css/wx-styles20161024.css?v=20161024" rel="stylesheet" />
+	<title>答题</title>
+</head>
+<body>
+    <div class="container">
+       <div class="content_hd02">
+         <div class="zp_bj"></div>
+         	<!-- timu start -->
+         	<div id="question"></div>
+         	<!-- timu end -->
+         	<div id="questionEnd" style="display:none">
+         		<div class="main_con" style="height:200px; padding:30px; font-size:20px; line-height:35px;">
+     				<center>
+         				您总共答对<font class="red" id="count">4</font>题<br>
+         				共获得<font class="red" id="drawCount">0</font>次抽奖机会</br>
+         				<a href="hd_choujiang.html" class="ahd_but_big">去抽奖</a>
+      				</center>
+				</div>
+      		</div>
+      		<div class="rotate-cover" id="covt">
+               <div class="roc-h"><span><img src="../images/an_true.png"></span>
+               <a href="hd_choujiang.html">去抽奖</a></div>
+             </div>
+             <div class="rotate-cover" id="covf">
+               <div class="roc-h"><span><img src="../images/an_false.png"></span></div>
+             </div> 
+        <div class="bt_bj"></div>      
+	</div>
+  </div>
+	<div id="worn" style="display:none;">
+		<div class="pop_title">
+        	<div class="f_l">信息确认</div>
+        	<div class="f_r" ><a href="javascript:void(0);" onclick="window.location = getPath() + '/htmlwx/hd_choujiang.html'"><img src="../images/close_icon.png"/></a></div>
+    	</div>
+    	<div class="pop_con" style="height:130px;">
+    		<center><p style="color:#000;" name="message"></p></center>
+        	<center><a href="javascript:void(0);" class="pop_but"  onclick="window.location = getPath() + '/htmlwx/hd_choujiang.html'">确 定</a></center><br/>
+        </div>
+	</div>
+  <input type="hidden" value="" id="answerattr"/>
+<input type="hidden" value="" id="answer"/>
+<input type="hidden" value="" id="points"/>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/wxweb.js?v=20161024"></script>
+<script type="text/javascript" src="../js/wxbox.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+$("#answerattr").val("");
+$("#answer").val("");
+$("#points").val("");
+question();
+initWx(window.location.href,"/htmlwx/hdbegin.html",'激情美洲杯，天天送大奖',false);
+loadGaScript();
+</script>
+</body>
+</html>
